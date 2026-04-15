@@ -1,0 +1,12 @@
+activo,clase,rend_esperado_pct,vol_esperada_pct,peso_actual_pct,peso_sharpe_pct,peso_minvol_pct,peso_agresivo_pct
+RV Global MSCI World (Vanguard),rv_global,10.8,14.2,17.4,35.11,29.06,24.8
+RV USA S&P500 (Amundi ETF),rv_usa,12.0,15.2,12.82,40.0,11.94,40.0
+Fondo Tecnología (Fidelity),rv_tematico,14.5,22.0,8.65,3.27,0.0,0.0
+Roboadvisor Finizens,rv_global,9.5,13.5,11.54,5.0,25.0,5.0
+Bitcoin (físico),crypto,45.0,78.0,9.59,13.62,2.0,15.0
+Ethereum ETP,crypto,35.0,82.0,2.66,0.0,0.0,0.0
+Acciones USA Large Cap,rv_usa,13.0,18.5,8.21,2.0,2.0,2.0
+Acciones USA AI/Tech,rv_tematico,18.0,29.0,9.41,0.0,0.0,12.2
+Acciones USA Riesgo Alto,especulativo,-2.0,45.0,4.43,0.0,0.0,0.0
+ETFs Temáticos (Agua/Cyber/EM),etf_tematico,9.5,16.5,8.37,0.0,15.0,0.0
+Efectivo,efectivo,2.5,0.1,6.91,1.0,15.0,1.0

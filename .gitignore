@@ -1,0 +1,56 @@
+# Entorno virtual Python
+.venv/
+venv/
+env/
+
+# Caché Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# =============================================================================
+# PRIVADO: nunca al repo público
+# =============================================================================
+
+# Datos reales del inversor (todos los perfiles)
+datos/
+# Datos del perfil demo (ficticios pero no publicamos fuentes de datos)
+demo/datos/
+# Modelos y scripts (código fuente interno)
+modelos/
+scripts/
+notebooks/
+demo/modelos/
+# Pipeline local
+actualizar_todo.bat
+requirements.txt
+
+# Dashboards de perfiles privados (principal, maa3…)
+dashboard/index.html
+dashboard/maa3.html
+dashboard/generar_dashboard.py
+
+# Resultados de perfiles privados
+resultados/principal/
+resultados/maa3/
+resultados/graficos/
+resultados/hrp_pesos.csv
+resultados/pesos_optimos.csv
+resultados/pesos_recomendados.csv
+resultados/informe_*.txt
+resultados/informe_*.json
+resultados/recomendacion_cartera.json
+resultados/rendimientos_ref.csv
+resultados/alertas_tendencias.*
+
+# =============================================================================
+# OS / IDEs
+# =============================================================================
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+*.swp

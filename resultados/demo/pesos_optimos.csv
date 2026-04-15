@@ -1,0 +1,13 @@
+activo,clase,rend_esperado_pct,vol_esperada_pct,peso_actual_pct,peso_sharpe_pct,peso_minvol_pct,peso_agresivo_pct
+Vanguard Global Stock Index Fund EUR Acc,rv_global,11.8,15.2,17.07,14.43,0.0,9.15
+Amundi S&P 500 II UCITS ETF EUR Acc,rv_usa,14.1,15.7,12.58,80.0,0.0,80.0
+Fidelity Funds Global Technology Fund A-EUR,rv_global,9.0,16.0,8.49,0.0,0.0,0.0
+Pictet Clean Energy Fund I EUR,etf_tematico,9.0,22.0,4.53,0.0,0.0,0.0
+Finizens Cartera 7,rv_global,7.0,12.0,11.33,0.0,20.0,0.0
+21Shares Ethereum Staking ETP,crypto,20.0,80.0,2.6,0.72,0.0,5.36
+iShares Global Water USD ACC,etf_tematico,9.0,22.0,1.94,0.0,0.0,0.0
+ETFS ISE Cyber Security UCITS ETF,etf_tematico,9.0,22.0,1.74,0.0,0.0,0.0
+Xtrackers MSCI Emerging Markets Swap,rv_global,10.5,14.0,1.89,0.0,0.0,0.0
+Acciones USA (resumen),rv_usa,11.0,18.0,21.64,0.0,0.0,0.0
+Bitcoin fisico,crypto,20.0,80.0,9.41,0.66,0.0,5.48
+Cash EUR,efectivo,2.5,0.1,6.78,4.19,80.0,0.0

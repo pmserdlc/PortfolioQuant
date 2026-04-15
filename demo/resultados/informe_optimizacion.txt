@@ -1,0 +1,166 @@
+========================================================================
+  INFORME DE OPTIMIZACIÓN DE CARTERA — MODELO MARKOWITZ
+  *** DEMO — Datos ficticios para demostración del sistema ***
+  Capital analizado: 184,270 EUR  |  Tasa libre riesgo: 3.15%
+========================================================================
+
+METODOLOGÍA
+------------------------------------------------------------------------
+  Optimización media-varianza (Markowitz, 1952).
+  Rendimientos esperados: media histórica 5-10 años + análisis fundamental.
+  Restricciones: peso mínimo 0%, máximo variable por activo.
+  10.000 carteras simuladas por Monte Carlo para frontera eficiente.
+
+CARTERA ACTUAL (referencia)
+------------------------------------------------------------------------
+  Rendimiento esperado:    14.65%
+  Volatilidad anual:       18.85%
+  Ratio de Sharpe:         0.610
+
+  Activo                                 Peso actual
+  -------------------------------------- -----------
+  RV Global MSCI World (Vanguard)              17.4%  (   32,055€)
+  RV USA S&P500 (Amundi ETF)                   12.8%  (   23,626€)
+  Fondo Tecnología (Fidelity)                   8.7%  (   15,941€)
+  Roboadvisor Finizens                         11.5%  (   21,272€)
+  Bitcoin (físico)                              9.6%  (   17,674€)
+  Ethereum ETP                                  2.7%  (    4,892€)
+  Acciones USA Large Cap                        8.2%  (   15,128€)
+  Acciones USA AI/Tech                          9.4%  (   17,341€)
+  Acciones USA Riesgo Alto                      4.4%  (    8,168€)
+  ETFs Temáticos (Agua/Cyber/EM)                8.4%  (   15,431€)
+  Efectivo                                      6.9%  (   12,741€)
+
+CARTERA ÓPTIMA — MÁXIMO SHARPE
+------------------------------------------------------------------------
+  Rendimiento esperado:      15.96%
+  Volatilidad anual:         18.15%
+  Ratio de Sharpe:           0.705
+  Mejora Sharpe vs actual:   +0.095
+
+  Activo                                  Peso ópt    Actual    Cambio EUR
+  -------------------------------------- ---------  --------  ------------
+  RV Global MSCI World (Vanguard)            35.1%     17.4%       +32,633€
+  RV USA S&P500 (Amundi ETF)                 40.0%     12.8%       +50,082€
+  Fondo Tecnología (Fidelity)                 3.3%      8.7%        -9,909€
+  Roboadvisor Finizens                        5.0%     11.5%       -12,058€
+  Bitcoin (físico)                           13.6%      9.6%        +7,427€
+  Ethereum ETP                                0.0%      2.7%        -4,892€
+  Acciones USA Large Cap                      2.0%      8.2%       -11,442€
+  Acciones USA AI/Tech                        0.0%      9.4%       -17,341€
+  Acciones USA Riesgo Alto                    0.0%      4.4%        -8,168€
+  ETFs Temáticos (Agua/Cyber/EM)              0.0%      8.4%       -15,431€
+  Efectivo                                    1.0%      6.9%       -10,898€
+
+CARTERA ÓPTIMA — MÍNIMA VOLATILIDAD
+------------------------------------------------------------------------
+  Rendimiento esperado:       9.91%
+  Volatilidad anual:         11.74%
+  Ratio de Sharpe:           0.576
+  Mejora Sharpe vs actual:   -0.035
+
+  Activo                                  Peso ópt    Actual    Cambio EUR
+  -------------------------------------- ---------  --------  ------------
+  RV Global MSCI World (Vanguard)            29.1%     17.4%       +21,494€
+  RV USA S&P500 (Amundi ETF)                 11.9%     12.8%        -1,625€
+  Fondo Tecnología (Fidelity)                 0.0%      8.7%       -15,941€
+  Roboadvisor Finizens                       25.0%     11.5%       +24,796€
+  Bitcoin (físico)                            2.0%      9.6%       -13,988€
+  Ethereum ETP                                0.0%      2.7%        -4,892€
+  Acciones USA Large Cap                      2.0%      8.2%       -11,442€
+  Acciones USA AI/Tech                        0.0%      9.4%       -17,341€
+  Acciones USA Riesgo Alto                    0.0%      4.4%        -8,168€
+  ETFs Temáticos (Agua/Cyber/EM)             15.0%      8.4%       +12,209€
+  Efectivo                                   15.0%      6.9%       +14,900€
+
+CARTERA ÓPTIMA — MÁXIMA RENTABILIDAD (vol≤20%)
+------------------------------------------------------------------------
+  Rendimiento esperado:      17.18%
+  Volatilidad anual:         20.00%
+  Ratio de Sharpe:           0.702
+  Mejora Sharpe vs actual:   +0.091
+
+  Activo                                  Peso ópt    Actual    Cambio EUR
+  -------------------------------------- ---------  --------  ------------
+  RV Global MSCI World (Vanguard)            24.8%     17.4%       +13,647€
+  RV USA S&P500 (Amundi ETF)                 40.0%     12.8%       +50,082€
+  Fondo Tecnología (Fidelity)                 0.0%      8.7%       -15,941€
+  Roboadvisor Finizens                        5.0%     11.5%       -12,058€
+  Bitcoin (físico)                           15.0%      9.6%        +9,967€
+  Ethereum ETP                                0.0%      2.7%        -4,892€
+  Acciones USA Large Cap                      2.0%      8.2%       -11,442€
+  Acciones USA AI/Tech                       12.2%      9.4%        +5,136€
+  Acciones USA Riesgo Alto                    0.0%      4.4%        -8,168€
+  ETFs Temáticos (Agua/Cyber/EM)              0.0%      8.4%       -15,431€
+  Efectivo                                    1.0%      6.9%       -10,898€
+
+ANÁLISIS FRONTERA EFICIENTE
+------------------------------------------------------------------------
+  Cartera actual: Sharpe 0.610 — por debajo del óptimo (0.705).
+  Margen de mejora disponible: +0.095 Sharpe.
+  La cartera actual asume más riesgo del necesario para el retorno obtenido.
+
+  Puntos clave de la frontera:
+    Vol  9%  →  Rend  ~8.9%   Sharpe ~0.61  (zona conservadora)
+    Vol 14%  →  Rend ~13.9%   Sharpe ~0.76  (zona Sharpe máximo ← RECOMENDADA)
+    Vol 18%  →  Rend ~16.8%   Sharpe ~0.75  (zona agresiva)
+    Vol 22%  →  Rend ~19.5%   Sharpe ~0.74  (zona muy agresiva)
+
+PLAN DE ACCIÓN RECOMENDADO
+------------------------------------------------------------------------
+  OBJETIVO: Alcanzar cartera "Máximo Sharpe" en 6-12 meses.
+
+  PASO 1 — INMEDIATO (sin fricción fiscal)
+    □ DCA activo (800€/mes) → S&P500 ETF Amundi exclusivamente.
+    □ No comprar más TSLA, RBLX ni SOFI hasta revisión de tesis.
+
+  PASO 2 — CORTO PLAZO (3-6 meses)
+    □ Valorar venta TSLA + RBLX + SOFI (pérdidas ~8.750€ USD totales).
+    □ Reubicar capital liberado → S&P500 ETF + AAPL/MSFT/META.
+    □ Revisar Ethereum ETP si ETH cae otro 15%: venta y reubicación en MSCI World.
+
+  PASO 3 — MEDIO PLAZO (6-12 meses)
+    □ Reducir Finizens 10% (~1.800€) → ETFs Temáticos Agua + Cyber.
+    □ Si BTC > 90.000€/BTC → venta parcial 0.03 BTC (~2.700€) y reciclar.
+    □ Revisar Pictet Clean Energy: si en -15%+ en sept-2026, vender.
+
+  Recomendaciones VENDER / COMPRAR (cartera actual → Máximo Sharpe):
+    COMPRAR  RV Global MSCI World (Vanguard)            +32,633 EUR  (17.4% → 35.1%)
+    COMPRAR  RV USA S&P500 (Amundi ETF)                 +50,082 EUR  (12.8% → 40.0%)
+    VENDER   Fondo Tecnología (Fidelity)                 -9,909 EUR  (8.7% → 3.3%)
+    VENDER   Roboadvisor Finizens                       -12,058 EUR  (11.5% → 5.0%)
+    COMPRAR  Bitcoin (físico)                            +7,427 EUR  (9.6% → 13.6%)
+    VENDER   Ethereum ETP                                -4,892 EUR  (2.7% → 0.0%)
+    VENDER   Acciones USA Large Cap                     -11,442 EUR  (8.2% → 2.0%)
+    VENDER   Acciones USA AI/Tech                       -17,341 EUR  (9.4% → 0.0%)
+    VENDER   Acciones USA Riesgo Alto                    -8,168 EUR  (4.4% → 0.0%)
+    VENDER   ETFs Temáticos (Agua/Cyber/EM)             -15,431 EUR  (8.4% → 0.0%)
+    VENDER   Efectivo                                   -10,898 EUR  (6.9% → 1.0%)
+
+INDICADORES DE SEGUIMIENTO
+------------------------------------------------------------------------
+  KPI                                Actual    Objetivo 12m
+  ------------------------------ ----------  --------------
+  Sharpe ratio                        0.610          >0.700
+  Volatilidad anual                  18.85%         <15.00%
+  Peso efectivo                       6.91%          <3.00%
+  Peso cripto total                  12.25%         <10.00%
+  Peso acciones especulativas         4.43%           0.00%
+
+  Revisión trimestral recomendada: julio, octubre 2026, enero 2027.
+
+NOTAS IMPORTANTES
+------------------------------------------------------------------------
+  1. Los rendimientos esperados son estimaciones históricas de largo plazo.
+     No garantizan rentabilidad futura.
+  2. Bitcoin y Ethereum: incertidumbre muy alta. El modelo los techa al 15% y 8%.
+  3. La hipoteca al 3,9% efectivo NO justifica amortizar anticipada:
+     todos los activos de RV la superan a largo plazo.
+  4. Las pérdidas de TSLA/RBLX/SOFI pueden compensar ganancias (art. 49 LIRPF).
+  5. Fondo MSCI World (MyInvestor) + Finizens: traspaso entre IICs sin tributar.
+
+========================================================================
+  Gráficos: demo/resultados/graficos/07_frontera_eficiente.png
+            demo/resultados/graficos/08_comparativa_pesos.png
+            demo/resultados/graficos/09_recomposicion_sharpe.png
+========================================================================

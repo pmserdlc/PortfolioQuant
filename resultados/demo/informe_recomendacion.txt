@@ -1,0 +1,66 @@
+══════════════════════════════════════════════════════════════════════
+  INFORME DE RECOMENDACIÓN DE CARTERA — MÓDULO 04
+  Generado: 14/04/2026
+══════════════════════════════════════════════════════════════════════
+
+  PERFIL: Con hipoteca al 3.9%, la RV global a largo plazo supera ampl
+  Horizonte: 15 años | Capital inicial: 184,270 € | Aportación: 800 €/mes
+
+── FILOSOFÍA SELECCIONADA ─────────────────────────────────────────────
+  3-Fund Portfolio — Jack Bogle / Bogleheads
+  Captura el mercado total con mínimo coste. Proporción RV/RF = 100
+  menos la edad del inversor. El portafolio más recomendado a nivel
+  mundial.
+  Sharpe histórico: 0.71 | Max DD: -0.35
+
+── CARTERA RECOMENDADA ────────────────────────────────────────────────
+
+  Clase                    Peso  Ticker         Nombre                                   TER   Sharpe
+  ----------------------------------------------------------------------------------------------------
+  bonos_global            47.0%  CBUE.L         iShares $ Treasury 7-10yr UCITS ETF EUR Hdg 0.10%    0.120
+  rv_global               39.6%  0P0000MTIB.F   Fidelity MSCI World Index EUR Acc      0.12%    0.730
+  rv_emergentes           13.4%  EIMI.L         iShares Core MSCI EM IMI ETF           0.18%    0.272
+
+── MÉTRICAS DE LA CARTERA ─────────────────────────────────────────────
+  TER ponderado:        0.119% / año
+  Rendimiento esperado: 6.1% / año
+  Volatilidad aprox.:   8.5% / año
+  Max Drawdown aprox.:  -20.4%
+  Sharpe estimado:      0.344
+  % traspasable IRPF:   39.6%
+
+── PROYECCIÓN A LARGO PLAZO ───────────────────────────────────────────
+  Capital final (actual):           496,908 €
+  Capital final (recomendado):      676,998 €
+  Diferencia en 15 años:           +180,090 €
+  Objetivo declarado:               600,000 € → ✓ SÍ alcanza
+
+── PLAN DE TRANSICIÓN ─────────────────────────────────────────────────
+  TRASPASAR    Acciones USA (resumen)                     39,870 €  [Diferido]
+  TRASPASAR    Vanguard Global Stock Index Fund EUR       31,450 €  [Diferido]
+  TRASPASAR    Amundi S&P 500 II UCITS ETF EUR Acc        23,180 €  [Diferido]
+  TRASPASAR    Finizens Cartera 7                         20,870 €  [Diferido]
+  TRASPASAR    Bitcoin fisico                             17,340 €  [Diferido]
+  TRASPASAR    Fidelity Funds Global Technology Fun       15,640 €  [Diferido]
+  TRASPASAR    Cash EUR                                   12,500 €  [Diferido]
+  TRASPASAR    Pictet Clean Energy Fund I EUR              8,350 €  [Diferido]
+  TRASPASAR    21Shares Ethereum Staking ETP               4,800 €  [Diferido]
+  TRASPASAR    iShares Global Water USD ACC                3,580 €  [Diferido]
+  TRASPASAR    Xtrackers MSCI Emerging Markets Swap        3,480 €  [Diferido]
+  TRASPASAR    ETFS ISE Cyber Security UCITS ETF           3,210 €  [Diferido]
+  COMPRAR      CBUE.L                                     86,515 €  [Ninguno]
+  COMPRAR      0P0000MTIB.F                               73,063 €  [Ninguno]
+  COMPRAR      EIMI.L                                     24,674 €  [Ninguno]
+
+── NOTAS FISCALES ─────────────────────────────────────────────────────
+  · Los traspasos entre fondos de inversión no tributan en IRPF
+    hasta el reembolso final (Ley 35/2006, art. 94).
+  · Primera plusvalía en fondos no traspasables tributa al 19-28%
+    según el tramo aplicable.
+  · Recomendable distribuir ventas en 2 ejercicios si la plusvalía
+    supera 6.000 € para evitar el tramo del 21%.
+
+══════════════════════════════════════════════════════════════════════
+  Informe generado automáticamente. No constituye asesoramiento
+  financiero regulado. Consulte con un asesor certificado.
+══════════════════════════════════════════════════════════════════════

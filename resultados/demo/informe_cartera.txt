@@ -1,0 +1,122 @@
+========================================================================
+  INFORME DE ANÁLISIS DE CARTERA — 2026-04-13
+  *** DEMO — Datos ficticios para demostración del sistema ***
+========================================================================
+
+1. PERFIL DEL INVERSOR
+------------------------------------------------------------------------
+  1 inversor(es) activo(s)  |  Horizonte 15 años  |  Perfil: MODERADO_AGRESIVO
+  Residente fiscal España (IRPF)  |  Sin necesidad de liquidez < 5 años
+  Hipoteca variable: Euribor + 0.8% → tipo efectivo ~3,9%
+
+  Umbral rentabilidad vs. amortización anticipada: ~3,9%
+  Cash (~2,5% TAE) está POR DEBAJO del umbral hipotecario.
+  → Reducir cash ocioso e invertir de forma sistemática (DCA).
+
+2. DISTRIBUCIÓN ACTUAL  [Total: 184,270.00 EUR]
+------------------------------------------------------------------------
+  Por tipo:
+    indexado                    58,110.00 EUR  ( 31.5%)
+    renta_variable              39,870.00 EUR  ( 21.6%)
+    inversion                   20,870.00 EUR  ( 11.3%)
+    btc                         17,340.00 EUR  (  9.4%)
+    activo                      15,640.00 EUR  (  8.5%)
+    tematico                    15,140.00 EUR  (  8.2%)
+    liquido                     12,500.00 EUR  (  6.8%)
+    crypto                       4,800.00 EUR  (  2.6%)
+
+  Por entidad:
+    MyInvestor                  83,420.00 EUR  ( 45.3%)
+    Interactive Brokers         39,870.00 EUR  ( 21.6%)
+    Finizens                    20,870.00 EUR  ( 11.3%)
+    custodia_propia             17,340.00 EUR  (  9.4%)
+    CaixaBank                   12,500.00 EUR  (  6.8%)
+    Degiro                      10,270.00 EUR  (  5.6%)
+
+  Por riesgo:
+    0-efectivo             12,500.00 EUR  (  6.8%)
+    4-6 medio              61,690.00 EUR  ( 33.5%)
+    7-9 alto              110,080.00 EUR  ( 59.7%)
+
+3. PLUSVALÍAS / PÉRDIDAS LATENTES (IRPF España)
+------------------------------------------------------------------------
+  Ganancia total latente:     34,820.00 EUR
+  Pérdida total latente:      -2,350.00 EUR
+  Neto:                       32,470.00 EUR
+  Impuesto estimado (si se realiza todo):  6,699.00 EUR
+
+  Top ganancias:
+    Bitcoin fisico                             9,140 EUR  impuesto~1,799€  [custodia_propia]
+    Vanguard Global Stock Index Fund EUR A     6,650 EUR  impuesto~1,276€  [MyInvestor]
+    Finizens Cartera 7                         6,370 EUR  impuesto~1,218€  [Finizens]
+    Amundi S&P 500 II UCITS ETF EUR Acc        3,980 EUR  impuesto~756€  [MyInvestor]
+    Acciones USA (resumen)                     3,770 EUR  impuesto~716€  [Interactive Brokers]
+    Fidelity Funds Global Technology Fund      3,640 EUR  impuesto~692€  [MyInvestor]
+    ETFS ISE Cyber Security UCITS ETF            510 EUR  impuesto~97€  [Degiro]
+    iShares Global Water USD ACC                 480 EUR  impuesto~91€  [Degiro]
+  Top pérdidas (compensables):
+    21Shares Ethereum Staking ETP               -700 EUR  [MyInvestor]
+    Pictet Clean Energy Fund I EUR            -1,650 EUR  [MyInvestor]
+
+4. CARTERA ACCIONES USA (Interactive Brokers)
+------------------------------------------------------------------------
+  Valor mercado:    $ 43,270.30 USD  (39,880.46 EUR)
+  Coste total:      $ 39,177.00 USD
+  PyG no realizada: $ +4,093.30 USD  (+10.4%)
+
+  Por sector:
+    large_cap_tech                 $12,395.80 USD  (28.6%)
+    ai_semiconductores             $11,127.50 USD  (25.7%)
+    ev_tech                        $ 4,187.50 USD  (9.7%)
+    ai_hardware                    $ 3,985.00 USD  (9.2%)
+    crypto_exchange                $ 3,712.00 USD  (8.6%)
+    ai_software                    $ 3,352.50 USD  (7.7%)
+    gaming_metaverse               $ 3,080.00 USD  (7.1%)
+    fintech                        $ 1,430.00 USD  (3.3%)
+
+  Posiciones a vigilar (pérdidas > 20%):
+    RBLX     Roblox Corp                     -30.0%  $-1,320.00
+    SOFI     SoFi Technologies Inc           -27.0%  $ -530.00
+
+5. SIMULACIÓN ESTRATEGIA ACTIVA DCA (12 MESES)
+------------------------------------------------------------------------
+  500 €/mes: Cash EUR → Vanguard Global Stock Index Fund (MyInvestor)
+  300 €/mes: Cash EUR → Amundi S&P 500 II UCITS ETF (MyInvestor)
+
+    Cash EUR                                  ini: 12,500.00  fin: 12,500.00  (   +0.00)
+    Vanguard Global Stock Index Fund EUR Acc  ini: 31,450.00  fin: 31,450.00  (   +0.00)
+    Amundi S&P 500 II UCITS ETF EUR Acc       ini: 23,180.00  fin: 23,180.00  (   +0.00)
+
+  Resultado: cash se reduce de 6.8% → ~1.6% del patrimonio total.
+  La exposición a RV indexada global pasa de 44.1% → 47.2%.
+
+7. OPORTUNIDADES Y ALERTAS PRIORITARIAS
+------------------------------------------------------------------------
+[A1] CASH SOBREDIMENSIONADO PARA EL PERFIL
+  Cash = 12,500 EUR (6.8%)  TAE ~2.5% < coste hipotecario ~3.9%
+  → El efectivo ocioso destruye valor relativo al coste de financiación.
+  → DCA en marcha (800€/mes). Valorar aumentar a 1.200€/mes dado el horizonte.
+
+[A2] CONCENTRACIÓN EN MYINVESTOR (~50% del patrimonio)
+  Riesgo de custodio: una sola entidad concentra ~91.420€.
+  → Derivar nuevas aportaciones hacia Degiro o mantener Interactive Brokers.
+
+[A3] FONDO TECNOLOGÍA ACTIVO — ALTA CORRELACIÓN CON ACCIONES USA
+  Fidelity Global Technology: 15,640 EUR. All-in en tech + AI.
+  → La cartera de acciones USA también es >90% tech/AI.
+  → Eventual corrección del sector impacta simultáneamente ambas posiciones.
+
+[A4] PICTET CLEAN ENERGY EN PÉRDIDAS ESTRUCTURALES
+  Valor: 8,350 EUR  |  Pérdida latente: -1,650 EUR (-19.8%)
+  → Tesis penalizada: tipos altos + retirada políticas ESG en USA.
+  → Si no hay catalizador en 6 meses, vender y compensar con ganancias.
+
+[A5] CRIPTO EN PESO LIGERAMENTE ELEVADO
+  Bitcoin: 17,340 EUR  |  Ethereum ETP: 4,800 EUR  |  Total: 22,140 EUR (12.0%)
+  → Para perfil moderado-agresivo, 10% es el límite recomendado. Estás en 12%.
+  → Si BTC supera 90.000€, plantear venta parcial para reciclar en RV.
+
+========================================================================
+  Gráficos generados en: demo/resultados/graficos/
+  Siguiente paso: ejecutar 03_optimizador_demo.py para optimización Markowitz
+========================================================================

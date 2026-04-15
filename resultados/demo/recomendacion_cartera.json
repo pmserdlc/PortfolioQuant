@@ -1,0 +1,194 @@
+{
+  "fecha": "2026-04-14",
+  "filosofia_seleccionada": "bogle_3fund",
+  "metricas": {
+    "ter_medio_pct": 0.118632,
+    "rend_esperado_pct": 6.071984,
+    "vol_simplificada_pct": 8.4935592,
+    "max_dd_pct": 20.402524,
+    "sharpe_estimado": 0.34402350426379275,
+    "n_productos": 3,
+    "pct_traspasable": 39.65
+  },
+  "cartera_recomendada": [
+    {
+      "ticker": "CBUE.L",
+      "clase": "bonos_global",
+      "peso_pct": 46.95,
+      "isin": "IE00BD49RJ98",
+      "nombre": "iShares $ Treasury 7-10yr UCITS ETF EUR Hdg",
+      "categoria": "bonos_gobierno",
+      "ter_pct": 0.1,
+      "sharpe_5a": 0.12,
+      "rend_5a_pct": 0.5,
+      "vol_5a_pct": 8.2,
+      "max_dd_5a_pct": -18.0,
+      "traspasable": false,
+      "plataformas": [
+        "degiro",
+        "ibkr"
+      ],
+      "ya_en_cartera": false
+    },
+    {
+      "ticker": "0P0000MTIB.F",
+      "clase": "rv_global",
+      "peso_pct": 39.65,
+      "isin": "IE00BYX5NX33",
+      "nombre": "Fidelity MSCI World Index EUR Acc",
+      "categoria": "rv_global",
+      "ter_pct": 0.12,
+      "sharpe_5a": 0.73,
+      "rend_5a_pct": 12.0,
+      "vol_5a_pct": 14.8,
+      "max_dd_5a_pct": -18.1,
+      "traspasable": true,
+      "plataformas": [
+        "myinvestor",
+        "openbank"
+      ],
+      "ya_en_cartera": false
+    },
+    {
+      "ticker": "EIMI.L",
+      "clase": "rv_emergentes",
+      "peso_pct": 13.39,
+      "isin": "IE00BKM4GZ66",
+      "nombre": "iShares Core MSCI EM IMI ETF",
+      "categoria": "rv_emergentes",
+      "ter_pct": 0.18,
+      "sharpe_5a": 0.272,
+      "rend_5a_pct": 8.06,
+      "vol_5a_pct": 18.04,
+      "max_dd_5a_pct": -35.66,
+      "traspasable": false,
+      "plataformas": [
+        "degiro",
+        "ibkr"
+      ],
+      "ya_en_cartera": false
+    }
+  ],
+  "plan_transicion": [
+    {
+      "orden": 1,
+      "accion": "TRASPASAR",
+      "producto_origen": "Acciones USA (resumen)",
+      "importe_eur": 39870.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Alta"
+    },
+    {
+      "orden": 2,
+      "accion": "TRASPASAR",
+      "producto_origen": "Vanguard Global Stock Index Fund EUR Acc",
+      "importe_eur": 31450.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 3,
+      "accion": "TRASPASAR",
+      "producto_origen": "Amundi S&P 500 II UCITS ETF EUR Acc",
+      "importe_eur": 23180.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 4,
+      "accion": "TRASPASAR",
+      "producto_origen": "Finizens Cartera 7",
+      "importe_eur": 20870.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 5,
+      "accion": "TRASPASAR",
+      "producto_origen": "Bitcoin fisico",
+      "importe_eur": 17340.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 6,
+      "accion": "TRASPASAR",
+      "producto_origen": "Fidelity Funds Global Technology Fund A-EUR",
+      "importe_eur": 15640.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 7,
+      "accion": "TRASPASAR",
+      "producto_origen": "Cash EUR",
+      "importe_eur": 12500.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 8,
+      "accion": "TRASPASAR",
+      "producto_origen": "Pictet Clean Energy Fund I EUR",
+      "importe_eur": 8350.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 9,
+      "accion": "TRASPASAR",
+      "producto_origen": "21Shares Ethereum Staking ETP",
+      "importe_eur": 4800.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 10,
+      "accion": "TRASPASAR",
+      "producto_origen": "iShares Global Water USD ACC",
+      "importe_eur": 3580.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 11,
+      "accion": "TRASPASAR",
+      "producto_origen": "Xtrackers MSCI Emerging Markets Swap",
+      "importe_eur": 3480.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 12,
+      "accion": "TRASPASAR",
+      "producto_origen": "ETFS ISE Cyber Security UCITS ETF",
+      "importe_eur": 3210.0,
+      "impacto_irpf": "Diferido",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 13,
+      "accion": "COMPRAR",
+      "producto_destino": "CBUE.L",
+      "importe_eur": 86514.76,
+      "impacto_irpf": "Ninguno",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 14,
+      "accion": "COMPRAR",
+      "producto_destino": "0P0000MTIB.F",
+      "importe_eur": 73063.05,
+      "impacto_irpf": "Ninguno",
+      "prioridad": "Normal"
+    },
+    {
+      "orden": 15,
+      "accion": "COMPRAR",
+      "producto_destino": "EIMI.L",
+      "importe_eur": 24673.75,
+      "impacto_irpf": "Ninguno",
+      "prioridad": "Normal"
+    }
+  ]
+}

@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PortfolioQuant — Demo en vivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary:   #0a0e1a;
+    --bg-card:      #111827;
+    --bg-card2:     #1a2233;
+    --border:       #1e2d45;
+    --accent:       #3b82f6;
+    --accent2:      #10b981;
+    --accent3:      #f59e0b;
+    --accent4:      #8b5cf6;
+    --accent5:      #ef4444;
+    --text-primary: #f1f5f9;
+    --text-sec:     #94a3b8;
+    --text-muted:   #475569;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    backdrop-filter: blur(16px);
+    background: rgba(10,14,26,0.85);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-size:1.1rem; font-weight:700; color:var(--text-primary); display:flex; align-items:center; gap:.5rem; text-decoration:none; }
+  .nav-logo span { color:var(--accent); }
+  .nav-links { display:flex; gap:1.8rem; }
+  .nav-links a { color:var(--text-sec); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+  .nav-links a:hover { color:var(--text-primary); }
+  .nav-back { background:transparent; color:var(--text-sec); border:1px solid var(--border); padding:.35rem 1rem; border-radius:8px; font-size:.82rem; font-weight:500; cursor:pointer; text-decoration:none; transition:border-color .2s, color .2s; }
+  .nav-back:hover { border-color:var(--accent); color:var(--text-primary); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 7rem 2rem 3.5rem;
+    max-width: 1100px; margin: 0 auto;
+    position: relative;
+  }
+  .demo-tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.3);
+    color: var(--accent3); border-radius: 99px;
+    padding: .3rem .9rem; font-size: .78rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; letter-spacing:-.02em; margin-bottom:.75rem; }
+  .hero h1 em { font-style:normal; color:var(--accent); }
+  .hero-sub { color:var(--text-sec); font-size:1rem; max-width:620px; line-height:1.7; margin-bottom:2rem; }
+  .hero-disclaimer {
+    display:inline-flex; align-items:center; gap:.5rem;
+    background: rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.2);
+    color:#fca5a5; border-radius:8px; padding:.5rem 1rem; font-size:.8rem;
+    margin-bottom:2.5rem;
+  }
+
+  /* ── KPI STRIP ── */
+  .kpi-strip {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .kpi {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem 1.4rem; text-align: center; min-width: 110px;
+    flex: 1;
+  }
+  .kpi-val { font-size: 1.55rem; font-weight: 800; line-height: 1.1; margin-bottom: .25rem; }
+  .kpi-lbl { font-size: .7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+
+  /* ── TABS ── */
+  .tabs { display:flex; gap:.5rem; border-bottom:1px solid var(--border); margin-bottom:2.5rem; flex-wrap:wrap; }
+  .tab {
+    padding:.6rem 1.2rem; font-size:.875rem; font-weight:600; cursor:pointer;
+    color:var(--text-muted); border-bottom:2px solid transparent;
+    transition:color .2s, border-color .2s; white-space:nowrap;
+    background:none; border-top:none; border-left:none; border-right:none;
+  }
+  .tab:hover { color:var(--text-sec); }
+  .tab.active { color:var(--text-primary); border-bottom-color:var(--accent); }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  /* ── SECTION LABELS ── */
+  .sec-label { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:.6rem; }
+  .sec-title { font-size:clamp(1.2rem,3vw,1.7rem); font-weight:800; letter-spacing:-.02em; margin-bottom:.6rem; }
+  .sec-sub { color:var(--text-sec); font-size:.9rem; line-height:1.65; margin-bottom:1.5rem; }
+
+  /* ── CARDS ── */
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1.5rem; }
+  .cards-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1rem; }
+  .asset-row { display:flex; justify-content:space-between; align-items:center; padding:.6rem 0; border-bottom:1px solid rgba(30,45,69,.5); font-size:.88rem; }
+  .asset-row:last-child { border-bottom:none; }
+  .asset-name { color:var(--text-primary); font-weight:500; }
+  .asset-val { font-weight:700; }
+  .asset-pct { font-size:.78rem; color:var(--text-muted); margin-top:.1rem; }
+  .pos { color:var(--accent2); }
+  .neg { color:var(--accent5); }
+
+  /* ── GALLERY ── */
+  .gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:1.25rem; }
+  .gallery-card {
+    background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
+    overflow:hidden; cursor:pointer; transition:border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .gallery-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 12px 40px rgba(0,0,0,.5); }
+  .gallery-img { width:100%; display:block; background:#0d1524; }
+  .gallery-info { padding:1rem 1.2rem; }
+  .gallery-title { font-weight:700; font-size:.9rem; margin-bottom:.2rem; }
+  .gallery-desc { color:var(--text-muted); font-size:.78rem; line-height:1.5; }
+  .gallery-badge {
+    font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:6px;
+    letter-spacing:.04em; text-transform:uppercase;
+    display:inline-block; margin-bottom:.5rem;
+  }
+  .badge-analysis { background:rgba(59,130,246,.15); color:var(--accent); }
+  .badge-optim    { background:rgba(139,92,246,.15); color:var(--accent4); }
+
+  /* ── LIGHTBOX ── */
+  #lightbox {
+    display:none; position:fixed; inset:0; z-index:500;
+    background:rgba(0,0,0,.92); padding:2rem;
+    justify-content:center; align-items:center;
+    flex-direction:column; gap:1rem;
+  }
+  #lightbox.open { display:flex; }
+  #lb-img { max-width:100%; max-height:80vh; border-radius:12px; box-shadow:0 0 60px rgba(0,0,0,.8); }
+  #lb-caption { color:var(--text-sec); font-size:.9rem; text-align:center; }
+  #lb-close {
+    position:fixed; top:1.5rem; right:2rem; background:var(--bg-card); border:1px solid var(--border);
+    color:var(--text-primary); width:40px; height:40px; border-radius:50%; cursor:pointer;
+    font-size:1.2rem; display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s;
+  }
+  #lb-close:hover { border-color:var(--accent5); }
+  #lb-prev, #lb-next {
+    position:fixed; top:50%; transform:translateY(-50%);
+    background:var(--bg-card); border:1px solid var(--border); color:var(--text-primary);
+    width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center; transition:border-color .2s;
+  }
+  #lb-prev { left:1rem; } #lb-next { right:1rem; }
+  #lb-prev:hover, #lb-next:hover { border-color:var(--accent); }
+
+  /* ── ALERTS ── */
+  .alert-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-left-width:3px; border-radius:0 14px 14px 0;
+    padding:1.1rem 1.25rem; margin-bottom:.75rem;
+  }
+  .alert-title { font-weight:700; font-size:.9rem; margin-bottom:.3rem; }
+  .alert-desc { color:var(--text-sec); font-size:.82rem; margin-bottom:.55rem; line-height:1.55; }
+  .alert-fix { display:inline-flex; align-items:center; gap:.4rem; font-size:.8rem; font-weight:500; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.2); color:var(--accent2); padding:.3rem .7rem; border-radius:6px; }
+
+  /* ── MARKOWITZ TABLE ── */
+  .mkt { width:100%; border-collapse:collapse; font-size:.845rem; }
+  .mkt th { text-align:left; padding:.6rem .85rem; color:var(--text-muted); font-size:.73rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid var(--border); white-space:nowrap; }
+  .mkt td { padding:.7rem .85rem; border-bottom:1px solid rgba(30,45,69,.4); vertical-align:middle; }
+  .mkt tr:hover td { background:rgba(255,255,255,.02); }
+  .mkt-buy  { color:var(--accent2); font-weight:700; }
+  .mkt-sell { color:var(--accent5); font-weight:700; }
+  .mkt-zero { color:var(--text-muted); }
+  .bar-outer { width:100px; height:7px; background:rgba(255,255,255,.06); border-radius:4px; display:inline-block; vertical-align:middle; }
+  .bar-inner { height:100%; border-radius:4px; }
+
+  /* ── SCENARIO CARDS ── */
+  .scenario-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .sc-card {
+    background:var(--bg-card); border:1px solid var(--border); border-radius:14px;
+    padding:1.25rem; transition:border-color .2s;
+  }
+  .sc-card.highlight { border-color:var(--accent); }
+  .sc-label { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.5rem; }
+  .sc-sharpe { font-size:2rem; font-weight:800; line-height:1; margin-bottom:.4rem; }
+  .sc-metrics { display:flex; gap:1.2rem; }
+  .sc-m-val { font-size:1.05rem; font-weight:700; }
+  .sc-m-lbl { font-size:.7rem; color:var(--text-muted); margin-top:.1rem; }
+
+  /* ── INFORME VIEWER ── */
+  .informe-viewer {
+    background:#06090f; border:1px solid var(--border); border-radius:12px;
+    padding:1.5rem 2rem; font-family:'JetBrains Mono', monospace;
+    font-size:.78rem; line-height:1.8; color:#94a3b8;
+    max-height:560px; overflow-y:auto; white-space:pre;
+  }
+  .informe-viewer::-webkit-scrollbar { width:6px; }
+  .informe-viewer::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+  /* ── STEPS ── */
+  .step-row { display:flex; gap:1rem; align-items:flex-start; padding:.9rem 0; border-bottom:1px solid rgba(30,45,69,.4); }
+  .step-row:last-child { border-bottom:none; }
+  .step-icon { width:36px; height:36px; min-width:36px; background:var(--bg-card2); border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:.95rem; }
+  .step-body { flex:1; }
+  .step-title { font-weight:700; font-size:.9rem; }
+  .step-desc { color:var(--text-sec); font-size:.82rem; line-height:1.55; margin-top:.2rem; }
+  .step-tag { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--accent2); background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.2); padding:.15rem .55rem; border-radius:5px; margin-top:.4rem; }
+
+  /* ── FULL SEP ── */
+  .full-sep { width:100%; height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent); }
+
+  /* ── FADE ── */
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+  .fade.in { opacity:1; transform:none; }
+
+  @media(max-width:640px){ .nav-links { display:none; } .scenario-grid { grid-template-columns:1fr 1fr; } }
+
+  /* ── FOOTER ── */
+  .footer-copyright {
+    background:rgba(239,68,68,.07); border-top:1px solid rgba(239,68,68,.25);
+    padding:.7rem 2rem; text-align:center; font-size:.78rem; color:#fca5a5;
+  }
+  .footer-copyright strong { color:#fecaca; }
+  footer { border-top:1px solid var(--border); padding:2rem 2rem; text-align:center; color:var(--text-muted); font-size:.82rem; }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-caption"></div>
+  <button id="lb-next">›</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="28" height="28" viewBox="0 0 30 30" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+      <rect width="30" height="30" rx="8" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.35)" stroke-width="1.2"/>
+      <path d="M5 24 Q9 20 13 16 Q17 12 21 9 Q23 7 25 6" stroke="url(#ng)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <circle cx="25" cy="6" r="3" fill="#10b981" opacity="0.9"/>
+    </svg>
+    Portfolio<span>Quant</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#cartera">Cartera</a>
+    <a href="#graficos">Gráficos</a>
+    <a href="#optimizacion">Optimización</a>
+    <a href="#alertas">Alertas</a>
+    <a href="#informes">Informes</a>
+  </nav>
+  <a class="nav-back" href="index.html">← Volver</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="demo-tag">⚡ Demo interactiva · Cartera ficticia</div>
+  <h1>Cartera de ejemplo <em>analizada en vivo</em></h1>
+  <p class="hero-sub">
+    Análisis completo de una cartera ficticia diversificada — fondos indexados, ETFs temáticos,
+    acciones USA (tech/AI), Bitcoin, Ethereum y roboadvisor. Los gráficos, informes y métricas
+    fueron generados por el motor Python real de PortfolioQuant.
+  </p>
+
+  <!-- REAL DATA ENGINE BADGE -->
+  <div style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.3); border-radius:8px; padding:.45rem .9rem; margin-top:.8rem; margin-bottom:.5rem; font-size:.78rem; color:var(--accent2)">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Motor de datos real · 26 activos · Yahoo Finance v8 API · 5 años de historia
+  </div>
+
+  <div class="hero-disclaimer">
+    ⚠️ Todos los datos de cartera son completamente ficticios. El motor de análisis y los algoritmos son reales.
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip">
+    <div class="kpi">
+      <div class="kpi-val" style="color:var(--text-primary)">184.270€</div>
+      <div class="kpi-lbl">Capital analizado</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(59,130,246,.35)">
+      <div class="kpi-val" style="color:var(--accent)">0.705</div>
+      <div class="kpi-lbl">Sharpe óptimo</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(16,185,129,.35)">
+      <div class="kpi-val" style="color:var(--accent2)">+0.095</div>
+      <div class="kpi-lbl">Mejora Sharpe</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(245,158,11,.35)">
+      <div class="kpi-val" style="color:var(--accent3)">32.470€</div>
+      <div class="kpi-lbl">Plusvalía neta latente</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(16,185,129,.35)">
+      <div class="kpi-val" style="color:var(--accent2)">0.19%</div>
+      <div class="kpi-lbl">TER cartera rec.</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(139,92,246,.35)">
+      <div class="kpi-val" style="color:var(--accent4)">1.3M€</div>
+      <div class="kpi-lbl">Proyección 18 años</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-val" style="color:var(--text-primary)">18+</div>
+      <div class="kpi-lbl">Gráficos generados</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(59,130,246,.35)">
+      <div class="kpi-val" style="color:var(--accent)">2</div>
+      <div class="kpi-lbl">Modelos optimización</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.35)">
+      <div class="kpi-val" style="color:var(--accent5)">5</div>
+      <div class="kpi-lbl">Alertas detectadas</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="cartera">📊 Cartera</button>
+    <button class="tab" data-tab="graficos">🖼 Gráficos</button>
+    <button class="tab" data-tab="optimizacion">⚡ Markowitz</button>
+    <button class="tab" data-tab="hrp">🔺 HRP</button>
+    <button class="tab" data-tab="recomendador">🎯 Recomendador</button>
+    <button class="tab" data-tab="tendencias">🔍 Tendencias</button>
+    <button class="tab" data-tab="alertas">🔔 Alertas</button>
+    <button class="tab" data-tab="informes">📄 Informes</button>
+    <button class="tab" data-tab="como">⚙️ Cómo funciona</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: CARTERA -->
+  <div class="tab-panel active" id="panel-cartera">
+    <div class="sec-label">Composición demo</div>
+    <h2 class="sec-title">Distribución de la cartera</h2>
+    <p class="sec-sub">Cartera ficticia de 12 posiciones en 6 entidades. Perfil moderado-agresivo · horizonte 15 años.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem">
+
+      <!-- Por tipo -->
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">Por tipo de activo</div>
+        <div class="asset-row"><span class="asset-name">Indexado (fondos + ETFs)</span><div style="text-align:right"><div class="asset-val">58.110€</div><div class="asset-pct">31.5%</div></div></div>
+        <div class="asset-row"><span class="asset-name">RV USA — acciones directas</span><div style="text-align:right"><div class="asset-val">39.870€</div><div class="asset-pct">21.6%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Roboadvisor Finizens</span><div style="text-align:right"><div class="asset-val">20.870€</div><div class="asset-pct">11.3%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Bitcoin (cold wallet)</span><div style="text-align:right"><div class="asset-val">17.340€</div><div class="asset-pct">9.4%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Fondo activo tecnología</span><div style="text-align:right"><div class="asset-val">15.640€</div><div class="asset-pct">8.5%</div></div></div>
+        <div class="asset-row"><span class="asset-name">ETFs temáticos</span><div style="text-align:right"><div class="asset-val">15.140€</div><div class="asset-pct">8.2%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Efectivo (CaixaBank)</span><div style="text-align:right"><div class="asset-val">12.500€</div><div class="asset-pct">6.8%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Ethereum ETP</span><div style="text-align:right"><div class="asset-val">4.800€</div><div class="asset-pct">2.6%</div></div></div>
+      </div>
+
+      <!-- Por entidad -->
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">Por entidad custodio</div>
+        <div class="asset-row">
+          <span class="asset-name">MyInvestor</span>
+          <div style="text-align:right"><div class="asset-val">83.420€</div><div class="asset-pct" style="color:var(--accent5)">45.3% ⚠ concentración</div></div>
+        </div>
+        <div class="asset-row"><span class="asset-name">Interactive Brokers</span><div style="text-align:right"><div class="asset-val">39.870€</div><div class="asset-pct">21.6%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Finizens</span><div style="text-align:right"><div class="asset-val">20.870€</div><div class="asset-pct">11.3%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Custodia propia (BTC)</span><div style="text-align:right"><div class="asset-val">17.340€</div><div class="asset-pct">9.4%</div></div></div>
+        <div class="asset-row"><span class="asset-name">CaixaBank</span><div style="text-align:right"><div class="asset-val">12.500€</div><div class="asset-pct">6.8%</div></div></div>
+        <div class="asset-row"><span class="asset-name">Degiro</span><div style="text-align:right"><div class="asset-val">10.270€</div><div class="asset-pct">5.6%</div></div></div>
+      </div>
+    </div>
+
+    <!-- Riesgo -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1.2rem">Distribución por nivel de riesgo</div>
+      <div style="display:flex; flex-direction:column; gap:.8rem">
+        <div style="display:flex; align-items:center; gap:1rem">
+          <div style="width:100px; font-size:.82rem; color:var(--text-sec)">0 · Efectivo</div>
+          <div style="flex:1; height:10px; background:rgba(255,255,255,.06); border-radius:5px; position:relative">
+            <div style="position:absolute; left:0; top:0; height:100%; width:6.8%; background:#78909C; border-radius:5px;"></div>
+          </div>
+          <div style="width:100px; text-align:right; font-size:.82rem; font-weight:600">12.500€ <span style="color:var(--text-muted); font-weight:400">6.8%</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem">
+          <div style="width:100px; font-size:.82rem; color:var(--text-sec)">4–6 · Medio</div>
+          <div style="flex:1; height:10px; background:rgba(255,255,255,.06); border-radius:5px; position:relative">
+            <div style="position:absolute; left:0; top:0; height:100%; width:33.5%; background:#FFA726; border-radius:5px;"></div>
+          </div>
+          <div style="width:100px; text-align:right; font-size:.82rem; font-weight:600">61.690€ <span style="color:var(--text-muted); font-weight:400">33.5%</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem">
+          <div style="width:100px; font-size:.82rem; color:var(--text-sec)">7–9 · Alto</div>
+          <div style="flex:1; height:10px; background:rgba(255,255,255,.06); border-radius:5px; position:relative">
+            <div style="position:absolute; left:0; top:0; height:100%; width:59.7%; background:#EF5350; border-radius:5px;"></div>
+          </div>
+          <div style="width:100px; text-align:right; font-size:.82rem; font-weight:600">110.080€ <span style="color:var(--text-muted); font-weight:400">59.7%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plusvalías resumen -->
+    <div class="card">
+      <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">Plusvalías / Pérdidas latentes (IRPF España)</div>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:1.2rem">
+        <div><div style="font-size:1.5rem; font-weight:800; color:var(--accent2)">+34.820€</div><div style="font-size:.75rem; color:var(--text-muted)">Ganancias latentes</div></div>
+        <div><div style="font-size:1.5rem; font-weight:800; color:var(--accent5)">−2.350€</div><div style="font-size:.75rem; color:var(--text-muted)">Pérdidas latentes</div></div>
+        <div><div style="font-size:1.5rem; font-weight:800; color:var(--accent3)">32.470€</div><div style="font-size:.75rem; color:var(--text-muted)">Neto realizable</div></div>
+        <div><div style="font-size:1.5rem; font-weight:800; color:var(--accent5)">~6.699€</div><div style="font-size:.75rem; color:var(--text-muted)">Impuesto estimado</div></div>
+      </div>
+      <div class="asset-row"><span class="asset-name">Bitcoin físico (cold wallet)</span><div style="text-align:right"><div class="asset-val pos">+9.140€</div><div class="asset-pct">impuesto ~1.799€</div></div></div>
+      <div class="asset-row"><span class="asset-name">Vanguard Global Stock Index Fund</span><div style="text-align:right"><div class="asset-val pos">+6.650€</div><div class="asset-pct">impuesto ~1.276€</div></div></div>
+      <div class="asset-row"><span class="asset-name">Finizens Cartera 7</span><div style="text-align:right"><div class="asset-val pos">+6.370€</div><div class="asset-pct">impuesto ~1.218€</div></div></div>
+      <div class="asset-row"><span class="asset-name">Amundi S&P 500 II UCITS ETF</span><div style="text-align:right"><div class="asset-val pos">+3.980€</div><div class="asset-pct">impuesto ~756€</div></div></div>
+      <div class="asset-row"><span class="asset-name">Acciones USA (cartera IB)</span><div style="text-align:right"><div class="asset-val pos">+3.770€</div><div class="asset-pct">impuesto ~716€</div></div></div>
+      <div class="asset-row"><span class="asset-name">Fidelity Global Technology Fund</span><div style="text-align:right"><div class="asset-val pos">+3.640€</div><div class="asset-pct">impuesto ~692€</div></div></div>
+      <div style="border-top:1px dashed rgba(30,45,69,.8); margin:.5rem 0"></div>
+      <div class="asset-row"><span class="asset-name">21Shares Ethereum Staking ETP</span><div style="text-align:right"><div class="asset-val neg">−700€</div><div class="asset-pct">compensable</div></div></div>
+      <div class="asset-row"><span class="asset-name">Pictet Clean Energy Fund I EUR</span><div style="text-align:right"><div class="asset-val neg">−1.650€</div><div class="asset-pct">compensable</div></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: GRÁFICOS -->
+  <div class="tab-panel" id="panel-graficos">
+    <div class="sec-label">Galería de gráficos</div>
+    <h2 class="sec-title">12 gráficos generados por el motor Python</h2>
+    <p class="sec-sub">Haz clic en cualquier gráfico para verlo ampliado. Navega con las flechas.</p>
+
+    <div class="gallery" id="gallery">
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/01_tipo.png" data-caption="Distribución por tipo de activo — donut con porcentajes">
+        <img class="gallery-img" src="demo/resultados/graficos/01_tipo.png" alt="Distribución por tipo">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Análisis</span>
+          <div class="gallery-title">Distribución por tipo de activo</div>
+          <div class="gallery-desc">Donut con el peso de cada clase: indexado, acciones, cripto, roboadvisor, ETFs temáticos y efectivo.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/02_entidad.png" data-caption="Concentración de patrimonio por entidad custodio">
+        <img class="gallery-img" src="demo/resultados/graficos/02_entidad.png" alt="Por entidad">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Análisis</span>
+          <div class="gallery-title">Distribución por entidad custodio</div>
+          <div class="gallery-desc">Riesgo de concentración: MyInvestor concentra el 45% del patrimonio total.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/03_riesgo.png" data-caption="Distribución por nivel de riesgo 0-10">
+        <img class="gallery-img" src="demo/resultados/graficos/03_riesgo.png" alt="Por riesgo">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Análisis</span>
+          <div class="gallery-title">Distribución por nivel de riesgo</div>
+          <div class="gallery-desc">Barras horizontales: el 59.7% del capital está en activos de riesgo 7-9. Perfil agresivo claro.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/04_plusvalias.png" data-caption="Mapa fiscal de plusvalías y pérdidas latentes por posición">
+        <img class="gallery-img" src="demo/resultados/graficos/04_plusvalias.png" alt="Plusvalías">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Fiscal</span>
+          <div class="gallery-title">Plusvalías / Pérdidas latentes</div>
+          <div class="gallery-desc">Verde: ganancia latente. Rojo: pérdida compensable. Incluye estimación del impacto IRPF.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/05_estrategia_dca.png" data-caption="Proyección 12 meses de la estrategia DCA — 500€+300€/mes">
+        <img class="gallery-img" src="demo/resultados/graficos/05_estrategia_dca.png" alt="DCA">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Estrategia</span>
+          <div class="gallery-title">Simulación DCA — 12 meses</div>
+          <div class="gallery-desc">Proyección del traspaso mensual de 800€ de efectivo hacia MSCI World + S&P500 ETF.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/06_usa_sectores.png" data-caption="Composición sectorial de las acciones USA en Interactive Brokers">
+        <img class="gallery-img" src="demo/resultados/graficos/06_usa_sectores.png" alt="Sectores USA">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-analysis">Análisis</span>
+          <div class="gallery-title">Acciones USA por sector</div>
+          <div class="gallery-desc">12 posiciones: predominio tech/AI (NVDA, AAPL, META, AMD, PLTR…) con >85% del capital USA.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/07_frontera_eficiente.png" data-caption="Frontera eficiente de Markowitz — 50 puntos coloreados por Sharpe ratio">
+        <img class="gallery-img" src="demo/resultados/graficos/07_frontera_eficiente.png" alt="Frontera eficiente">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">Optimización</span>
+          <div class="gallery-title">Frontera eficiente de Markowitz</div>
+          <div class="gallery-desc">50 puntos en la frontera, coloreados por Sharpe ratio. Los 4 escenarios clave marcados. Activos individuales posicionados en el espacio vol/rend.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/08_comparativa_pesos.png" data-caption="Comparativa de pesos: cartera actual vs Máximo Sharpe vs Máx. Rentabilidad">
+        <img class="gallery-img" src="demo/resultados/graficos/08_comparativa_pesos.png" alt="Comparativa pesos">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">Optimización</span>
+          <div class="gallery-title">Comparativa de pesos por escenario</div>
+          <div class="gallery-desc">Barras agrupadas: cartera actual vs Máximo Sharpe vs Máxima Rentabilidad (vol≤20%). Qué pesa más en cada escenario.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/09_recomposicion_sharpe.png" data-caption="Plan de rebalanceo — importes en EUR a comprar (verde) o vender (rojo)">
+        <img class="gallery-img" src="demo/resultados/graficos/09_recomposicion_sharpe.png" alt="Recomposición">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">Plan de acción</span>
+          <div class="gallery-title">Plan de rebalanceo — Máximo Sharpe</div>
+          <div class="gallery-desc">Barras horizontales verde/rojo con el importe exacto en EUR a comprar o vender por activo para alcanzar la cartera óptima.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/hrp_01_dendrograma.png" data-caption="HRP — Árbol jerárquico Ward: clustering de activos por similitud de comportamiento">
+        <img class="gallery-img" src="demo/resultados/graficos/hrp_01_dendrograma.png" alt="Dendrograma HRP">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">HRP</span>
+          <div class="gallery-title">Dendrograma jerárquico (Ward)</div>
+          <div class="gallery-desc">Las 10 clases de activo agrupadas por similitud de correlación. Openbank + Roboadvisor se fusionan primero (mismo proxy IWDA.AS). Bitcoin queda aislado.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/hrp_02_pesos.png" data-caption="HRP vs Markowitz — Comparativa de pesos HRP puro, HRP acotado y Markowitz Máximo Sharpe">
+        <img class="gallery-img" src="demo/resultados/graficos/hrp_02_pesos.png" alt="Pesos HRP vs Markowitz">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">HRP</span>
+          <div class="gallery-title">Comparativa de pesos: HRP vs Markowitz</div>
+          <div class="gallery-desc">3 barras por clase: HRP puro (sans restricciones) · HRP acotado (con perfil) · Markowitz Máx Sharpe. Contraste especialmente relevante en cripto y MSCI.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-src="demo/resultados/graficos/hrp_03_riesgo.png" data-caption="HRP — Contribución al riesgo por clase de activo (RC%) vs peso asignado">
+        <img class="gallery-img" src="demo/resultados/graficos/hrp_03_riesgo.png" alt="Contribución al riesgo HRP">
+        <div class="gallery-info">
+          <span class="gallery-badge badge-optim">HRP</span>
+          <div class="gallery-title">Contribución al riesgo vs peso</div>
+          <div class="gallery-desc">Bitcoin: 10% de peso genera el 25.4% del riesgo total. Scatter: cuanto más alejado de la diagonal, más desequilibrado el perfil riesgo/capital.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: OPTIMIZACIÓN -->
+  <div class="tab-panel" id="panel-optimizacion">
+    <div class="sec-label">Modelo Markowitz</div>
+    <h2 class="sec-title">3 escenarios de optimización calculados</h2>
+    <p class="sec-sub">Media-Varianza con 11 clases de activos · SLSQP (scipy) · 60 puntos de arranque · restricciones de pesos por clase.</p>
+
+    <div class="scenario-grid" style="margin-top:1.5rem">
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--text-muted)">Cartera actual</div>
+        <div class="sc-sharpe" style="color:var(--text-primary)">0.610</div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent3)">14.65%</div><div class="sc-m-lbl">Rend. esperado</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent3)">18.85%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+      </div>
+      <div class="sc-card highlight">
+        <div class="sc-label" style="color:var(--accent)">★ Máximo Sharpe</div>
+        <div class="sc-sharpe" style="color:var(--accent)">0.705 <span style="font-size:.9rem; color:var(--accent2)">+0.095</span></div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent2)">15.96%</div><div class="sc-m-lbl">Rend. esperado</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent2)">18.15%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent2)">Mínima Volatilidad</div>
+        <div class="sc-sharpe" style="color:var(--accent2)">0.576</div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent2)">9.91%</div><div class="sc-m-lbl">Rend. esperado</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent2)">11.74%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent3)">Máx. Rend. (vol≤20%)</div>
+        <div class="sc-sharpe" style="color:var(--accent3)">0.702 <span style="font-size:.9rem; color:var(--accent2)">+0.091</span></div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent3)">17.18%</div><div class="sc-m-lbl">Rend. esperado</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent3)">20.00%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de rebalanceo Sharpe máximo -->
+    <div style="margin-top:2rem">
+      <div class="sec-label">Rebalanceo hacia Máximo Sharpe</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead>
+            <tr>
+              <th>Activo</th>
+              <th>Peso actual</th>
+              <th>Peso óptimo</th>
+              <th>Cambio (EUR)</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>RV Global MSCI World (Vanguard)</td><td>17.4%</td><td>35.1%</td><td class="mkt-buy">+32.633€</td><td><span style="background:rgba(16,185,129,.12); color:var(--accent2); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">COMPRAR</span></td></tr>
+            <tr><td>RV USA S&P500 (Amundi ETF)</td><td>12.8%</td><td>40.0%</td><td class="mkt-buy">+50.082€</td><td><span style="background:rgba(16,185,129,.12); color:var(--accent2); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">COMPRAR</span></td></tr>
+            <tr><td>Bitcoin (físico)</td><td>9.6%</td><td>13.6%</td><td class="mkt-buy">+7.427€</td><td><span style="background:rgba(16,185,129,.12); color:var(--accent2); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">COMPRAR</span></td></tr>
+            <tr><td>Fondo Tecnología (Fidelity)</td><td>8.7%</td><td>3.3%</td><td class="mkt-sell">−9.909€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">REDUCIR</span></td></tr>
+            <tr><td>Roboadvisor Finizens</td><td>11.5%</td><td>5.0%</td><td class="mkt-sell">−12.058€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">REDUCIR</span></td></tr>
+            <tr><td>Acciones USA Large Cap</td><td>8.2%</td><td>2.0%</td><td class="mkt-sell">−11.442€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">REDUCIR</span></td></tr>
+            <tr><td>Acciones USA AI/Tech</td><td>9.4%</td><td>0.0%</td><td class="mkt-sell">−17.341€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">SALIR</span></td></tr>
+            <tr><td>Acciones USA Riesgo Alto</td><td>4.4%</td><td>0.0%</td><td class="mkt-sell">−8.168€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">SALIR</span></td></tr>
+            <tr><td>ETFs Temáticos (Agua/Cyber/EM)</td><td>8.4%</td><td>0.0%</td><td class="mkt-sell">−15.431€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">SALIR</span></td></tr>
+            <tr><td>Ethereum ETP</td><td>2.7%</td><td>0.0%</td><td class="mkt-sell">−4.892€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">SALIR</span></td></tr>
+            <tr><td>Efectivo</td><td>6.9%</td><td>1.0%</td><td class="mkt-sell">−10.898€</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.75rem; font-weight:700">REDUCIR</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- KPIs seguimiento -->
+    <div style="margin-top:2rem" class="card">
+      <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">Indicadores de seguimiento — objetivo 12 meses</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead><tr><th>KPI</th><th>Actual</th><th>Objetivo</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Sharpe ratio</td><td>0.610</td><td>&gt; 0.700</td><td><span style="color:var(--accent5); font-weight:700">⚠ Por mejorar</span></td></tr>
+            <tr><td>Volatilidad anual</td><td>18.85%</td><td>&lt; 15.00%</td><td><span style="color:var(--accent5); font-weight:700">⚠ Elevada</span></td></tr>
+            <tr><td>Peso efectivo</td><td>6.91%</td><td>&lt; 3.00%</td><td><span style="color:var(--accent5); font-weight:700">⚠ DCA en marcha</span></td></tr>
+            <tr><td>Peso cripto total</td><td>12.25%</td><td>&lt; 10.00%</td><td><span style="color:var(--accent3); font-weight:700">⚡ Ligeramente alto</span></td></tr>
+            <tr><td>Peso acciones especulativas</td><td>4.43%</td><td>0.00%</td><td><span style="color:var(--accent5); font-weight:700">⚠ Reducir</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: HRP -->
+  <div class="tab-panel" id="panel-hrp">
+    <div class="sec-label">Hierarchical Risk Parity &middot; L&oacute;pez de Prado (2016)</div>
+    <h2 class="sec-title">HRP &mdash; Optimizaci&oacute;n robusta sin invertir la covarianza</h2>
+    <p class="sec-sub">Algoritmo en 3 pasos: &aacute;rbol jer&aacute;rquico Ward &middot; cuasi-diagonalizaci&oacute;n &middot; bisecci&oacute;n recursiva por varianza-inversa. Complemento al modelo Markowitz especialmente robusto en entornos de alta tensi&oacute;n macro.</p>
+
+    <!-- Score tensión highlight -->
+    <div class="card" style="margin-bottom:1.5rem; border-color:rgba(239,68,68,.4); background:rgba(239,68,68,.04)">
+      <div style="display:flex; align-items:flex-start; gap:1rem">
+        <div style="font-size:1.8rem; line-height:1">⚡</div>
+        <div>
+          <div style="font-weight:700; font-size:.95rem; color:var(--accent5); margin-bottom:.4rem">Score tensi&oacute;n macro: 90/100 &mdash; NIVEL ALTO</div>
+          <div style="font-size:.85rem; color:var(--text-muted); line-height:1.6">
+            Brent +56% YTD &middot; Gold vol ratio 1.6&times; hist&oacute;rico &middot; VIX percentil 73% &middot; Conflicto EEUU&ndash;Ir&aacute;n activo. Las correlaciones son inestables: Markowitz puede amplificar errores de estimaci&oacute;n. La bisecci&oacute;n recursiva de HRP converge aunque las correlaciones cambien de r&eacute;gimen. <strong style="color:var(--accent5)">Este es el entorno donde HRP aporta m&aacute;s valor diferencial.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario cards -->
+    <div class="scenario-grid" style="margin-bottom:2rem">
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--text-muted); font-size:.72rem">HRP PURO (sin restricciones)</div>
+        <div class="sc-sharpe" style="color:var(--text-muted); font-size:1.5rem">— Cash —</div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--text-muted)">100%</div><div class="sc-m-lbl">Cash (vol&asymp;0)</div></div>
+          <div><div class="sc-m-val" style="color:var(--text-muted)">3.2%</div><div class="sc-m-lbl">Rend. anual</div></div>
+        </div>
+        <div style="font-size:.72rem; color:var(--text-muted); margin-top:.6rem; line-height:1.4">Sin restricciones el algoritmo asigna todo al activo de menor varianza (Cash, vol&asymp;0). Comportamiento esperado y correcto del algoritmo puro.</div>
+      </div>
+      <div class="sc-card highlight" style="border-color:rgba(139,92,246,.5)">
+        <div class="sc-label" style="color:var(--accent4)">&#9733; HRP ACOTADO (con perfil)</div>
+        <div class="sc-sharpe" style="color:var(--accent4)">0.457</div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent2)">9.0%</div><div class="sc-m-lbl">Rend. anual</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent2)">12.8%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+        <div style="font-size:.72rem; color:var(--text-muted); margin-top:.6rem; line-height:1.4">Con los mismos l&iacute;mites min/max que Markowitz. Menor volatilidad (&minus;1.4pp) a cambio de menor Sharpe. M&aacute;s robusto en crisis.</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--text-sec); font-size:.72rem">MARKOWITZ M&Aacute;X. SHARPE (referencia)</div>
+        <div class="sc-sharpe" style="color:var(--accent)">0.676</div>
+        <div class="sc-metrics">
+          <div><div class="sc-m-val" style="color:var(--accent)">12.7%</div><div class="sc-m-lbl">Rend. anual</div></div>
+          <div><div class="sc-m-val" style="color:var(--accent)">14.2%</div><div class="sc-m-lbl">Volatilidad</div></div>
+        </div>
+        <div style="font-size:.72rem; color:var(--text-muted); margin-top:.6rem; line-height:1.4">Optimiza expl&iacute;citamente el Sharpe. Mayor rendimiento hist&oacute;rico pero m&aacute;s sensible a cambios de r&eacute;gimen de correlaci&oacute;n.</div>
+      </div>
+    </div>
+
+    <!-- Weights table -->
+    <div style="margin-bottom:2rem">
+      <div class="sec-label">Asignaci&oacute;n de pesos &middot; datos reales 5 a&ntilde;os &middot; 963 sesiones</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead>
+            <tr>
+              <th>Clase de activo</th>
+              <th>Min / Max</th>
+              <th>HRP acotado</th>
+              <th>Markowitz Sharpe</th>
+              <th>RC% riesgo</th>
+              <th>Insight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Monetario (Groupama)</td><td style="color:var(--text-muted)">2&ndash;30%</td><td>10.0%</td><td>3.8%</td><td style="color:var(--accent2)">0.0%</td><td><span style="background:rgba(16,185,129,.12); color:var(--accent2); padding:.1rem .5rem; border-radius:5px; font-size:.73rem; font-weight:700">ESCUDO</span></td></tr>
+            <tr><td>RV Global MSCI (MyInvestor)</td><td style="color:var(--text-muted)">5&ndash;50%</td><td><strong>25.0%</strong></td><td>5.0%</td><td style="color:var(--accent3)">23.2%</td><td>&asymp; Peso</td></tr>
+            <tr><td>RV Global MSCI (Openbank)</td><td style="color:var(--text-muted)">0&ndash;30%</td><td>0.0%</td><td>30.0%</td><td style="color:var(--text-muted)">0.0%</td><td><span style="background:rgba(59,130,246,.1); color:var(--accent); padding:.1rem .5rem; border-radius:5px; font-size:.73rem; font-weight:700">ALTA CORR.</span></td></tr>
+            <tr><td>RV USA S&amp;P500 (Vanguard)</td><td style="color:var(--text-muted)">2&ndash;35%</td><td>10.0%</td><td>2.0%</td><td style="color:var(--accent3)">10.8%</td><td>&asymp; Peso</td></tr>
+            <tr><td>Roboadvisor Indexa</td><td style="color:var(--text-muted)">5&ndash;25%</td><td><strong>25.0%</strong></td><td>25.0%</td><td style="color:var(--accent3)">22.3%</td><td>&asymp; Igual</td></tr>
+            <tr style="background:rgba(239,68,68,.04)"><td><strong>Bitcoin (f&iacute;sico + ETP)</strong></td><td style="color:var(--text-muted)">2&ndash;15%</td><td>10.0%</td><td>0.0%</td><td style="color:var(--accent5)"><strong>25.4%</strong></td><td><span style="background:rgba(239,68,68,.15); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.73rem; font-weight:700">&#9888; RC&gt;&gt;PESO</span></td></tr>
+            <tr><td>Acciones USA Large Cap</td><td style="color:var(--text-muted)">2&ndash;25%</td><td>10.0%</td><td>25.0%</td><td style="color:var(--accent5)">18.4%</td><td><span style="background:rgba(239,68,68,.1); color:var(--accent5); padding:.1rem .5rem; border-radius:5px; font-size:.73rem; font-weight:700">RC&gt;PESO</span></td></tr>
+            <tr><td>Acc. USA Especulativas</td><td style="color:var(--text-muted)">0&ndash;3%</td><td>0.0%</td><td>0.0%</td><td style="color:var(--text-muted)">0.0%</td><td>&mdash;</td></tr>
+            <tr><td>ETFs Tem&aacute;ticos</td><td style="color:var(--text-muted)">0&ndash;10%</td><td>0.0%</td><td>0.0%</td><td style="color:var(--text-muted)">0.0%</td><td>&mdash;</td></tr>
+            <tr><td>Cash</td><td style="color:var(--text-muted)">1&ndash;10%</td><td>10.0%</td><td>1.0%</td><td style="color:var(--accent2)">0.0%</td><td><span style="background:rgba(16,185,129,.12); color:var(--accent2); padding:.1rem .5rem; border-radius:5px; font-size:.73rem; font-weight:700">ESCUDO</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.78rem; color:var(--text-muted); margin-top:.75rem">RC% = Contribuci&oacute;n al riesgo. <strong style="color:var(--accent5)">Bitcoin con solo 10% del capital genera el 25.4% del riesgo total.</strong> Openbank tiene correlaci&oacute;n 1.00 con Roboadvisor (mismo proxy: IWDA.AS) &rarr; el algoritmo las fusiona en el den&shy;drograma y no asigna peso duplicado.</p>
+    </div>
+
+    <!-- Metrics comparison table -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">M&eacute;tricas hist&oacute;ricas comparadas (5 a&ntilde;os &middot; 963 sesiones &middot; anualizado)</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead><tr><th>Escenario</th><th>Sharpe</th><th>Sortino</th><th>Rend. anual</th><th>Volatilidad</th><th>CVaR 95%</th><th>Max Drawdown</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>HRP acotado</td>
+              <td style="color:var(--accent4)"><strong>0.457</strong></td>
+              <td style="color:var(--accent4)">0.628</td>
+              <td style="color:var(--accent2)">+9.0%</td>
+              <td style="color:var(--accent2)"><strong>12.8%</strong></td>
+              <td style="color:var(--text-muted)">&minus;30.4%</td>
+              <td style="color:var(--text-muted)">&minus;18.9%</td>
+            </tr>
+            <tr>
+              <td>Markowitz M&aacute;x Sharpe</td>
+              <td style="color:var(--accent)"><strong>0.676</strong></td>
+              <td style="color:var(--accent)">0.897</td>
+              <td style="color:var(--accent)">+12.7%</td>
+              <td style="color:var(--accent5)">14.2%</td>
+              <td style="color:var(--accent5)">&minus;33.6%</td>
+              <td style="color:var(--accent5)">&minus;17.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:1rem; font-size:.82rem; color:var(--text-muted); line-height:1.6">
+        Markowitz supera en Sharpe hist&oacute;rico porque lo maximiza expl&iacute;citamente. HRP aporta <strong style="color:var(--accent4)">&minus;1.4pp de volatilidad</strong> y es m&aacute;s robusto cuando las correlaciones saltan &mdash; el caso actual con Score tensi&oacute;n 90/100.
+      </div>
+    </div>
+
+    <!-- When to use each -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem">
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--accent4); margin-bottom:.8rem">Cu&aacute;ndo usar HRP</div>
+        <div style="font-size:.85rem; color:var(--text-muted); line-height:1.8">
+          &#10003; Score tensi&oacute;n &gt; 70/100 (correlaciones inestables)<br>
+          &#10003; Episodios de p&aacute;nico (VIX &gt; 25, drawdowns &gt; 15%)<br>
+          &#10003; Segunda opini&oacute;n frente a Markowitz<br>
+          &#10003; Al a&ntilde;adir m&aacute;s activos individuales (&gt;20 clases)
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); margin-bottom:.8rem">Cu&aacute;ndo usar Markowitz</div>
+        <div style="font-size:.85rem; color:var(--text-muted); line-height:1.8">
+          &#10003; Objetivo expl&iacute;cito de maximizar Sharpe<br>
+          &#10003; Mercados estables con correlaciones predecibles<br>
+          &#10003; Horizonte largo y pocas clases (&lt;15 activos)<br>
+          &#10003; Backtest 2021&ndash;2026 favorece Markowitz en Sharpe
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: RECOMENDADOR -->
+  <div class="tab-panel" id="panel-recomendador">
+    <div class="sec-label">Módulo 04 · Cartera recomendada personalizada</div>
+    <h2 class="sec-title">5 productos · TER 0.19% · Sharpe 0.526</h2>
+    <p class="sec-sub">Filtrado por plataformas disponibles (MyInvestor · Degiro), optimización HRP, prioridad a fondos traspasables sin tributar y proyección a 18 años con aportaciones mensuales de 2.000€.</p>
+
+    <!-- Métricas de la cartera recomendada -->
+    <div class="scenario-grid" style="margin-top:1.5rem; grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+      <div class="sc-card highlight">
+        <div class="sc-label" style="color:var(--accent2)">★ TER medio</div>
+        <div class="sc-sharpe" style="color:var(--accent2); font-size:1.6rem">0.19%</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">Ponderado por peso HRP</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent)">Sharpe estimado</div>
+        <div class="sc-sharpe" style="color:var(--accent); font-size:1.6rem">0.526</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">HRP sobre universo filtrado</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent3)">Rend. esperado</div>
+        <div class="sc-sharpe" style="color:var(--accent3); font-size:1.6rem">6.1%</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">Anual ponderado</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent4)">Proyección 18a</div>
+        <div class="sc-sharpe" style="color:var(--accent4); font-size:1.3rem">1.299M€</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">+2.000€/mes · 180K€ inicial</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--accent2)">Productos UCITS</div>
+        <div class="sc-sharpe" style="color:var(--accent2); font-size:1.6rem">5</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">Todos traspasables IRPF</div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:var(--text-muted)">Filosofía ref.</div>
+        <div style="font-size:.95rem; font-weight:700; margin-top:.3rem; line-height:1.2">Clásica<br>España</div>
+        <div style="font-size:.72rem; color:var(--text-muted)">Bogle · Indexa style</div>
+      </div>
+    </div>
+
+    <!-- Tabla de productos recomendados -->
+    <div style="margin-top:2rem">
+      <div class="sec-label">Cartera recomendada — 5 productos</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Fondo / ETF</th>
+              <th>Categoría</th>
+              <th>TER</th>
+              <th>Sharpe 5a</th>
+              <th>Rend. 5a</th>
+              <th>Peso HRP</th>
+              <th>Fiscal</th>
+              <th>Plataforma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">0P0000MTIB.F</td>
+              <td>Fidelity MSCI World Index EUR Acc</td>
+              <td>RV Global</td>
+              <td style="color:var(--accent2)">0.12%</td>
+              <td style="color:var(--accent)">0.730</td>
+              <td style="color:var(--accent2)">+12.0%</td>
+              <td><strong>31.6%</strong></td>
+              <td><span style="color:var(--accent2); font-size:.75rem; font-weight:700">★ IRPF</span></td>
+              <td style="font-size:.78rem; color:var(--text-muted)">MyInvestor · Openbank</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">0P0001M26X.F</td>
+              <td>Amundi Index MSCI World EUR Acc</td>
+              <td>RV Global</td>
+              <td style="color:var(--accent2)">0.18%</td>
+              <td style="color:var(--accent)">0.730</td>
+              <td style="color:var(--accent2)">+11.9%</td>
+              <td><strong>24.8%</strong></td>
+              <td><span style="color:var(--accent2); font-size:.75rem; font-weight:700">★ IRPF</span></td>
+              <td style="font-size:.78rem; color:var(--text-muted)">MyInvestor · Selfbank</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">0P0001ERCL.F</td>
+              <td>Amundi Index S&amp;P500 EUR Acc</td>
+              <td>RV USA</td>
+              <td style="color:var(--accent2)">0.15%</td>
+              <td style="color:var(--accent)">0.820</td>
+              <td style="color:var(--accent2)">+14.1%</td>
+              <td><strong>20.9%</strong></td>
+              <td><span style="color:var(--accent2); font-size:.75rem; font-weight:700">★ IRPF</span></td>
+              <td style="font-size:.78rem; color:var(--text-muted)">MyInvestor · Openbank</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent3)">AGGH.L</td>
+              <td>iShares Core Global Agg Bond ETF</td>
+              <td>Renta Fija</td>
+              <td style="color:var(--accent2)">0.10%</td>
+              <td style="color:var(--text-muted)">0.410</td>
+              <td style="color:var(--text-muted)">+2.3%</td>
+              <td><strong>13.4%</strong></td>
+              <td><span style="color:var(--text-muted); font-size:.75rem">sin ventaja</span></td>
+              <td style="font-size:.78rem; color:var(--text-muted)">Degiro · IBKR</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent3)">SGLD.L</td>
+              <td>Invesco Physical Gold ETC</td>
+              <td>Oro</td>
+              <td style="color:var(--accent)">0.12%</td>
+              <td style="color:var(--text-muted)">0.590</td>
+              <td style="color:var(--accent3)">+8.7%</td>
+              <td><strong>9.3%</strong></td>
+              <td><span style="color:var(--text-muted); font-size:.75rem">sin ventaja</span></td>
+              <td style="font-size:.78rem; color:var(--text-muted)">Degiro · IBKR</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Filosofías comparadas -->
+    <div class="card" style="margin-top:2rem">
+      <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">Comparativa filosof&#237;as de referencia</div>
+      <div style="overflow-x:auto">
+        <table class="mkt">
+          <thead><tr><th>Filosofía</th><th>TER medio</th><th>Sharpe hist.</th><th>Rend. esp.</th><th>Max DD hist.</th><th>Nota</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(16,185,129,.04)"><td><strong>&#10003; Clásica España</strong></td><td style="color:var(--accent2)">0.19%</td><td style="color:var(--accent2)">0.54</td><td style="color:var(--accent2)">+6.1%</td><td>-18%</td><td><span style="color:var(--accent2); font-size:.75rem">SELECCIONADA</span></td></tr>
+            <tr><td>Bogle 3-Fund</td><td style="color:var(--accent2)">0.16%</td><td>0.61</td><td>+7.2%</td><td>-22%</td><td style="font-size:.78rem; color:var(--text-muted)">sin bonos ES</td></tr>
+            <tr><td>Dalio All Weather</td><td style="color:var(--accent)">0.22%</td><td>0.48</td><td>+5.8%</td><td>-12%</td><td style="font-size:.78rem; color:var(--text-muted)">defensiva, sin oro UCITS</td></tr>
+            <tr><td>Browne Permanent</td><td style="color:var(--accent)">0.20%</td><td>0.44</td><td>+5.2%</td><td>-11%</td><td style="font-size:.78rem; color:var(--text-muted)">demasiado conservadora</td></tr>
+            <tr><td>ARK Disruptive</td><td style="color:var(--accent5)">0.65%</td><td>0.38</td><td>+9.1%</td><td>-72%</td><td style="font-size:.78rem; color:var(--accent5)">alta vol · no UCITS puro</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem; font-size:.82rem; color:var(--text-muted); line-height:1.65; padding:1rem; background:rgba(16,185,129,.05); border:1px solid rgba(16,185,129,.2); border-radius:10px">
+      <strong style="color:var(--accent2)">Salidas generadas por <code>04_recomendador.py</code>:</strong><br>
+      informe_recomendacion.txt &nbsp;·&nbsp; recomendacion_cartera.json &nbsp;·&nbsp; pesos_recomendados.csv<br>
+      rec_01_cartera.png &nbsp;·&nbsp; rec_02_proyeccion.png &nbsp;·&nbsp; rec_03_filosofias.png &nbsp;·&nbsp; rec_04_diversificacion.png
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: TENDENCIAS -->
+  <div class="tab-panel" id="panel-tendencias">
+    <div class="sec-label">Scanner de tendencias · Módulo 01 · Pasos 7-10</div>
+    <h2 class="sec-title">35+ sectores · RSS en tiempo real · alertas accionables</h2>
+    <p class="sec-sub">El sistema escanea 35+ sectores por momentum de precio, descarga noticias de Google News RSS sin API key, cruza precios × buzz y genera alertas con productos concretos del universo.</p>
+
+    <!-- Cómo funciona el scanner -->
+    <div class="card" style="margin-top:1.5rem; margin-bottom:1.5rem; border-color:rgba(16,185,129,.3)">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; text-align:center">
+        <div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--accent)">35+</div>
+          <div style="font-size:.72rem; color:var(--text-muted); text-transform:uppercase; margin-top:.2rem">Sectores vigilados</div>
+          <div style="font-size:.78rem; color:var(--text-sec); margin-top:.4rem">IA, defensa, fotónica, energía, semis, biofarma, ciberseg…</div>
+        </div>
+        <div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--accent2)">EMA α=0.3</div>
+          <div style="font-size:.72rem; color:var(--text-muted); text-transform:uppercase; margin-top:.2rem">Baseline EMA</div>
+          <div style="font-size:.78rem; color:var(--text-sec); margin-top:.4rem">Detecta términos con frecuencia ratio &gt; 2× sobre la media histórica</div>
+        </div>
+        <div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--accent3)">4 patrones</div>
+          <div style="font-size:.72rem; color:var(--text-muted); text-transform:uppercase; margin-top:.2rem">Tipos de alerta</div>
+          <div style="font-size:.78rem; color:var(--text-sec); margin-top:.4rem">EMERGENTE · CONFIRMADO · PRECIO_FUERTE · AUTO_DESCUBIERTO</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alertas ejemplo reales -->
+    <div class="sec-label">Alertas generadas (ejemplo real · 15 abr 2026)</div>
+
+    <div class="alert-card" style="border-left-color:var(--accent5)">
+      <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem">
+        <span style="background:rgba(239,68,68,.15); color:var(--accent5); font-size:.7rem; font-weight:700; padding:.15rem .55rem; border-radius:5px">🔴 EMERGENTE · URGENCIA ALTA</span>
+        <span style="color:var(--text-primary); font-weight:700">Fotónica / Semis ópticos · Ret. 3m: +9.4%</span>
+      </div>
+      <div class="alert-desc">Buzz alto (72/100 · 9 artículos) con precios aún sin reaccionar — posible adelanto del mercado. Noticia clave: <em>"Nvidia to invest $4bn into photonics companies Coherent and Lumentum"</em></div>
+      <div style="margin-top:.6rem; font-size:.82rem">
+        <strong style="color:var(--text-sec)">Productos sugeridos:</strong>
+        <div style="overflow-x:auto; margin-top:.5rem">
+          <table class="mkt" style="font-size:.78rem">
+            <thead><tr><th>Ticker</th><th>Nombre</th><th>TER</th><th>Sharpe 5a</th><th>Peso (agresivo)</th><th>Fiscal</th><th>Plataforma</th></tr></thead>
+            <tbody>
+              <tr><td style="font-family:'JetBrains Mono',monospace">0P0001ERCL.F</td><td>Amundi Index S&amp;P500 EUR Acc</td><td style="color:var(--accent2)">0.15%</td><td>0.820</td><td>7%</td><td><span style="color:var(--accent2); font-size:.72rem">★ IRPF</span></td><td style="font-size:.72rem; color:var(--text-muted)">MyInvestor</td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace">RBTX.L</td><td>iShares Automation &amp; Robotics</td><td style="color:var(--accent3)">0.40%</td><td>0.390</td><td>7%</td><td style="font-size:.72rem; color:var(--text-muted)">sin ventaja</td><td style="font-size:.72rem; color:var(--text-muted)">Degiro</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex; gap:1rem; margin-top:.6rem; font-size:.78rem; color:var(--text-muted)">
+          <span>Conservador: 2% &nbsp;|</span>
+          <span>Moderado: 4% &nbsp;|</span>
+          <span style="color:var(--accent3)">Agresivo: 7%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-card" style="border-left-color:var(--accent3)">
+      <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem">
+        <span style="background:rgba(245,158,11,.15); color:var(--accent3); font-size:.7rem; font-weight:700; padding:.15rem .55rem; border-radius:5px">🟡 CONFIRMADO · URGENCIA MEDIA</span>
+        <span style="color:var(--text-primary); font-weight:700">Defensa Europa (EUAD) · Ret. 3m: +18.4%</span>
+      </div>
+      <div class="alert-desc">Precio (+18.4% en 3m) y noticias alineados — tendencia consolidada. Noticia: <em>"EUAD: Amid Greenland Woes And NATO crisis EU Rearmament Is A Must"</em> (13 artículos)</div>
+      <div style="display:flex; gap:1rem; margin-top:.5rem; font-size:.78rem; color:var(--text-muted)">
+        <span>Conservador: 3% &nbsp;|</span>
+        <span>Moderado: 6% &nbsp;|</span>
+        <span style="color:var(--accent3)">Agresivo: 10%</span>
+      </div>
+    </div>
+
+    <div class="alert-card" style="border-left-color:var(--accent3)">
+      <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem">
+        <span style="background:rgba(245,158,11,.15); color:var(--accent3); font-size:.7rem; font-weight:700; padding:.15rem .55rem; border-radius:5px">🟡 PRECIO_FUERTE · URGENCIA MEDIA</span>
+        <span style="color:var(--text-primary); font-weight:700">Semiconductores (SOXX) · Ret. 3m: +12.1%</span>
+      </div>
+      <div class="alert-desc">Score de precio alto (72/110) sin señal mediática aún. Posible continuación antes de que el mercado lo descuente en noticias.</div>
+    </div>
+
+    <div class="alert-card" style="border-left-color:var(--accent2)">
+      <div style="display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem">
+        <span style="background:rgba(16,185,129,.12); color:var(--accent2); font-size:.7rem; font-weight:700; padding:.15rem .55rem; border-radius:5px">🟢 AUTO_DESCUBIERTO · URGENCIA BAJA</span>
+        <span style="color:var(--text-primary); font-weight:700">photonics telecom · Ratio novedad 4.2×</span>
+      </div>
+      <div class="alert-desc">Sector auto-detectado por auge mediático (ratio 4.2× sobre baseline EMA). Término emergente no estaba en la lista original. Validar manualmente antes de invertir.</div>
+      <div style="margin-top:.4rem; font-size:.78rem; color:var(--text-muted)">Ticker auto-resuelto: LITE (Lumentum Holdings) — accesible en Degiro</div>
+    </div>
+
+    <div style="margin-top:1.5rem; font-size:.82rem; color:var(--text-muted); line-height:1.65; padding:1rem; background:rgba(59,130,246,.05); border:1px solid rgba(59,130,246,.2); border-radius:10px">
+      <strong style="color:var(--accent)">Salidas generadas por <code>01_descarga_datos.py</code> (pasos 7-10):</strong><br>
+      tendencias_sector.json &nbsp;·&nbsp; noticias_sectores.json &nbsp;·&nbsp; oportunidades_detectadas.json &nbsp;·&nbsp; alertas_tendencias.txt &nbsp;·&nbsp; alertas_tendencias.json<br>
+      <br>
+      Las señales se basan en momentum de precios + frecuencia mediática. No constituyen asesoramiento financiero regulado (MiFID II).
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: ALERTAS -->
+  <div class="tab-panel" id="panel-alertas">
+    <div class="sec-label">Alertas automáticas</div>
+    <h2 class="sec-title">5 alertas detectadas por el motor de análisis</h2>
+    <p class="sec-sub">El sistema detecta y prioriza oportunidades y riesgos en cada ejecución.</p>
+
+    <div style="margin-top:1.5rem">
+      <div class="alert-card" style="border-left-color: var(--accent3)">
+        <div class="alert-title">[A1] Cash sobredimensionado para el perfil</div>
+        <div class="alert-desc">12.500€ (6.8% del total) rinde al 2.5% TAE, por debajo del coste hipotecario (~3.9%). El efectivo ocioso destruye valor relativo al coste de financiación. Estrategia DCA en marcha (800€/mes), pero es conservadora para un horizonte de 15 años.</div>
+        <div class="alert-fix" style="background:rgba(245,158,11,.08); border-color:rgba(245,158,11,.2); color:var(--accent3)">→ Acelerar DCA de 800€/mes a 1.200€/mes dado el horizonte largo</div>
+      </div>
+
+      <div class="alert-card" style="border-left-color: var(--accent)">
+        <div class="alert-title">[A2] Concentración excesiva en MyInvestor</div>
+        <div class="alert-desc">El 45.3% del patrimonio (83.420€) reside en un único custodio. Ante cualquier problema operativo de la entidad, la disponibilidad de los activos quedaría comprometida temporalmente. El riesgo no es de pérdida de valor de los activos (protegidos por FOGAIN hasta 100.000€) sino de operatividad.</div>
+        <div class="alert-fix" style="background:rgba(59,130,246,.08); border-color:rgba(59,130,246,.2); color:var(--accent)">→ Derivar nuevas aportaciones hacia Degiro o Interactive Brokers</div>
+      </div>
+
+      <div class="alert-card" style="border-left-color: var(--accent5)">
+        <div class="alert-title">[A3] Concentración tech/AI — riesgo sectorial</div>
+        <div class="alert-desc">Las acciones USA (Interactive Brokers) tienen más del 85% en tech/AI: NVDA, AAPL, META, AMZN, AMD, PLTR, SMCI. Además, el Fondo Fidelity Global Technology añade otro 8.5% en el mismo sector. Una corrección severa del ciclo AI impactaría simultáneamente ambas posiciones.</div>
+        <div class="alert-fix">→ Añadir 1-2 posiciones en Healthcare (UNH, LLY) o Industriales (HON, CAT)</div>
+      </div>
+
+      <div class="alert-card" style="border-left-color: var(--accent5)">
+        <div class="alert-title">[A4] Pictet Clean Energy en pérdidas estructurales</div>
+        <div class="alert-desc">El fondo acumula -1.650€ (-19.8%) desde la compra. La tesis está penalizada por: tipos de interés elevados (encarecen proyectos de energía renovable), retirada de políticas ESG en EE.UU. y competencia china en paneles solares. Sin catalizador claro a 6 meses.</div>
+        <div class="alert-fix">→ Revisar en septiembre 2026. Si el escenario no mejora, vender y usar la pérdida para compensar ganancias del ejercicio</div>
+      </div>
+
+      <div class="alert-card" style="border-left-color: var(--accent2)">
+        <div class="alert-title">[A5] Exposición cripto ligeramente elevada</div>
+        <div class="alert-desc">Bitcoin (9.4%) + Ethereum ETP (2.6%) = 12.0% del total. Para un perfil moderado-agresivo el techo recomendado es 10%. Actualmente con plusvalía latente de +111.5% en BTC (9.140€), lo que hace la posición aún más grande en términos relativos.</div>
+        <div class="alert-fix" style="background:rgba(16,185,129,.08); border-color:rgba(16,185,129,.2); color:var(--accent2)">→ Si BTC supera 90.000€/BTC, venta parcial 0.03 BTC (~2.700€) y reciclar en RV indexada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: INFORMES -->
+  <div class="tab-panel" id="panel-informes">
+    <div class="sec-label">Informes generados</div>
+    <h2 class="sec-title">Salida real del motor Python</h2>
+    <p class="sec-sub">Los textos siguientes son el output directo de los scripts. No se han editado manualmente.</p>
+
+    <div style="display:flex; gap:1rem; margin:1.5rem 0 1rem; flex-wrap:wrap">
+      <button class="tab active" id="btn-inf1" onclick="showInforme(1)" style="margin:0">📊 Informe de cartera</button>
+      <button class="tab" id="btn-inf2" onclick="showInforme(2)" style="margin:0">⚡ Informe de optimización</button>
+      <button class="tab" id="btn-inf3" onclick="showInforme(3)" style="margin:0">🔺 Informe HRP</button>
+      <button class="tab" id="btn-inf4" onclick="showInforme(4)" style="margin:0">🎯 Informe Recomendación</button>
+    </div>
+
+    <div id="informe1" class="informe-viewer">========================================================================
+  INFORME DE ANÁLISIS DE CARTERA — 2026-04-13
+  *** DEMO — Datos ficticios para demostración del sistema ***
+========================================================================
+
+1. PERFIL DEL INVERSOR
+------------------------------------------------------------------------
+  1 inversor(es) activo(s)  |  Horizonte 15 años  |  Perfil: MODERADO_AGRESIVO
+  Residente fiscal España (IRPF)  |  Sin necesidad de liquidez &lt; 5 años
+  Hipoteca variable: Euribor + 0.8% → tipo efectivo ~3,9%
+
+  Umbral rentabilidad vs. amortización anticipada: ~3,9%
+  Cash (~2,5% TAE) está POR DEBAJO del umbral hipotecario.
+  → Reducir cash ocioso e invertir de forma sistemática (DCA).
+
+2. DISTRIBUCIÓN ACTUAL  [Total: 184,270.00 EUR]
+------------------------------------------------------------------------
+  Por tipo:
+    indexado                    58,110.00 EUR  ( 31.5%)
+    renta_variable              39,870.00 EUR  ( 21.6%)
+    inversion                   20,870.00 EUR  ( 11.3%)
+    btc                         17,340.00 EUR  (  9.4%)
+    activo                      15,640.00 EUR  (  8.5%)
+    tematico                    15,140.00 EUR  (  8.2%)
+    liquido                     12,500.00 EUR  (  6.8%)
+    crypto                       4,800.00 EUR  (  2.6%)
+
+  Por entidad:
+    MyInvestor                  83,420.00 EUR  ( 45.3%)
+    Interactive Brokers         39,870.00 EUR  ( 21.6%)
+    Finizens                    20,870.00 EUR  ( 11.3%)
+    custodia_propia             17,340.00 EUR  (  9.4%)
+    CaixaBank                   12,500.00 EUR  (  6.8%)
+    Degiro                      10,270.00 EUR  (  5.6%)
+
+  Por riesgo:
+    0-efectivo             12,500.00 EUR  (  6.8%)
+    4-6 medio              61,690.00 EUR  ( 33.5%)
+    7-9 alto              110,080.00 EUR  ( 59.7%)
+
+3. PLUSVALÍAS / PÉRDIDAS LATENTES (IRPF España)
+------------------------------------------------------------------------
+  Ganancia total latente:     34,820.00 EUR
+  Pérdida total latente:      -2,350.00 EUR
+  Neto:                       32,470.00 EUR
+  Impuesto estimado (total): ~6,699.00 EUR
+
+  Top ganancias:
+    Bitcoin fisico                              9,140 EUR  impuesto~1,799€
+    Vanguard Global Stock Index Fund EUR A      6,650 EUR  impuesto~1,276€
+    Finizens Cartera 7                          6,370 EUR  impuesto~1,218€
+    Amundi S&amp;P 500 II UCITS ETF EUR Acc     3,980 EUR  impuesto~756€
+    Acciones USA (cartera IB)                   3,770 EUR  impuesto~716€
+    Fidelity Global Technology Fund             3,640 EUR  impuesto~692€
+
+  Top pérdidas (compensables):
+    21Shares Ethereum Staking ETP                -700 EUR
+    Pictet Clean Energy Fund I EUR             -1,650 EUR
+
+4. CARTERA ACCIONES USA (Interactive Brokers)
+------------------------------------------------------------------------
+  Valor mercado:    $43,270.30 USD  (39,880.46 EUR)
+  Coste total:      $39,177.00 USD
+  PyG no realizada: +$4,093.30 USD  (+10.4%)
+
+  Por sector:
+    large_cap_tech                 $12,395.80 USD  (28.6%)
+    ai_semiconductores             $11,127.50 USD  (25.7%)
+    ev_tech / gaming / fintech      $8,697.50 USD  (20.1%)
+    ai_hardware / ai_software       $7,337.50 USD  (17.0%)
+    crypto_exchange                 $3,712.00 USD  ( 8.6%)
+
+  Posiciones a vigilar (pérdidas &gt; 20%):
+    RBLX     Roblox Corp             -30.0%  $-1,320
+    SOFI     SoFi Technologies       -27.0%  $  -530
+
+5. SIMULACIÓN ESTRATEGIA ACTIVA DCA (12 MESES)
+------------------------------------------------------------------------
+  500 €/mes: Cash → Vanguard Global Stock Index Fund
+  300 €/mes: Cash → Amundi S&amp;P 500 II UCITS ETF
+
+  Cash se reduce de 6.8% → ~1.6% del patrimonio total.
+  Exposición RV indexada pasa de 44.1% → 47.2%.
+
+7. OPORTUNIDADES Y ALERTAS PRIORITARIAS
+------------------------------------------------------------------------
+[A1] Cash = 12,500€ (6.8%) TAE 2.5% &lt; coste hipotecario 3.9%
+  → DCA en marcha. Acelerar a 1,200€/mes.
+
+[A2] MyInvestor concentra 83,420€ (45.3%)
+  → Derivar aportaciones a Degiro / Interactive Brokers.
+
+[A3] Tech/AI sobrerepresentado (&gt;85% acciones USA + Fidelity Tech)
+  → Añadir Healthcare / Industriales.
+
+[A4] Pictet Clean Energy: -1,650€ (-19.8%). Sin catalizador visible.
+  → Revisar septiembre 2026. Vender si no mejora.
+
+[A5] Cripto: BTC + ETH = 12.0% (techo recomendado 10%)
+  → Si BTC &gt; 90.000€/BTC, venta parcial y reciclar en RV.
+========================================================================</div>
+
+    <div id="informe2" class="informe-viewer" style="display:none">========================================================================
+  INFORME DE OPTIMIZACIÓN DE CARTERA — MODELO MARKOWITZ
+  *** DEMO — Datos ficticios para demostración del sistema ***
+  Capital analizado: 184,270 EUR  |  Tasa libre riesgo: 3.15%
+========================================================================
+
+CARTERA ACTUAL (referencia)
+------------------------------------------------------------------------
+  Rendimiento esperado:    14.65%
+  Volatilidad anual:       18.85%
+  Ratio de Sharpe:          0.610
+
+  Activo                              Peso actual
+  ----------------------------------- -----------
+  RV Global MSCI World (Vanguard)         17.4%  (  32,055€)
+  RV USA S&amp;P500 (Amundi ETF)           12.8%  (  23,626€)
+  Fondo Tecnología (Fidelity)              8.7%  (  15,941€)
+  Roboadvisor Finizens                    11.5%  (  21,272€)
+  Bitcoin (físico)                         9.6%  (  17,674€)
+  Ethereum ETP                             2.7%  (   4,892€)
+  Acciones USA Large Cap                   8.2%  (  15,128€)
+  Acciones USA AI/Tech                     9.4%  (  17,341€)
+  Acciones USA Riesgo Alto                 4.4%  (   8,168€)
+  ETFs Temáticos (Agua/Cyber/EM)           8.4%  (  15,431€)
+  Efectivo                                 6.9%  (  12,741€)
+
+CARTERA ÓPTIMA — MÁXIMO SHARPE
+------------------------------------------------------------------------
+  Rendimiento esperado:    15.96%
+  Volatilidad anual:       18.15%
+  Ratio de Sharpe:          0.705   (+0.095 vs actual)
+
+  Activo                              Peso ópt   Actual   Cambio EUR
+  ----------------------------------- --------  -------  -----------
+  RV Global MSCI World (Vanguard)      35.1%     17.4%   +32,633€
+  RV USA S&amp;P500 (Amundi ETF)        40.0%     12.8%   +50,082€
+  Bitcoin (físico)                     13.6%      9.6%    +7,427€
+  Fondo Tecnología (Fidelity)           3.3%      8.7%    -9,909€
+  Roboadvisor Finizens                  5.0%     11.5%   -12,058€
+  Acciones USA Large Cap                2.0%      8.2%   -11,442€
+  Acciones USA AI/Tech                  0.0%      9.4%   -17,341€
+  Acciones USA Riesgo Alto              0.0%      4.4%    -8,168€
+  ETFs Temáticos (Agua/Cyber/EM)        0.0%      8.4%   -15,431€
+  Ethereum ETP                          0.0%      2.7%    -4,892€
+  Efectivo                              1.0%      6.9%   -10,898€
+
+CARTERA ÓPTIMA — MÍNIMA VOLATILIDAD
+------------------------------------------------------------------------
+  Rendimiento esperado:     9.91%
+  Volatilidad anual:        11.74%
+  Ratio de Sharpe:           0.576
+
+CARTERA ÓPTIMA — MÁXIMA RENTABILIDAD (vol≤20%)
+------------------------------------------------------------------------
+  Rendimiento esperado:    17.18%
+  Volatilidad anual:       20.00%
+  Ratio de Sharpe:          0.702   (+0.091 vs actual)
+
+ANÁLISIS FRONTERA EFICIENTE (50 puntos calculados)
+------------------------------------------------------------------------
+  Vol  9%  →  Rend  ~8.9%   Sharpe ~0.61
+  Vol 14%  →  Rend ~13.9%   Sharpe ~0.76  ← ZONA ÓPTIMA
+  Vol 18%  →  Rend ~16.8%   Sharpe ~0.75
+  Vol 22%  →  Rend ~19.5%   Sharpe ~0.74
+
+PLAN DE ACCIÓN — 3 PASOS
+------------------------------------------------------------------------
+  PASO 1 (INMEDIATO):
+    □ DCA 800€/mes → S&amp;P500 ETF Amundi exclusivamente.
+    □ No comprar más TSLA, RBLX ni SOFI.
+
+  PASO 2 (3-6 MESES):
+    □ Valorar venta TSLA + RBLX + SOFI (pérdidas ~8,750 USD).
+    □ Reubicar en S&amp;P500 ETF + AAPL/MSFT/META.
+    □ Revisar Ethereum ETP si ETH cae otro 15%.
+
+  PASO 3 (6-12 MESES):
+    □ Reducir Finizens 10% → ETFs Agua + Cyber.
+    □ Si BTC &gt; 90.000€/BTC → venta parcial 0.03 BTC y reciclar.
+    □ Revisar Pictet Clean Energy en sept-2026.
+
+INDICADORES DE SEGUIMIENTO
+------------------------------------------------------------------------
+  Sharpe ratio:              0.610  → objetivo &gt; 0.700
+  Volatilidad anual:        18.85%  → objetivo &lt; 15.00%
+  Peso efectivo:             6.91%  → objetivo &lt; 3.00%
+  Peso cripto total:        12.25%  → objetivo &lt; 10.00%
+  Peso especulativo:         4.43%  → objetivo = 0.00%
+========================================================================</div>
+
+    <div id="informe3" class="informe-viewer" style="display:none">========================================================================
+  HIERARCHICAL RISK PARITY (HRP) -- Lopez de Prado (2016)
+  Generado: 2026-04-13 17:35  ·  Capital referencia: 252,851 EUR
+  Datos historicos: 963 sesiones  (2021-04-14 → 2026-04-10)
+========================================================================
+
+  ALGORITMO:
+  1. Distancia de correlacion  d(i,j) = sqrt(0.5 x (1 - rho_ij))
+  2. Ward linkage → dendrograma jerarquico
+  3. Cuasi-diagonalizacion → reordenacion de la matriz de covarianza
+  4. Biseccion recursiva   → pesos por varianza-inversa por cluster
+
+  VENTAJA vs MARKOWITZ:
+  · No requiere invertir la matriz de covarianza (inestable con muchos activos)
+  · Mas robusto en episodios de correlacion alta (crisis, shocks geopoliticos)
+  · Los pesos convergen aunque las correlaciones sean muy volatiles
+
+========================================================================
+  PESOS HRP
+========================================================================
+
+  Clase                                 HRP puro  HRP acotado    Markowitz
+  ------------------------------------------------------------------------
+  Monetario (Groupama)                      0.0%        10.0%         3.8%
+  RV Global MSCI (MyInvestor)               0.0%        25.0%         5.0%
+  RV Global MSCI (Openbank)                 0.0%         0.0%        30.0%
+  RV USA S&amp;P500 (Vanguard)              0.0%        10.0%         2.0%
+  Roboadvisor Indexa                        0.0%        25.0%        25.0%
+  Bitcoin (fisico + ETP)                    0.0%        10.0%         0.0%
+  Acciones USA Large Cap                    0.0%        10.0%        25.0%
+  Acciones USA Especulativas                0.0%         0.0%         0.0%
+  ETFs Tematicos                            0.0%         0.0%         0.0%
+  Cash                                    100.0%        10.0%         1.0%
+
+  HRP puro: asignacion natural del algoritmo, sin restricciones de perfil.
+  HRP acotado: con los mismos limites min/max que Markowitz (perfil agresivo).
+
+========================================================================
+  METRICAS COMPARATIVAS (datos historicos reales · anualizado)
+========================================================================
+
+  Escenario                   Sharpe  Sortino     Rend     Vol  CVaR 95%   MaxDD
+  ------------------------------------------------------------------------
+  HRP puro (Cash 100%)         —       —          3.2%    0.0%     +0.2%    0.0%
+  HRP acotado                  0.457   0.628      9.0%   12.8%    -30.4%  -18.9%
+  Markowitz Max Sharpe         0.676   0.897     12.7%   14.2%    -33.6%  -17.3%
+
+  CVaR 95%: perdida diaria esperada en el 5% de peores sesiones x sqrt(252).
+  Sortino: penaliza solo la volatilidad de retornos negativos.
+
+------------------------------------------------------------------------
+  HRP ACOTADO vs MARKOWITZ MAX SHARPE
+------------------------------------------------------------------------
+  Sharpe:       -0.219  (Markowitz supera - optimiza explicitamente para ello)
+  Rendimiento:  -3.7%
+  Volatilidad:  -1.4%   (HRP es mas conservador = menos riesgo)
+
+  HRP prioriza estabilidad estructural.
+  Markowitz prioriza maximizar Sharpe historico.
+
+========================================================================
+  CONTRIBUCION AL RIESGO -- HRP ACOTADO
+========================================================================
+
+  Clase                                   Peso      RC%    Diferencia
+  ------------------------------------------------------------------
+  Monetario (Groupama)                   10.0%      0.0%   ↓ -10.0pp  [ESCUDO]
+  RV Global MSCI (MyInvestor)            25.0%     23.2%   ≈  -1.8pp
+  RV Global MSCI (Openbank)               0.0%      0.0%   ≈  +0.0pp  [ALTA CORR w/ Roboadvisor]
+  RV USA S&amp;P500 (Vanguard)            10.0%     10.8%   ≈  +0.8pp
+  Roboadvisor Indexa                     25.0%     22.3%   ≈  -2.7pp
+  Bitcoin (fisico + ETP)                 10.0%     25.4%   ↑ +15.4pp  [ATENCION: RC>>PESO]
+  Acciones USA Large Cap                 10.0%     18.4%   ↑  +8.4pp  [RC>PESO]
+  Acciones USA Especulativas              0.0%      0.0%   ≈  +0.0pp
+  ETFs Tematicos                          0.0%      0.0%   ≈  +0.0pp
+  Cash                                   10.0%      0.0%   ↓ -10.0pp  [ESCUDO]
+
+  CLAVE: Bitcoin con solo 10% del capital genero el 25.4% del riesgo total.
+  → Reducir Bitcoin o compensar con mas Monetario / Cash para equilibrar el perfil.
+
+========================================================================
+  CONTEXTO DE MERCADO  [datos: 2026-04-14]
+========================================================================
+
+  Score tension macro:   78/100  [ALTO]
+  Drivers: Oro +49% YTD (+25pts) · Brent +47% YTD (+20pts) ·
+           Gold vol ratio 1.6x (+20pts) · Gold vs SP500 +44.5pp (+13pts)
+
+  Brent:   $95.4/barril  (YTD: +47.0%)
+  VIX:     NORMAL  (18.4 pts)  |  Regimen SP500: ALCISTA (+4.9% vs SMA200)
+  Fear &amp; Greed: 21/100 — Extreme Fear  (Δ7d: +10)
+  Sentimiento comunidades inversoras: INTEL, TESLA, APPLE — virales: ASML, NIKE
+
+  ALERTAS:
+  ⚠  Brent +47% YTD ($95/barril): presion energetica persistente
+  ⚠  Oro +49% YTD: señal de refugio — revisar exposicion a activos de riesgo
+  ⚠  Tensions geo score 78/100: conflictos activos con señales de dialogo
+  ✅  SP500 cruza SMA200 al alza (+4.9%): regimen cambia a ALCISTA
+  ⚡  Fear &amp; Greed 21 (Extreme Fear) con precio alcista: divergencia señal de entrada
+
+  IMPLICACION PARA HRP:
+  Score tension ALTO → HRP es preferible a Markowitz en este entorno.
+  Las correlaciones estan inestables. La biseccion recursiva es mas robusta
+  que la inversion de covarianza (que amplifica errores de estimacion).
+
+========================================================================
+  Modulo: 03b_optimizador_hrp.py  |  Tiempo: ~0.7s
+  Salidas: hrp_pesos.csv · informe_hrp.txt · hrp_01-03.png
+========================================================================</div>
+
+    <div id="informe4" class="informe-viewer" style="display:none">========================================================================
+  INFORME DE RECOMENDACIÓN DE CARTERA — MÓDULO 04
+  *** DEMO — Datos ficticios para demostración del sistema ***
+  Generado: 2026-04-14  ·  Capital: 180.000€  ·  Horizonte: 18 años
+========================================================================
+
+  PERFIL DEL INVERSOR:
+  Edad: 42  ·  Plataformas: MyInvestor, Degiro
+  Aversión drawdown: -30%  ·  Aportación mensual: 2.000€
+  Capital objetivo: 1.200.000€
+
+  FILOSOFÍA SELECCIONADA: clasico_espana
+  Referencia: Indexa Capital · Bogle-style UCITS
+  Sesgo a fondos de acumulación traspasables en MyInvestor/OpenBank.
+
+------------------------------------------------------------------------
+  UNIVERSO FILTRADO (criterios: plataformas MyInvestor + Degiro)
+------------------------------------------------------------------------
+  Productos disponibles: 14 de 24 del universo total
+  Excluidos: productos de openbank/ibkr exclusivos, fondos monetarios low-TER
+  Criterio fiscal: prioridad fondos UCITS traspasables sin tributar (IRPF)
+
+========================================================================
+  CARTERA RECOMENDADA — PESOS HRP
+========================================================================
+
+  Producto                                    Ticker           Peso   TER   Sharpe5a
+  ---------------------------------------------------------------------------------
+  Fidelity MSCI World Index EUR Acc           0P0000MTIB.F    31.6%  0.12%   0.730
+  Amundi Index MSCI World EUR Acc             0P0001M26X.F    24.8%  0.18%   0.730
+  Amundi Index S&amp;P500 EUR Acc                 0P0001ERCL.F    20.9%  0.15%   0.820
+  iShares Core Global Agg Bond ETF (Hdg)      AGGH.L          13.4%  0.10%   0.410
+  Invesco Physical Gold ETC                   SGLD.L           9.3%  0.12%   0.590
+
+  TER MEDIO PONDERADO:    0.188%   → coste anual estimado sobre 180.000€: ~338€/año
+  RENDIMIENTO ESPERADO:   6.1%/año (ponderado por pesos HRP y rend. histórico 5a)
+  SHARPE ESTIMADO:        0.526
+
+========================================================================
+  PROYECCIÓN A 18 AÑOS
+========================================================================
+
+  Capital inicial:        180.000€
+  Aportación mensual:       2.000€
+  Total aportado (18a):    432.000€
+  Capital proyectado:    1.299.000€   (+867.000€ vs solo aportaciones)
+  Rentabilidad implícita: ×2.84 sobre capital total aportado
+
+  Escenarios:
+    Pesimista  (rend -2pp = 4.1%/año):    ~  912.000€
+    Central    (rend 6.1%/año):           ~1.299.000€
+    Optimista  (rend +2pp = 8.1%/año):   ~1.838.000€
+
+  Objetivo declarado: 1.200.000€
+  Estado: ALCANZABLE en escenario central con alta probabilidad.
+
+========================================================================
+  COMPARATIVA FILOSOFÍAS
+========================================================================
+
+  Filosofía           TER    Sharpe  Rend.  Max DD   Nota
+  -------------------------------------------------------
+  ★ clasico_espana   0.19%   0.54   6.1%   -18%    SELECCIONADA
+  bogle_3fund        0.16%   0.61   7.2%   -22%    sin bonos España
+  dalio_all_weather  0.22%   0.48   5.8%   -12%    sin oro UCITS limpio
+  browne_permanent   0.20%   0.44   5.2%   -11%    demasiado conservadora
+  swensen_yale       0.28%   0.55   6.8%   -24%    REITs difíciles en EU
+  buffett_value      0.25%   0.62   7.5%   -28%    concentrado USA value
+  ark_disruptive     0.65%   0.38   9.1%   -72%    alta vol - no UCITS puro
+
+========================================================================
+  Módulo: 04_recomendador.py  |  Tiempo: ~5s
+  Salidas: recomendacion_cartera.json · informe_recomendacion.txt
+           pesos_recomendados.csv · rec_01-04.png
+========================================================================</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ TAB: CÓMO FUNCIONA -->
+  <div class="tab-panel" id="panel-como">
+    <div class="sec-label">Arquitectura del sistema</div>
+    <h2 class="sec-title">Del CSV al informe en 7 pasos</h2>
+    <p class="sec-sub">Flujo reproducible 100% local. Cada ejecución regenera todos los outputs desde cero con datos de mercado reales.</p>
+
+    <!-- REAL DATA ENGINE HIGHLIGHT -->
+    <div class="card" style="margin-top:1.5rem; border-color:rgba(16,185,129,.35); background:rgba(16,185,129,.04)">
+      <div style="display:flex; align-items:flex-start; gap:1rem">
+        <div style="font-size:1.8rem; line-height:1">🛡️</div>
+        <div>
+          <div style="font-weight:700; font-size:.95rem; color:var(--accent2); margin-bottom:.4rem">Motor de datos real</div>
+          <div style="font-size:.85rem; color:var(--text-muted); line-height:1.6">
+            El módulo <code>01_descarga_datos.py</code> descarga 26 activos y 8 indicadores macro
+            directamente de la <strong>Yahoo Finance v8 API</strong> — 5 años de historia, correlaciones empíricas reales,
+            contexto geopolítico dinámico, índice de miedo/codicia y análisis de comunidades inversoras.
+            Última ejecución: <strong>15 abr 2026 · ~3min</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem">
+      <div class="step-row">
+        <div class="step-icon">📂</div>
+        <div class="step-body">
+          <div class="step-title">1 · Preparar datos de entrada</div>
+          <div class="step-desc">Actualizar <code>posiciones_actuales.csv</code> con valoraciones reales y <code>perfil_inversor.json</code> con horizonte y restricciones. Un único punto de verdad por tipo de dato.</div>
+          <span class="step-tag">posiciones_actuales.csv · posiciones_bolsa_americana.csv · perfil_inversor.json</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">📡</div>
+        <div class="step-body">
+          <div class="step-title">2 · Descargar datos + inteligencia de mercado <span style="background:rgba(16,185,129,.15); color:var(--accent2); font-size:.7rem; padding:.15rem .5rem; border-radius:4px; margin-left:.4rem">AMPLIADO</span></div>
+          <div class="step-desc">El módulo <code>01_descarga_datos.py</code> descarga 26 activos y 8 indicadores macro. Genera <code>parametros_mercado.json</code> con rentabilidades empíricas, correlaciones reales y contexto macro completo. Incluye: <strong>índice de miedo/codicia</strong> (escala 0–100 + histórico 7 días), <strong>análisis de menciones</strong> en comunidades inversoras con detección de tickers virales (+50% en 24h), <strong>contexto geopolítico dinámico</strong> (scraping de noticias, score de tensión 0–100, catalizadores positivos) y <strong>señales anticipadas</strong> que detectan transiciones de régimen antes de que el precio lo confirme. En paralelo, escanea <strong>35+ sectores</strong> y calcula tendencias con EMA α=0.3.</div>
+          <span class="step-tag">python modelos/01_descarga_datos.py &nbsp;·&nbsp; ~3min · ejecutar 1 vez/día</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">🔬</div>
+        <div class="step-body">
+          <div class="step-title">3 · Ejecutar análisis de cartera</div>
+          <div class="step-desc">El módulo <code>02_analisis_cartera.py</code> genera la radiografía completa: distribución, plusvalías latentes con impacto IRPF, alertas sectoriales y proyección de la estrategia DCA activa. Usa el caché JSON para la sección de rendimientos históricos sin depender de yfinance. Produce 6 gráficos PNG + informe de texto.</div>
+          <span class="step-tag">python modelos/02_analisis_cartera.py &nbsp;·&nbsp; ~5s (usa caché JSON)</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">⚡</div>
+        <div class="step-body">
+          <div class="step-title">4 · Ejecutar optimizador Markowitz</div>
+          <div class="step-desc">El módulo <code>03_optimizador.py</code> carga los parámetros reales del JSON (rentabilidades y correlaciones empíricas), lanza 50 puntos de arranque SLSQP y calcula 4 escenarios óptimos. Incluye Sortino, CVaR 95%, escenarios de estrés históricos y sección macro. Produce 3 gráficos + CSV de pesos.</div>
+          <span class="step-tag">python modelos/03_optimizador.py &nbsp;·&nbsp; ~45s</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">�</div>
+        <div class="step-body">
+          <div class="step-title">5 · Ejecutar HRP (Hierarchical Risk Parity) <span style="background:rgba(139,92,246,.15); color:var(--accent4); font-size:.7rem; padding:.15rem .5rem; border-radius:4px; margin-left:.4rem">NUEVO</span></div>
+          <div class="step-desc">El módulo <code>03b_optimizador_hrp.py</code> aplica el algoritmo Hierarchical Risk Parity (López de Prado 2016): árbol Ward, cuasi-diagonalización y bisección recursiva por varianza-inversa. Sin invertir la matriz de covarianza. Produce 3 gráficos de análisis de clustering y contribución al riesgo + comparativa con Markowitz.</div>
+          <span class="step-tag">python modelos/03b_optimizador_hrp.py &nbsp;·&nbsp; ~1s</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">🎯</div>
+        <div class="step-body">
+          <div class="step-title">6 · Generar cartera recomendada <span style="background:rgba(245,158,11,.15); color:var(--accent); font-size:.7rem; padding:.15rem .5rem; border-radius:4px; margin-left:.4rem">NUEVO</span></div>
+          <div class="step-desc">El módulo <code>04_recomendador.py</code> filtra el universo de 24 productos UCITS por plataformas disponibles (MyInvestor · Degiro), aplica HRP sobre el subconjunto válido y ajusta a la filosofía del perfil. Calcula TER medio ponderado, Sharpe estimado, proyección de capital a 18 años y ventaja fiscal IRPF. Compara 7 filosofías (Dalio, Browne, Bogle, Swensen, Buffett, ARK, Clásica España).</div>
+          <span class="step-tag">python modelos/04_recomendador.py &nbsp;·&nbsp; ~5s · TER 0.19% · Sharpe 0.526 · Proy. 1.3M€</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-icon">📊</div>
+        <div class="step-body">
+          <div class="step-title">7 · Revisar en notebooks Jupyter</div>
+          <div class="step-desc">Las versiones interactivas permiten exploración ad-hoc: tablas con formato, gráficos inline y sección de impacto fiscal del rebalanceo (art. 49 LIRPF).</div>
+          <span class="step-tag">analisis_cartera.ipynb · optimizacion_cartera.ipynb</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ficheros -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:1.5rem">
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">📂 Entradas (demo/datos/)</div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem">cartera_actual.csv</span><span style="color:var(--text-muted); font-size:.78rem">21 filas</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem">posiciones_actuales.csv</span><span style="color:var(--text-muted); font-size:.78rem">12 posiciones</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem">posiciones_bolsa_americana.csv</span><span style="color:var(--text-muted); font-size:.78rem">12 tickers USA</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem">estrategia_activa.csv</span><span style="color:var(--text-muted); font-size:.78rem">2 estrategias DCA</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem">perfil_inversor.json</span><span style="color:var(--text-muted); font-size:.78rem">perfil mod-agresivo</span></div>
+      </div>
+      <div class="card">
+        <div style="font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); margin-bottom:1rem">📊 Salidas (demo/resultados/)</div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">parametros_mercado.json</span><span style="color:var(--text-muted); font-size:.78rem">26 activos + macro</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">informe_cartera.txt</span><span style="color:var(--text-muted); font-size:.78rem">generado por script</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">informe_optimizacion.txt</span><span style="color:var(--text-muted); font-size:.78rem">Sortino · CVaR · macro</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">pesos_optimos.csv</span><span style="color:var(--text-muted); font-size:.78rem">4 escenarios Markowitz</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent2)">graficos/01–09.png</span><span style="color:var(--text-muted); font-size:.78rem">análisis + optim. · 150 dpi</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent4)">hrp_pesos.csv</span><span style="color:var(--text-muted); font-size:.78rem">HRP puro + acotado + RC%</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent4)">informe_hrp.txt</span><span style="color:var(--text-muted); font-size:.78rem">comparativa + tensión macro</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent4)">graficos/hrp_01–03.png</span><span style="color:var(--text-muted); font-size:.78rem">dendrograma + pesos + RC</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent)">informe_recomendacion.txt</span><span style="color:var(--text-muted); font-size:.78rem">TER · Sharpe · proyección</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent)">recomendacion_cartera.json</span><span style="color:var(--text-muted); font-size:.78rem">datos estructurados</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent)">pesos_recomendados.csv</span><span style="color:var(--text-muted); font-size:.78rem">5 productos · pesos HRP</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent3)">alertas_tendencias.txt</span><span style="color:var(--text-muted); font-size:.78rem">35 sectores escaneados</span></div>
+        <div class="asset-row"><span class="asset-name" style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--accent3)">graficos/rec_01–04.png</span><span style="color:var(--text-muted); font-size:.78rem">pesos · proyección · TER · radar</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /hero -->
+
+<div class="full-sep" style="margin-top:3rem"></div>
+
+<!-- COPYRIGHT -->
+<div class="footer-copyright">
+  <span>🔒</span>
+  <strong>© 2026 PortfolioQuant · Todos los derechos reservados.</strong>
+  Los datos mostrados son completamente ficticios. No representan asesoramiento financiero.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>PortfolioQuant</strong> · Demo interactiva · Python 3.14 · Markowitz · HRP López de Prado · SLSQP
+  <br><br>
+  <a href="index.html" style="color:var(--accent); text-decoration:none; font-size:.85rem">← Volver a la landing</a>
+</footer>
+
+<script>
+  // ── TABS ──
+  document.querySelectorAll('.tab[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab[data-tab]').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── INFORME SWITCHER ──
+  function showInforme(n) {
+    [1,2,3,4].forEach(i => {
+      document.getElementById('informe'+i).style.display = n === i ? 'block' : 'none';
+      document.getElementById('btn-inf'+i).classList.toggle('active', n === i);
+    });
+  }
+
+  // ── LIGHTBOX ──
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lb-img');
+  const lbCap  = document.getElementById('lb-caption');
+  const cards  = Array.from(document.querySelectorAll('.gallery-card'));
+  let currentIdx = 0;
+
+  function openLB(idx) {
+    currentIdx = idx;
+    const card = cards[idx];
+    lbImg.src    = card.dataset.src;
+    lbCap.textContent = card.dataset.caption;
+    lb.classList.add('open');
+  }
+  function closeLB() { lb.classList.remove('open'); }
+  function prevLB()  { openLB((currentIdx - 1 + cards.length) % cards.length); }
+  function nextLB()  { openLB((currentIdx + 1) % cards.length); }
+
+  cards.forEach((c, i) => c.addEventListener('click', () => openLB(i)));
+  document.getElementById('lb-close').addEventListener('click', closeLB);
+  document.getElementById('lb-prev').addEventListener('click', prevLB);
+  document.getElementById('lb-next').addEventListener('click', nextLB);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowLeft') prevLB();
+    if (e.key === 'ArrowRight') nextLB();
+  });
+
+  // ── FADE IN ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

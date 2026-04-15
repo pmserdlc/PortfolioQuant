@@ -1,0 +1,191 @@
+========================================================================
+  INFORME DE OPTIMIZACIÃ“N DE CARTERA â€” MODELO MARKOWITZ
+  Capital analizado: 184,270 EUR  |  Tasa libre riesgo: 3.15%
+========================================================================
+
+CARTERA ACTUAL (referencia)
+------------------------------------------------------------------------
+  Rendimiento esperado:    11.23%
+  Volatilidad anual:       17.31%
+  Ratio de Sharpe:         0.467
+
+  Activo                              Peso actual
+  ----------------------------------- -----------
+  Vanguard Global Stock Index Fund EUR Acc       17.1%  (   31,450â‚¬)
+  Amundi S&P 500 II UCITS ETF EUR Acc       12.6%  (   23,180â‚¬)
+  Fidelity Funds Global Technology Fund A-EUR        8.5%  (   15,640â‚¬)
+  Pictet Clean Energy Fund I EUR             4.5%  (    8,350â‚¬)
+  Finizens Cartera 7                        11.3%  (   20,870â‚¬)
+  21Shares Ethereum Staking ETP              2.6%  (    4,800â‚¬)
+  iShares Global Water USD ACC               1.9%  (    3,580â‚¬)
+  ETFS ISE Cyber Security UCITS ETF          1.7%  (    3,210â‚¬)
+  Xtrackers MSCI Emerging Markets Swap        1.9%  (    3,480â‚¬)
+  Acciones USA (resumen)                    21.6%  (   39,870â‚¬)
+  Bitcoin fisico                             9.4%  (   17,340â‚¬)
+  Cash EUR                                   6.8%  (   12,500â‚¬)
+
+CARTERA Ã“PTIMA â€” MÃXIMO SHARPE
+------------------------------------------------------------------------
+  Rendimiento esperado:    13.36%
+  Volatilidad anual:       14.78%
+  Ratio de Sharpe:         0.691
+  Mejora Sharpe vs actual:  +0.224
+
+  Activo                              Peso Ã³ptimo     Actual    Cambio EUR
+  ----------------------------------- -----------  ---------  ------------
+  Vanguard Global Stock Index Fund EUR Acc       14.4%      17.1%        -4,860â‚¬
+  Amundi S&P 500 II UCITS ETF EUR Acc       80.0%      12.6%      +124,236â‚¬
+  Fidelity Funds Global Technology Fund A-EUR        0.0%       8.5%       -15,640â‚¬
+  Pictet Clean Energy Fund I EUR             0.0%       4.5%        -8,350â‚¬
+  Finizens Cartera 7                         0.0%      11.3%       -20,870â‚¬
+  21Shares Ethereum Staking ETP              0.7%       2.6%        -3,482â‚¬
+  iShares Global Water USD ACC               0.0%       1.9%        -3,580â‚¬
+  ETFS ISE Cyber Security UCITS ETF          0.0%       1.7%        -3,210â‚¬
+  Xtrackers MSCI Emerging Markets Swap        0.0%       1.9%        -3,480â‚¬
+  Acciones USA (resumen)                     0.0%      21.6%       -39,870â‚¬
+  Bitcoin fisico                             0.7%       9.4%       -16,121â‚¬
+  Cash EUR                                   4.2%       6.8%        -4,773â‚¬
+
+CARTERA Ã“PTIMA â€” MÃNIMA VOLATILIDAD
+------------------------------------------------------------------------
+  Rendimiento esperado:     3.40%
+  Volatilidad anual:        2.40%
+  Ratio de Sharpe:         0.104
+  Mejora Sharpe vs actual:  -0.363
+
+  Activo                              Peso Ã³ptimo     Actual    Cambio EUR
+  ----------------------------------- -----------  ---------  ------------
+  Vanguard Global Stock Index Fund EUR Acc        0.0%      17.1%       -31,450â‚¬
+  Amundi S&P 500 II UCITS ETF EUR Acc        0.0%      12.6%       -23,180â‚¬
+  Fidelity Funds Global Technology Fund A-EUR        0.0%       8.5%       -15,640â‚¬
+  Pictet Clean Energy Fund I EUR             0.0%       4.5%        -8,350â‚¬
+  Finizens Cartera 7                        20.0%      11.3%       +15,984â‚¬
+  21Shares Ethereum Staking ETP              0.0%       2.6%        -4,800â‚¬
+  iShares Global Water USD ACC               0.0%       1.9%        -3,580â‚¬
+  ETFS ISE Cyber Security UCITS ETF          0.0%       1.7%        -3,210â‚¬
+  Xtrackers MSCI Emerging Markets Swap        0.0%       1.9%        -3,480â‚¬
+  Acciones USA (resumen)                     0.0%      21.6%       -39,870â‚¬
+  Bitcoin fisico                             0.0%       9.4%       -17,340â‚¬
+  Cash EUR                                  80.0%       6.8%      +134,916â‚¬
+
+CARTERA Ã“PTIMA â€” MÃXIMA RENTABILIDAD (vol â‰¤ 18%)
+------------------------------------------------------------------------
+  Rendimiento esperado:    14.53%
+  Volatilidad anual:       18.00%
+  Ratio de Sharpe:         0.632
+  Mejora Sharpe vs actual:  +0.165
+
+  Activo                              Peso Ã³ptimo     Actual    Cambio EUR
+  ----------------------------------- -----------  ---------  ------------
+  Vanguard Global Stock Index Fund EUR Acc        9.2%      17.1%       -14,581â‚¬
+  Amundi S&P 500 II UCITS ETF EUR Acc       80.0%      12.6%      +124,236â‚¬
+  Fidelity Funds Global Technology Fund A-EUR        0.0%       8.5%       -15,640â‚¬
+  Pictet Clean Energy Fund I EUR             0.0%       4.5%        -8,350â‚¬
+  Finizens Cartera 7                         0.0%      11.3%       -20,870â‚¬
+  21Shares Ethereum Staking ETP              5.4%       2.6%        +5,083â‚¬
+  iShares Global Water USD ACC               0.0%       1.9%        -3,580â‚¬
+  ETFS ISE Cyber Security UCITS ETF          0.0%       1.7%        -3,210â‚¬
+  Xtrackers MSCI Emerging Markets Swap        0.0%       1.9%        -3,480â‚¬
+  Acciones USA (resumen)                     0.0%      21.6%       -39,870â‚¬
+  Bitcoin fisico                             5.5%       9.4%        -7,237â‚¬
+  Cash EUR                                   0.0%       6.8%       -12,500â‚¬
+
+RECOMENDACIONES DE REBALANCEO
+------------------------------------------------------------------------
+  VENDER   Vanguard Global Stock Index Fund EUR Acc     -14,581 EUR  (17.1% â†’ 9.2%)
+  COMPRAR  Amundi S&P 500 II UCITS ETF EUR Acc    +124,236 EUR  (12.6% â†’ 80.0%)
+  VENDER   Fidelity Funds Global Technology Fund A-EUR     -15,640 EUR  (8.5% â†’ 0.0%)
+  VENDER   Pictet Clean Energy Fund I EUR           -8,350 EUR  (4.5% â†’ 0.0%)
+  VENDER   Finizens Cartera 7                      -20,870 EUR  (11.3% â†’ 0.0%)
+  COMPRAR  21Shares Ethereum Staking ETP            +5,083 EUR  (2.6% â†’ 5.4%)
+  VENDER   iShares Global Water USD ACC             -3,580 EUR  (1.9% â†’ 0.0%)
+  VENDER   ETFS ISE Cyber Security UCITS ETF        -3,210 EUR  (1.7% â†’ 0.0%)
+  VENDER   Xtrackers MSCI Emerging Markets Swap      -3,480 EUR  (1.9% â†’ 0.0%)
+  VENDER   Acciones USA (resumen)                  -39,870 EUR  (21.6% â†’ 0.0%)
+  VENDER   Bitcoin fisico                           -7,237 EUR  (9.4% â†’ 5.5%)
+  VENDER   Cash EUR                                -12,500 EUR  (6.8% â†’ 0.0%)
+
+NOTAS IMPORTANTES
+------------------------------------------------------------------------
+  1. Los rendimientos esperados son estimaciones histÃ³ricas de largo plazo.
+     No garantizan rentabilidad futura.
+  2. Bitcoin: incertidumbre muy alta. El modelo lo techa al 15%.
+  3. Plan de Pensiones Indexa: excluido del rebalanceo (fiscalidad especial).
+  4. MSCI Openbank: si es IIC espaÃ±ola, el traspaso a MyInvestor NO tributa.
+     Consultar con la gestora antes de ejecutar.
+  5. Acciones USA especulativas: mantener mÃ­nimo para aflorar pÃ©rdidas fiscales.
+  6. Hipoteca al 1,5%: todos los activos del modelo la superan ampliamente.
+     No tiene sentido amortizar anticipada.
+========================================================================
+  MÉTRICAS AVANZADAS DE RIESGO
+========================================================================
+
+  Escenario                             Sortino   CVaR 95%   Sharpe
+  ----------------------------------- --------- ---------- --------
+  Cartera actual                          0.661     -24.5%    0.467
+  Máximo Sharpe                           0.977     -17.1%    0.691
+  Mínima Volatilidad                      0.147      -1.6%    0.104
+  Máx Rend (vol≤18%)                      0.894     -22.6%    0.632
+
+  CVaR 95%: pérdida esperada anual en el 5% de peores escenarios (distribución normal).
+  Sortino:  como Sharpe pero penalizando solo la volatilidad bajista.
+
+========================================================================
+  ANÁLISIS DE ESTRÉS — ESCENARIOS HISTÓRICOS
+========================================================================
+
+  Escenario                                      Cartera actual   Máx Sharpe
+  --------------------------------------------- --------------- ------------
+  COVID Crash — Mar 2020 (1 mes)                          0.0%         0.0%
+                                                (         +0€)  (      +0€)
+  Bear 2022 — Tipos al alza (año completo)                0.0%         0.0%
+                                                (         +0€)  (      +0€)
+  Corrección Tech 30% (hipotético 2026)                   0.0%         0.0%
+                                                (         +0€)  (      +0€)
+
+  Nota: los shocks son las caídas máximas históricas de cada clase de activo
+  en ese episodio. La cartera real puede diferir según correlaciones de crisis.
+
+========================================================================
+========================================================================
+  CONTEXTO DE MERCADO  [datos: 2026-04-14]
+========================================================================
+
+  VIX actual:          18.6  (régimen: NORMAL,  percentil 1a: 62%)
+  EUR/USD:           1.1784  (tendencia 90d: +1.2%)
+  Yield 10Y USA:       4.30%  (slope 30y-10y: +0.60pp)
+  Régimen S&P500:    ALCISTA     (vs SMA200: +3.7%)
+  Oro rendto 1 año:   +48.9%  (vol ratio: 1.6x histórico)
+  Brent crudo:       $ 98.4/barril  (YTD: +51.7%,  90d: +57.0%)
+  Score tensión:      78/100  [ALTO]  drivers: oro_vol_ratio=1.6x (+20), oro_vs_sp500=45.2pp (+25), vix_pct=62% (+8), brent_ytd=52% (+25)
+
+  ALERTAS AUTOMÁTICAS:
+  ⚠  [EUR/USD] EUR/USD estable. No requiere acción de cobertura inmediata.
+  ⚠  [Oro] Oro +49% anual — señal de búsqueda de refugio. Revisar exposición a activos de riesg
+  ⚠  [Energía] Brent +52% anual (≈$98/barril) — shock energético activo. Inflación persistente 
+  ⚠  [Cripto] Bitcoin en drawdown histórico elevado (-77%). Posición táctica — considerar reduc
+  ⚠  [Tensión macro] NIVEL ALTO (score=78/100, drivers: oro_vol_ratio=1.6x (+20), oro_vs_sp500=
+  ⚠  [Geopolítico] Conflicto EEUU–Irán activo con crudo elevado — mantener exposición moderada 
+  ⚠  [Inflación] Shock energético persistente: tipos altos por más tiempo — favorece monetario 
+  ⚠  [Tech/IA] Riesgo de corrección sector IA/software en 2026 — revisar concentración en ETFs 
+
+------------------------------------------------------------------------
+  CONTEXTO GEOPOLÍTICO  [registrado: 2026-04-13]
+------------------------------------------------------------------------
+  Escenario global:  TENSO
+
+  ▶ Conflicto EEUU–Irán (2026)  [activo — negociaciones en curso]
+    Tensión geopolitica en Oriente Medio con precios del crudo disparados. Conversaciones de acuerdo en curso pero clima de alta incertidumbre. Riesgo de escalada en el Estrecho de Ormuz.
+
+  ⚠ Inflación persistente por shock energético
+    Crudo elevado por conflicto EEUU-Irán mantiene inflación por encima de objetivos de bancos centrales. Tipos de interés altos por más tiempo. Entorno desfavorable para duración en renta fija.
+    Beneficiados: monetario, oro, cash
+    Perjudicados: rv_global, rv_usa, tematico
+
+  ⚠ Riesgo de corrección severa en sector IA/software (2026)
+    Valoraciones del sector tech/IA en máximos históricos. Riesgo de reversión de múltiplos ante desaceleración de beneficios, decepciones en resultados o retirada de capital especulativo. Especialmente relevante para posiciones especulativas de pequeña capitalización.
+
+  IMPLICACIONES PARA LA CARTERA:
+  + Mercado en tendencia alcista — mantener sesgo inversor. DCA sistemático.
+
+========================================================================
