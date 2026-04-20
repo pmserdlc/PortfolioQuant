@@ -1,20 +1,20 @@
 {
-  "fecha": "2026-04-14",
+  "fecha": "2026-04-20",
   "filosofia_seleccionada": "bogle_3fund",
   "metricas": {
-    "ter_medio_pct": 0.118632,
-    "rend_esperado_pct": 6.071984,
-    "vol_simplificada_pct": 8.4935592,
-    "max_dd_pct": 20.402524,
-    "sharpe_estimado": 0.34402350426379275,
+    "ter_medio_pct": 0.142352,
+    "rend_esperado_pct": 6.043059,
+    "vol_simplificada_pct": 8.604808799999999,
+    "max_dd_pct": 20.766838,
+    "sharpe_estimado": 0.3362142107868552,
     "n_productos": 3,
-    "pct_traspasable": 39.65
+    "pct_traspasable": 39.51
   },
   "cartera_recomendada": [
     {
       "ticker": "CBUE.L",
       "clase": "bonos_global",
-      "peso_pct": 46.95,
+      "peso_pct": 47.06,
       "isin": "IE00BD49RJ98",
       "nombre": "iShares $ Treasury 7-10yr UCITS ETF EUR Hdg",
       "categoria": "bonos_gobierno",
@@ -31,35 +31,35 @@
       "ya_en_cartera": false
     },
     {
-      "ticker": "0P0000MTIB.F",
+      "ticker": "0P0000TKSA.F",
       "clase": "rv_global",
-      "peso_pct": 39.65,
-      "isin": "IE00BYX5NX33",
-      "nombre": "Fidelity MSCI World Index EUR Acc",
+      "peso_pct": 39.51,
+      "isin": "IE00B03HD191",
+      "nombre": "Vanguard Global Stock Index Fund EUR Acc",
       "categoria": "rv_global",
-      "ter_pct": 0.12,
-      "sharpe_5a": 0.73,
-      "rend_5a_pct": 12.0,
-      "vol_5a_pct": 14.8,
-      "max_dd_5a_pct": -18.1,
+      "ter_pct": 0.18,
+      "sharpe_5a": 0.71,
+      "rend_5a_pct": 11.8,
+      "vol_5a_pct": 15.2,
+      "max_dd_5a_pct": -19.0,
       "traspasable": true,
       "plataformas": [
         "myinvestor",
         "openbank"
       ],
-      "ya_en_cartera": false
+      "ya_en_cartera": true
     },
     {
       "ticker": "EIMI.L",
       "clase": "rv_emergentes",
-      "peso_pct": 13.39,
+      "peso_pct": 13.43,
       "isin": "IE00BKM4GZ66",
       "nombre": "iShares Core MSCI EM IMI ETF",
       "categoria": "rv_emergentes",
       "ter_pct": 0.18,
-      "sharpe_5a": 0.272,
-      "rend_5a_pct": 8.06,
-      "vol_5a_pct": 18.04,
+      "sharpe_5a": 0.298,
+      "rend_5a_pct": 8.53,
+      "vol_5a_pct": 18.08,
       "max_dd_5a_pct": -35.66,
       "traspasable": false,
       "plataformas": [
@@ -170,15 +170,15 @@
       "orden": 13,
       "accion": "COMPRAR",
       "producto_destino": "CBUE.L",
-      "importe_eur": 86514.76,
+      "importe_eur": 86717.46,
       "impacto_irpf": "Ninguno",
       "prioridad": "Normal"
     },
     {
       "orden": 14,
       "accion": "COMPRAR",
-      "producto_destino": "0P0000MTIB.F",
-      "importe_eur": 73063.05,
+      "producto_destino": "0P0000TKSA.F",
+      "importe_eur": 72805.08,
       "impacto_irpf": "Ninguno",
       "prioridad": "Normal"
     },
@@ -186,7 +186,7 @@
       "orden": 15,
       "accion": "COMPRAR",
       "producto_destino": "EIMI.L",
-      "importe_eur": 24673.75,
+      "importe_eur": 24747.46,
       "impacto_irpf": "Ninguno",
       "prioridad": "Normal"
     }

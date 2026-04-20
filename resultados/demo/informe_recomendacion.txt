@@ -1,9 +1,9 @@
 ══════════════════════════════════════════════════════════════════════
   INFORME DE RECOMENDACIÓN DE CARTERA — MÓDULO 04
-  Generado: 14/04/2026
+  Generado: 20/04/2026
 ══════════════════════════════════════════════════════════════════════
 
-  PERFIL: Con hipoteca al 3.9%, la RV global a largo plazo supera ampl
+  PERFIL: Con hipoteca al 2.9%, la RV global a largo plazo supera ampl
   Horizonte: 15 años | Capital inicial: 184,270 € | Aportación: 800 €/mes
 
 ── FILOSOFÍA SELECCIONADA ─────────────────────────────────────────────
@@ -17,22 +17,22 @@
 
   Clase                    Peso  Ticker         Nombre                                   TER   Sharpe
   ----------------------------------------------------------------------------------------------------
-  bonos_global            47.0%  CBUE.L         iShares $ Treasury 7-10yr UCITS ETF EUR Hdg 0.10%    0.120
-  rv_global               39.6%  0P0000MTIB.F   Fidelity MSCI World Index EUR Acc      0.12%    0.730
-  rv_emergentes           13.4%  EIMI.L         iShares Core MSCI EM IMI ETF           0.18%    0.272
+  bonos_global            47.1%  CBUE.L         iShares $ Treasury 7-10yr UCITS ETF EUR Hdg 0.10%    0.120
+  rv_global               39.5%  0P0000TKSA.F   Vanguard Global Stock Index Fund EUR Acc 0.18%    0.710
+  rv_emergentes           13.4%  EIMI.L         iShares Core MSCI EM IMI ETF           0.18%    0.298
 
 ── MÉTRICAS DE LA CARTERA ─────────────────────────────────────────────
-  TER ponderado:        0.119% / año
-  Rendimiento esperado: 6.1% / año
-  Volatilidad aprox.:   8.5% / año
-  Max Drawdown aprox.:  -20.4%
-  Sharpe estimado:      0.344
-  % traspasable IRPF:   39.6%
+  TER ponderado:        0.142% / año
+  Rendimiento esperado: 6.0% / año
+  Volatilidad aprox.:   8.6% / año
+  Max Drawdown aprox.:  -20.8%
+  Sharpe estimado:      0.336
+  % traspasable IRPF:   39.5%
 
 ── PROYECCIÓN A LARGO PLAZO ───────────────────────────────────────────
   Capital final (actual):           496,908 €
-  Capital final (recomendado):      676,998 €
-  Diferencia en 15 años:           +180,090 €
+  Capital final (recomendado):      674,639 €
+  Diferencia en 15 años:           +177,731 €
   Objetivo declarado:               600,000 € → ✓ SÍ alcanza
 
 ── PLAN DE TRANSICIÓN ─────────────────────────────────────────────────
@@ -48,9 +48,9 @@
   TRASPASAR    iShares Global Water USD ACC                3,580 €  [Diferido]
   TRASPASAR    Xtrackers MSCI Emerging Markets Swap        3,480 €  [Diferido]
   TRASPASAR    ETFS ISE Cyber Security UCITS ETF           3,210 €  [Diferido]
-  COMPRAR      CBUE.L                                     86,515 €  [Ninguno]
-  COMPRAR      0P0000MTIB.F                               73,063 €  [Ninguno]
-  COMPRAR      EIMI.L                                     24,674 €  [Ninguno]
+  COMPRAR      CBUE.L                                     86,717 €  [Ninguno]
+  COMPRAR      0P0000TKSA.F                               72,805 €  [Ninguno]
+  COMPRAR      EIMI.L                                     24,747 €  [Ninguno]
 
 ── NOTAS FISCALES ─────────────────────────────────────────────────────
   · Los traspasos entre fondos de inversión no tributan en IRPF
