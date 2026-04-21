@@ -736,7 +736,7 @@
 <!-- MÓDULOS -->
 <section id="modulos" class="fade-in">
   <div class="section-label">Módulos implementados</div>
-  <h2 class="section-title">Cinco motores, un ecosistema</h2>
+  <h2 class="section-title">Siete motores, un ecosistema</h2>
   <p class="section-sub">
     Cada módulo resuelve un problema concreto y es ejecutable de forma independiente.
     El resultado de cada uno alimenta al siguiente.
@@ -787,11 +787,13 @@
       <div class="module-desc">
         Responde: &ldquo;¿cuál es la cartera óptima para mi perfil?&rdquo;
         Media-Varianza con 10 clases, 3 escenarios (Sharpe óptimo, mínima vol, máx rend),
-        50 puntos de arranque SLSQP, Sortino, CVaR 95% y escenarios de estrés
-        (COVID, Bear 2022, Tech 30%).
+        50 puntos de arranque SLSQP, Ledoit-Wolf shrinkage para covarianza robusta,
+        Sortino, CVaR 95% y escenarios de estrés (COVID, Bear 2022, Tech 30%).
+        Genera cartera blend táctica condicionada al régimen detectado.
       </div>
       <div class="module-fns">
         <span class="fn-tag">SLSQP · scipy</span>
+        <span class="fn-tag">Ledoit-Wolf</span>
         <span class="fn-tag">frontera_eficiente()</span>
         <span class="fn-tag">pesos_optimos.csv</span>
       </div>
@@ -832,13 +834,47 @@
       </div>
     </div>
 
+    <div class="module-card" style="border-color:rgba(139,92,246,.35)">
+      <div class="module-icon" style="background:rgba(139,92,246,.18)">🌡️</div>
+      <div class="module-num">05_detector_regimen.py</div>
+      <div class="module-title">Detector de Régimen de Mercado</div>
+      <div class="module-desc">
+        Responde: &ldquo;¿estamos en bull o bear market ahora mismo?&rdquo;
+        GaussianMixture (sklearn) con 2 componentes sobre retornos y volatilidad rolling.
+        Selecciona el mejor modelo por BIC mínimo (10 semillas). Genera probabilidad de régimen bull/bear
+        y condiciona la cartera táctica: <code>w_blend = p_bull × MaxSharpe + p_bear × MinVol</code>.
+      </div>
+      <div class="module-fns">
+        <span class="fn-tag">GaussianMixture</span>
+        <span class="fn-tag">BIC selection</span>
+        <span class="fn-tag">detector_regimen()</span>
+        <span class="fn-tag">regimen_mercado.json</span>
+      </div>
+    </div>
+
+    <div class="module-card" style="border-color:rgba(245,158,11,.35)">
+      <div class="module-icon" style="background:rgba(245,158,11,.18)">🏆</div>
+      <div class="module-num">06_factor_scoring.py</div>
+      <div class="module-title">Factor Scoring Multi-factor</div>
+      <div class="module-desc">
+        Responde: &ldquo;¿qué clases de activo tienen mejores fundamentos ahora?&rdquo;
+        Z-score cross-sectional de 4 factores: momentum 12-1m, calidad (Sharpe/MaxDD),
+        tendencia vs media 200d y sentimiento Reddit (ApeWisdom). Pondera y ordena
+        todos los activos del universo para apoyar la decisión de rebalanceo.
+      </div>
+      <div class="module-fns">
+        <span class="fn-tag">momentum 12-1m</span>
+        <span class="fn-tag">z-score cross</span>
+        <span class="fn-tag">calcular_scores()</span>
+        <span class="fn-tag">factor_scores.json</span>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- FLUJO -->
 <section id="flujo" class="fade-in">
   <div class="section-label">Flujo de trabajo</div>
-  <h2 class="section-title">Cómo funciona — 6 pasos</h2>
+  <h2 class="section-title">Cómo funciona — 8 pasos</h2>
   <p class="section-sub">Flujo reproducible. Una vez configurado, se actualiza todo con datos de mercado reales en cada ejecución.</p>
 
   <div class="pipeline">
@@ -869,8 +905,24 @@
     <div class="pipe-step">
       <div class="pipe-num">⚡</div>
       <div class="pipe-content">
-        <div class="pipe-title">Optimización — Markowitz + HRP</div>
-        <div class="pipe-desc">Markowitz calcula 3 escenarios óptimos con correlaciones empíricas reales. HRP (López de Prado) ofrece una segunda opinión sin invertir la covarianza, más robusto en entornos de alta tensión macro.</div>
+        <div class="pipe-title">Optimización — Markowitz + Ledoit-Wolf + HRP</div>
+        <div class="pipe-desc">Markowitz calcula 3 escenarios con covarianza Ledoit-Wolf shrinkage. HRP (López de Prado) ofrece una segunda opinión sin invertir la covarianza, más robusto en entornos de alta tensión macro.</div>
+      </div>
+    </div>
+    <div class="pipe-arrow">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-num">🌡️</div>
+      <div class="pipe-content">
+        <div class="pipe-title">Detector de régimen bull/bear <span style="background:rgba(139,92,246,.18); color:#c4b5fd; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO v1.2</span></div>
+        <div class="pipe-desc">GaussianMixture infiere la probabilidad de régimen alcista vs bajista. La cartera blend táctica se pondera automáticamente: <code>w = p_bull × MaxSharpe + p_bear × MinVol</code>. Resultado: <code>regimen_mercado.json</code>.</div>
+      </div>
+    </div>
+    <div class="pipe-arrow">↓</div>
+    <div class="pipe-step">
+      <div class="pipe-num">🏆</div>
+      <div class="pipe-content">
+        <div class="pipe-title">Factor scoring multi-factor <span style="background:rgba(139,92,246,.18); color:#c4b5fd; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO v1.2</span></div>
+        <div class="pipe-desc">Puntúa cada clase de activo con 4 factores (momentum, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional. Salida: ranking <code>factor_scores.json</code> para apoyar el rebalanceo.</div>
       </div>
     </div>
     <div class="pipe-arrow">↓</div>
@@ -897,11 +949,13 @@
 <!-- RESULTADOS -->
 <section id="resultados" class="fade-in">
   <div class="section-label">Resultados generados</div>
-  <h2 class="section-title">18+ gráficos · 4 informes · alertas accionables</h2>
+  <h2 class="section-title">14+ gráficos · 4 informes · alertas accionables · régimen + factores</h2>
   <p class="section-sub">Todos los outputs se guardan en <code style="color:var(--accent3)">resultados/</code> y se regeneran íntegramente en cada ejecución.</p>
 
   <div class="outputs-grid">
     <div class="output-card"><div class="output-icon">🧠</div><div><div class="output-title">Alertas de tendencias</div><div class="output-desc">Sectores emergentes auto-detectados con productos concretos: TER, Sharpe, plataforma y peso sugerido por perfil</div></div></div>
+    <div class="output-card"><div class="output-icon">🌡️</div><div><div class="output-title">Régimen de mercado</div><div class="output-desc">Bull/bear con probabilidad inferida (GMM). Señal DEFENSIVO o NEUTRAL. Entrada: <code style="color:var(--accent3)">regimen_mercado.json</code></div></div></div>
+    <div class="output-card"><div class="output-icon">🏆</div><div><div class="output-title">Factor scores</div><div class="output-desc">Ranking multi-factor de clases de activo: top performers vs bottom. Entrada: <code style="color:var(--accent3)">factor_scores.json</code></div></div></div>
     <div class="output-card"><div class="output-icon">🎯</div><div><div class="output-title">Cartera recomendada</div><div class="output-desc">Informe personalizado con filosofía de referencia, TER medio ponderado, Sharpe estimado y proyección a N años</div></div></div>
     <div class="output-card"><div class="output-icon">📂</div><div><div class="output-title">CSVs exportables</div><div class="output-desc">pesos_optimos.csv, hrp_pesos.csv, pesos_recomendados.csv — importables en Excel</div></div></div>
     <div class="output-card"><div class="output-icon">🥧</div><div><div class="output-title">Distribución por tipo</div><div class="output-desc">Donut por clase de activo, entidad y nivel de riesgo con alertas de concentración</div></div></div>
@@ -928,13 +982,13 @@
   <!-- REAL DATA BADGE -->
   <div style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.3); border-radius:8px; padding:.5rem 1rem; margin-top:1.5rem; margin-bottom:.5rem; font-size:.8rem; color:var(--accent2)">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    urllib · Yahoo Finance v8 API · Google News RSS · última descarga 15 abr 2026
+    urllib · Yahoo Finance v8 API · Google News RSS · ApeWisdom Reddit · última descarga 21 abr 2026
   </div>
 
   <!-- TEASER METRICS ROW —— métricas del motor de descarga -->
   <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem; margin-bottom:2.5rem">
     <div style="background:var(--bg-card); border:1px solid rgba(59,130,246,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
-      <div style="font-size:1.7rem; font-weight:800; color:var(--accent)">26</div>
+      <div style="font-size:1.7rem; font-weight:800; color:var(--accent)">60+</div>
       <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Activos descargados</div>
     </div>
     <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
@@ -954,7 +1008,7 @@
       <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Pipeline completo</div>
     </div>
     <div style="background:var(--bg-card); border:1px solid rgba(139,92,246,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
-      <div style="font-size:1.7rem; font-weight:800; color:var(--accent4)">18+</div>
+      <div style="font-size:1.7rem; font-weight:800; color:var(--accent4)">14+</div>
       <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Gráficos generados</div>
     </div>
   </div>
@@ -1039,9 +1093,11 @@
     <div class="stack-item"><div class="stack-icon">🐍</div><div><div class="stack-name">Python 3.14</div><div class="stack-use">Motor de ejecución</div></div></div>
     <div class="stack-item"><div class="stack-icon">🐼</div><div><div class="stack-name">pandas 3.x</div><div class="stack-use">Manipulación de datos</div></div></div>
     <div class="stack-item"><div class="stack-icon">🔢</div><div><div class="stack-name">NumPy + SciPy</div><div class="stack-use">Álgebra lineal · SLSQP</div></div></div>
+    <div class="stack-item"><div class="stack-icon">🧠</div><div><div class="stack-name">scikit-learn 1.8</div><div class="stack-use">Ledoit-Wolf · GMM régimen</div></div></div>
     <div class="stack-item"><div class="stack-icon">📉</div><div><div class="stack-name">Matplotlib</div><div class="stack-use">Generación de gráficos</div></div></div>
     <div class="stack-item"><div class="stack-icon">📓</div><div><div class="stack-name">Jupyter</div><div class="stack-use">Notebooks interactivos</div></div></div>
     <div class="stack-item"><div class="stack-icon">📡</div><div><div class="stack-name">urllib · Yahoo v8</div><div class="stack-use">Descarga de mercados</div></div></div>
+    <div class="stack-item"><div class="stack-icon">💬</div><div><div class="stack-name">ApeWisdom API</div><div class="stack-use">Sentimiento Reddit</div></div></div>
   </div>
 </section>
 
@@ -1050,8 +1106,8 @@
 <!-- ROADMAP -->
 <section id="roadmap" class="fade-in">
   <div class="section-label">Roadmap</div>
-  <h2 class="section-title">12 funcionalidades planificadas</h2>
-  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica para cada módulo futuro, organizadas por bloque temático y prioridad de implementación.</p>
+  <h2 class="section-title">Roadmap — 4 implementados, 7 planificados</h2>
+  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Ledoit-Wolf, detector de régimen (GMM) y factor scoring ya están en producción. Black-Litterman y Risk Parity son los siguientes objetivos.</p>
 
   <div class="roadmap-blocks">
 
@@ -1204,6 +1260,45 @@
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
+            <div class="rm-title">Ledoit-Wolf Shrinkage <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.1</div>
+          </div>
+          <div class="rm-desc">Estimación robusta de la covarianza mediante shrinkage analítico. Sustituye la covarianza muestral en Markowitz, reduciendo el error de estimación con pocos datos. Coeficiente δ auto-calibrado y guardado en <code>parametros_mercado.json</code>.</div>
+          <div class="rm-meta">
+            <span class="rm-badge badge-util">sklearn.covariance</span>
+            <span class="rm-badge badge-via">Módulo: 01_descarga_datos.py + 03_optimizador.py</span>
+          </div>
+        </div>
+
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
+          <div class="rm-header">
+            <div class="rm-title">Detector de Régimen (GMM) <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.2</div>
+          </div>
+          <div class="rm-desc">GaussianMixture (2 componentes, BIC mínimo, 10 semillas) sobre retornos y volatilidad rolling. Infiere la probabilidad p_bull/p_bear y pondera la cartera táctica: <code>w_blend = p_bull × MaxSharpe + p_bear × MinVol</code>.</div>
+          <div class="rm-meta">
+            <span class="rm-badge badge-util">peso_blend_regimen_pct</span>
+            <span class="rm-badge badge-via">Módulo: 05_detector_regimen.py</span>
+          </div>
+        </div>
+
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
+          <div class="rm-header">
+            <div class="rm-title">Factor Scoring Multi-factor <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.2</div>
+          </div>
+          <div class="rm-desc">Score cross-sectional de 4 factores: Momentum 12-1m (ponderación 1.0), Calidad Sharpe/MaxDD (1.0), Tendencia vs 200d (1.0), Sentimiento Reddit/ApeWisdom (0.5). Z-score saturado a ±2.5σ.</div>
+          <div class="rm-meta">
+            <span class="rm-badge badge-util">factor_scores.json</span>
+            <span class="rm-badge badge-via">Módulo: 06_factor_scoring.py</span>
+          </div>
+        </div>
+
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
+          <div class="rm-header">
             <div class="rm-title">HRP — López de Prado <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.0</div>
           </div>
@@ -1217,12 +1312,12 @@
         <div class="rm-card">
           <div class="rm-card-accent acc-p4"></div>
           <div class="rm-header">
-            <div class="rm-title">Inversión por Factores — Fama-French</div>
-            <div class="rm-priority p4">P4</div>
+            <div class="rm-title">Black-Litterman</div>
+            <div class="rm-priority p3">P3 · Próximo</div>
           </div>
-          <div class="rm-desc">Filtros por tamaño, valor, momentum y calidad para construir exposición factorial racional en el segmento de acciones individuales.</div>
+          <div class="rm-desc">Combina las views del inversor (factor scoring) con el mercado de equilibrio vía CAPM. Produce una distribución posterior de retornos y optimiza sobre ella. Requiere tau, matriz P y vector Q.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★</span>
+            <span class="rm-badge badge-util">Utilidad ★★★★★</span>
             <span class="rm-badge badge-via">Viabilidad ★★★</span>
           </div>
         </div>
@@ -1230,13 +1325,13 @@
         <div class="rm-card">
           <div class="rm-card-accent acc-p3"></div>
           <div class="rm-header">
-            <div class="rm-title">Adaptación Macro — Estilo All Weather</div>
-            <div class="rm-priority p3">P3</div>
+            <div class="rm-title">Risk Parity / Equal Risk Contribution</div>
+            <div class="rm-priority p3">P3 · Próximo</div>
           </div>
-          <div class="rm-desc">Detector de régimen macroeconómico (inflación, tipos, curva de tipos) vía FRED/BCE. Ajusta dinámicamente la asignación según el clima económico global.</div>
+          <div class="rm-desc">Cada activo contribuye el mismo porcentaje al riesgo total de la cartera. Alternativa a HRP cuando se quiere igualdad estricta de contribuciones en lugar de clusters jerárquicos.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">Utilidad ★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★★</span>
           </div>
         </div>
 
@@ -1259,17 +1354,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Rebalanceo por bandas</td>        <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p1">P1</span></td><td class="module-code">05_rebalanceo_bandas.py</td></tr>
-        <tr><td>Tax-Loss Harvesting</td>           <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p1">P1</span></td><td class="module-code">07_tax_harvesting.py</td></tr>
+        <tr><td>Rebalanceo por bandas</td>        <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p1">P1</span></td><td class="module-code">07_rebalanceo_bandas.py</td></tr>
+        <tr><td>Tax-Loss Harvesting</td>           <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p1">P1</span></td><td class="module-code">08_tax_harvesting.py</td></tr>
         <tr><td>Auditoría costes / solapamientos</td><td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">04_auditoria_costes.py</td></tr>
-        <tr><td>Simulaciones Montecarlo</td>       <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">06_montecarlo.py</td></tr>
-        <tr><td>Core / Satellite + Stop Loss</td>  <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p2">P2</span></td><td class="module-code">09_core_satellite.py</td></tr>
-        <tr><td>Frontera con live data</td>         <td><span class="stars">★★★★</span></td><td><span class="stars">★★★</span></td>  <td><span class="rm-priority p3">P3</span></td><td class="module-code">01_descarga_datos.py --live</td></tr>
-        <tr><td>Adaptación macro All Weather</td>   <td><span class="stars">★★★★</span></td><td><span class="stars">★★★</span></td>  <td><span class="rm-priority p3">P3</span></td><td class="module-code">11_macro_all_weather.py</td></tr>
+        <tr><td>Simulaciones Montecarlo</td>       <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">09_montecarlo.py</td></tr>
+        <tr><td>Core / Satellite + Stop Loss</td>  <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p2">P2</span></td><td class="module-code">10_core_satellite.py</td></tr>
+        <tr><td>Black-Litterman</td>               <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★</span></td>  <td><span class="rm-priority p3">P3 · Próx.</span></td><td class="module-code">03c_black_litterman.py</td></tr>
+        <tr><td>Risk Parity / ERC</td>             <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td>  <td><span class="rm-priority p3">P3 · Próx.</span></td><td class="module-code">03d_risk_parity.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>HRP — López de Prado</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">03b_optimizador_hrp.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Ledoit-Wolf Shrinkage</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">01_descarga_datos.py + 03_optimizador.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Detector Régimen GMM</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">05_detector_regimen.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Factor Scoring Multi-factor</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">06_factor_scoring.py</td></tr>
         <tr><td>Termostato de riesgo</td>           <td><span class="stars">★★★</span></td> <td><span class="stars">★★★★★</span></td><td><span class="rm-priority p4">P4</span></td><td class="module-code">cuestionario_riesgo.json</td></tr>
-        <tr><td>Factores Fama-French</td>           <td><span class="stars">★★★</span></td> <td><span class="stars">★★★</span></td>  <td><span class="rm-priority p4">P4</span></td><td class="module-code">10_factores_fama_french.py</td></tr>
-        <tr><td>Radar sentimiento social</td>       <td><span class="stars">★★</span></td>  <td><span class="stars">★★</span></td>   <td><span class="rm-priority p5">P5</span></td><td class="module-code">08_sentimiento.py</td></tr>
         <tr><td>Detector anomalías / opciones</td>  <td><span class="stars">★★</span></td>  <td><span class="stars">★★</span></td>   <td><span class="rm-priority p5">P5</span></td><td class="module-code">—</td></tr>
       </tbody>
     </table>
