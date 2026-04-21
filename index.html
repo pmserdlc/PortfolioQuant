@@ -1106,8 +1106,8 @@
 <!-- ROADMAP -->
 <section id="roadmap" class="fade-in">
   <div class="section-label">Roadmap</div>
-  <h2 class="section-title">Roadmap — 4 implementados, 7 planificados</h2>
-  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Ledoit-Wolf, detector de régimen (GMM) y factor scoring ya están en producción. Black-Litterman y Risk Parity son los siguientes objetivos.</p>
+  <h2 class="section-title">Roadmap — 8 implementados, 5 planificados</h2>
+  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Black-Litterman, MinCVaR, Risk Parity y Walk-forward Backtester implementados en abril 2026. Calmar ratio y RC% por activo integrados en el optimizador.</p>
 
   <div class="roadmap-blocks">
 
@@ -1315,23 +1315,36 @@
             <div class="rm-title">Black-Litterman</div>
             <div class="rm-priority p3">P3 · Próximo</div>
           </div>
-          <div class="rm-desc">Combina las views del inversor (factor scoring) con el mercado de equilibrio vía CAPM. Produce una distribución posterior de retornos y optimiza sobre ella. Requiere tau, matriz P y vector Q.</div>
+          <div class="rm-desc">Prior bayesiano CAPM (Π&nbsp;=&nbsp;λΣw<sub>mkt</sub>, λ=2.5, τ=0.05) + views generadas automáticamente desde régimen de mercado, VIX y factor scores. Optimización MaxSharpe sobre la distribución posterior BL con 80 arranques.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★</span>
+            <span class="rm-badge badge-util">bl_pesos.csv &middot; bl_resultados.json</span>
+            <span class="rm-badge badge-via">Módulo: 03c_bl_optimizer.py</span>
           </div>
         </div>
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p3"></div>
           <div class="rm-header">
-            <div class="rm-title">Risk Parity / Equal Risk Contribution</div>
-            <div class="rm-priority p3">P3 · Próximo</div>
+            <div class="rm-title">Risk Parity / Equal Risk Contribution <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
           </div>
-          <div class="rm-desc">Cada activo contribuye el mismo porcentaje al riesgo total de la cartera. Alternativa a HRP cuando se quiere igualdad estricta de contribuciones en lugar de clusters jerárquicos.</div>
+          <div class="rm-desc">Escenario <code>escenario_risk_parity_aproximado()</code> en <code>03_optimizador.py</code>: minimiza la dispersión de contribuciones fraccionales al riesgo (rc_i&nbsp;=&nbsp;w_i&middot;(Σw)_i&nbsp;/&nbsp;σ_p). También implementado MinCVaR (Expected Shortfall 95%) y Calmar ratio en todos los informes.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★★</span>
+            <span class="rm-badge badge-util">rc_sharpe_pct &middot; rc_minvol_pct</span>
+            <span class="rm-badge badge-via">Módulo: 03_optimizador.py (5 escenarios)</span>
+          </div>
+        </div>
+
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
+          <div class="rm-header">
+            <div class="rm-title">Walk-forward Backtester <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
+          </div>
+          <div class="rm-desc">Compara 6 modelos fuera de muestra (OOS) con ventanas expanding: Markowitz MaxSharpe, MinVol, MinCVaR, HRP, 1/N y benchmark IWDA. Parámetros: train=126d, test=21d, embargo=3d. Métricas OOS: Sharpe, Sortino, Max DD, hit rate, CAGR.</div>
+          <div class="rm-meta">
+            <span class="rm-badge badge-util">backtest_results.json &middot; backtest_summary.csv</span>
+            <span class="rm-badge badge-via">Módulo: scripts/backtester.py</span>
           </div>
         </div>
 
@@ -1359,8 +1372,9 @@
         <tr><td>Auditoría costes / solapamientos</td><td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">04_auditoria_costes.py</td></tr>
         <tr><td>Simulaciones Montecarlo</td>       <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">09_montecarlo.py</td></tr>
         <tr><td>Core / Satellite + Stop Loss</td>  <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p2">P2</span></td><td class="module-code">10_core_satellite.py</td></tr>
-        <tr><td>Black-Litterman</td>               <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★</span></td>  <td><span class="rm-priority p3">P3 · Próx.</span></td><td class="module-code">03c_black_litterman.py</td></tr>
-        <tr><td>Risk Parity / ERC</td>             <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td>  <td><span class="rm-priority p3">P3 · Próx.</span></td><td class="module-code">03d_risk_parity.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Black-Litterman</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03c_bl_optimizer.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>MinCVaR + Risk Parity</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03_optimizador.py (5 esc.)</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Walk-forward Backtester</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">scripts/backtester.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>HRP — López de Prado</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">03b_optimizador_hrp.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>Ledoit-Wolf Shrinkage</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">01_descarga_datos.py + 03_optimizador.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>Detector Régimen GMM</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">05_detector_regimen.py</td></tr>

@@ -182,7 +182,14 @@ python modelos/02_analisis_cartera.py   # ~5s
 
 Optimización con 10 clases de activos, correlaciones empíricas reales (5 años) y restricciones de peso (2%-30% por activo). Genera 3 escenarios: Máximo Sharpe, Mínima Volatilidad, Máximo Rendimiento con vol ≤ 18%.
 
-Métricas incluidas: Sharpe, Sortino, CVaR 95%, escenarios de estrés históricos.
+Métricas incluidas: Sharpe, Sortino, **CVaR 95%**, **Calmar ratio**, **Risk Contribution (RC%)** por activo.
+
+Escenarios de optimización:
+- `escenario_max_sharpe()` — Máximo ratio de Sharpe
+- `escenario_min_vol()` — Mínima volatilidad
+- `escenario_max_rend_riesgo_controlado(vol_max=0.18)` — Perfil agresivo
+- `escenario_min_cvar()` — Minimizar Expected Shortfall 95% (Basel III/UCITS)
+- `escenario_risk_parity_aproximado()` — Igual contribución fraccional al riesgo
 
 ```bash
 python modelos/03_optimizador.py   # ~45s
@@ -194,6 +201,22 @@ Implementación de HRP (López de Prado 2016). Pipeline de 3 pasos: clustering j
 
 ```bash
 python modelos/03b_optimizador_hrp.py   # ~10s
+```
+
+### `03c_bl_optimizer.py` — Black-Litterman
+
+Prior bayesiano de equilibrio CAPM (Π = λΣw_mkt, λ=2.5, τ=0.05) combinado con views generadas automáticamente desde régimen de mercado, VIX y factor scores. Optimización MaxSharpe sobre la distribución posterior BL.
+
+```bash
+python modelos/03c_bl_optimizer.py   # ~5s
+```
+
+### `scripts/backtester.py` — Walk-forward backtester
+
+Compara 6 modelos fuera de muestra (OOS) con ventanas expanding: Markowitz MaxSharpe, MinVol, MinCVaR, HRP, 1/N y benchmark IWDA. Parámetros: `--train-min 126 --test 21 --embargo 3`. Métricas OOS: Sharpe, Sortino, Max DD, hit rate, CAGR.
+
+```bash
+python scripts/backtester.py   # ~30s · 6 modelos
 ```
 
 ### `04_recomendador.py` — Cartera recomendada por filosofía
@@ -374,16 +397,17 @@ jupyter>=1.0.0        → notebooks interactivos
 
 | Estado | Módulo / Mejora | Descripción |
 |---|---|---|
-| ✅ Implementado | `03_optimizador.py` — Markowitz (MaxSharpe / MinVol / MaxRend) | Optimización clásica con 50 arranques multi-inicio |
+| ✅ Implementado | `03_optimizador.py` — Markowitz (MaxSharpe / MinVol / MaxRend / MinCVaR / RiskParity) | 5 escenarios de optimización; métricas Sharpe, Sortino, CVaR 95%, Calmar, RC% por activo |
 | ✅ Implementado | `03b_optimizador_hrp.py` — HRP (Hierarchical Risk Parity) | Bisección recursiva sobre clúster jerárquico, acotamiento de pesos |
+| ✅ Implementado | `03c_bl_optimizer.py` — Black-Litterman | Prior bayesiano CAPM (π = λΣw_mkt, λ=2.5, τ=0.05) + views automáticas desde régimen/VIX/factor scores |
+| ✅ Implementado | `scripts/backtester.py` — Walk-forward backtester | 6 modelos OOS (MaxSharpe, MinVol, MinCVaR, HRP, 1/N, benchmark); train=126d, test=21d, embargo=3d |
 | ✅ Implementado | Ledoit-Wolf shrinkage | Regularización de la covarianza muestral en `01_descarga_datos.py`; coeficiente guardado en `parametros_mercado.json` |
+| ✅ Implementado | `port_calmar()` + `port_risk_contribution()` | Calmar ratio paramétrico; RC fraccional rc_i = w_i·(Σw)_i / σ_p |
 | 📅 P1 | `05_rebalanceo_bandas.py` | Alertas de rebalanceo con bandas de tolerancia ±X% y priorización fiscal |
 | 📅 P1 | `07_tax_harvesting.py` | Cosecha fiscal automatizada: pérdidas compensables con ganancia del ejercicio |
-| 📅 P1.5 | `03c_black_litterman.py` | Prior bayesiano sobre equilibrio de mercado + views macro/sentiment; fórmula: $E[R] = [(\tau\Sigma)^{-1} + P^\top\Omega^{-1}P]^{-1}[(\tau\Sigma)^{-1}\pi + P^\top\Omega^{-1}q]$ |
-| 📅 P2 | `03d_risk_parity.py` | Equal Risk Contribution (ERC): cada activo aporta $\sigma_p/N$ de riesgo total |
 | 📅 P2 | `06_montecarlo.py` | Simulaciones Monte Carlo con percentiles P10/P50/P90 usando Cholesky de la covarianza |
 | 📅 P2 | `04_auditoria_costes.py` | Scanner de solapamientos entre fondos + TER total de la cartera |
-| 📅 P3 | `03e_optimizacion_robusta.py` | Optimización robusta: incertidumbre en $\hat{\mu}$ modelada como elipsoide |
+| 📅 P3 | `03e_optimizacion_robusta.py` | Optimización robusta: incertidumbre en μ̂ modelada como elipsoide |
 | 📅 P3 | `08_sentimiento.py` | Radar de sentimiento social ampliado (Reddit, Google Trends, RSI) |
 
 ### Arquitectura IA (GitHub Copilot)
@@ -391,6 +415,6 @@ jupyter>=1.0.0        → notebooks interactivos
 | Estado | Componente | Descripción |
 |---|---|---|
 | ✅ Implementado | `copilot-instructions.md` | Contexto global del proyecto (esquemas CSV, convenciones, fiscalidad) |
-| ✅ Implementado | 5 Skills (`quant-finance`, `financial-advisor-spain`, `dashboard-builder`, `portfolio-alerts`, `data-pipeline`) | Conocimiento especializado por dominio |
+| ✅ Implementado | 8 Skills (`quant-finance`, `financial-advisor-spain`, `dashboard-builder`, `portfolio-alerts`, `data-pipeline`, `data-engineer`, `risk-manager`, `ml-engineer`) | Conocimiento especializado por dominio |
 | ✅ Implementado | 4 Agentes (`Quant Analyst`, `Tax Optimizer`, `Dashboard Builder`, `Data Updater`) | Roles con scope de herramientas delimitado |
 | ✅ Implementado | 3 Instructions files + 3 Prompts | Contexto automático por tipo de archivo, tareas predefinidas |
