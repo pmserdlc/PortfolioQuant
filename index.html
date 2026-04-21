@@ -518,7 +518,7 @@
     <a href="#demo">Demo</a>
     <a href="#roadmap">Roadmap</a>
   </nav>
-  <div class="nav-badge">v1.0 · Abril 2026</div>
+  <div class="nav-badge">v1.2 · Abril 2026</div>
 </nav>
 
 <!-- HERO -->
@@ -587,9 +587,9 @@
   <h1>Tu cartera analizada, optimizada<br>y con <em>un plan concreto</em> para actuar</h1>
 
   <p class="hero-sub">
-    Carga tus posiciones en CSV. El sistema descarga datos reales de mercado, calcula lo que está mal,
-    optimiza con Markowitz y HRP, detecta sectores emergentes con noticias RSS, y te dice exactamente
-    qué comprar, en qué plataforma y con qué impacto fiscal.
+    Carga tus posiciones en CSV. El sistema descarga datos reales de mercado, detecta el régimen bull/bear
+    con GMM, puntúa tus activos por momentum, calidad y sentimiento Reddit, optimiza con Markowitz + HRP,
+    y te dice exactamente qué comprar, en qué plataforma y con qué impacto fiscal.
   </p>
 
   <div class="hero-cta">
@@ -598,23 +598,23 @@
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">5</div>
+      <div class="stat-num">7</div>
       <div class="stat-lbl">Módulos Python</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">18+</div>
+      <div class="stat-num">14+</div>
       <div class="stat-lbl">Gráficos generados</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">3</div>
+      <div class="stat-num">5</div>
       <div class="stat-lbl">Modelos de optimización</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">35+</div>
-      <div class="stat-lbl">Sectores vigilados</div>
+      <div class="stat-num">60+</div>
+      <div class="stat-lbl">Tickers descargados</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
@@ -671,7 +671,7 @@
       <div style="display:flex; flex-direction:column; gap:.9rem; font-size:.875rem">
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">01</span>
-          <div>Descarga <strong>50 activos + 7 macro</strong> vía Yahoo Finance, Google News RSS y resolución de tickers automática</div>
+          <div>Descarga <strong>60+ activos + 7 macro</strong> vía Yahoo Finance, sentiment Reddit (ApeWisdom), Google News RSS y resolución de tickers automática</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">02</span>
@@ -679,11 +679,19 @@
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">03</span>
-          <div>Optimiza con <strong>Markowitz</strong> (3 escenarios) y con <strong>HRP</strong> sin invertir la covarianza — más robusto en entornos de crisis</div>
+          <div>Optimiza con <strong>Markowitz + Ledoit-Wolf</strong> (3 escenarios, covarianza shrinkage) y con <strong>HRP</strong> sin invertir la covarianza. Genera cartera blend táctica ponderada por régimen</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">04</span>
           <div>Construye la <strong>cartera recomendada</strong> filtrada por tus plataformas, optimizada por TER y Sharpe, proyectada a N años</div>
+        </div>
+        <div style="display:flex; gap:.75rem; align-items:flex-start">
+          <span style="background:rgba(139,92,246,.15); color:var(--accent4); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">05</span>
+          <div><strong>Detecta el régimen de mercado</strong> (bull/bear) con GaussianMixture y ajusta automáticamente la cartera óptima hacia MaxSharpe o MinVol según la probabilidad inferida</div>
+        </div>
+        <div style="display:flex; gap:.75rem; align-items:flex-start">
+          <span style="background:rgba(139,92,246,.15); color:var(--accent4); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">06</span>
+          <div>Puntúa cada clase de activo con <strong>4 factores</strong> (momentum 12-1m, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional para identificar los activos mejor posicionados</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">05</span>

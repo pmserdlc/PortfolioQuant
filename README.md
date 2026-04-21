@@ -370,11 +370,27 @@ jupyter>=1.0.0        → notebooks interactivos
 
 ## 11. Roadmap
 
-| Prioridad | Módulo | Descripción |
+### Mejoras de modelos cuantitativos
+
+| Estado | Módulo / Mejora | Descripción |
 |---|---|---|
-| 🔴 Alta | `05_rebalanceo_bandas.py` | Alertas de rebalanceo con bandas de tolerancia ±X% y priorización fiscal |
-| 🔴 Alta | `07_tax_harvesting.py` | Cosecha fiscal automatizada: pérdidas compensables con ganancia del ejercicio |
-| 🟠 Media | `06_montecarlo.py` | Simulaciones Montecarlo con percentiles P10/P50/P90 |
-| 🟠 Media | `04_auditoria_costes.py` | Scanner de solapamientos entre fondos + TER total de la cartera |
-| 🟡 Baja | `08_sentimiento.py` | Radar de sentimiento social ampliado (Reddit, Google Trends) |
-| 🟡 Baja | Stop-loss satélite | Filtro core/satellite con stop-loss automatizado para posiciones especulativas |
+| ✅ Implementado | `03_optimizador.py` — Markowitz (MaxSharpe / MinVol / MaxRend) | Optimización clásica con 50 arranques multi-inicio |
+| ✅ Implementado | `03b_optimizador_hrp.py` — HRP (Hierarchical Risk Parity) | Bisección recursiva sobre clúster jerárquico, acotamiento de pesos |
+| ✅ Implementado | Ledoit-Wolf shrinkage | Regularización de la covarianza muestral en `01_descarga_datos.py`; coeficiente guardado en `parametros_mercado.json` |
+| 📅 P1 | `05_rebalanceo_bandas.py` | Alertas de rebalanceo con bandas de tolerancia ±X% y priorización fiscal |
+| 📅 P1 | `07_tax_harvesting.py` | Cosecha fiscal automatizada: pérdidas compensables con ganancia del ejercicio |
+| 📅 P1.5 | `03c_black_litterman.py` | Prior bayesiano sobre equilibrio de mercado + views macro/sentiment; fórmula: $E[R] = [(\tau\Sigma)^{-1} + P^\top\Omega^{-1}P]^{-1}[(\tau\Sigma)^{-1}\pi + P^\top\Omega^{-1}q]$ |
+| 📅 P2 | `03d_risk_parity.py` | Equal Risk Contribution (ERC): cada activo aporta $\sigma_p/N$ de riesgo total |
+| 📅 P2 | `06_montecarlo.py` | Simulaciones Monte Carlo con percentiles P10/P50/P90 usando Cholesky de la covarianza |
+| 📅 P2 | `04_auditoria_costes.py` | Scanner de solapamientos entre fondos + TER total de la cartera |
+| 📅 P3 | `03e_optimizacion_robusta.py` | Optimización robusta: incertidumbre en $\hat{\mu}$ modelada como elipsoide |
+| 📅 P3 | `08_sentimiento.py` | Radar de sentimiento social ampliado (Reddit, Google Trends, RSI) |
+
+### Arquitectura IA (GitHub Copilot)
+
+| Estado | Componente | Descripción |
+|---|---|---|
+| ✅ Implementado | `copilot-instructions.md` | Contexto global del proyecto (esquemas CSV, convenciones, fiscalidad) |
+| ✅ Implementado | 5 Skills (`quant-finance`, `financial-advisor-spain`, `dashboard-builder`, `portfolio-alerts`, `data-pipeline`) | Conocimiento especializado por dominio |
+| ✅ Implementado | 4 Agentes (`Quant Analyst`, `Tax Optimizer`, `Dashboard Builder`, `Data Updater`) | Roles con scope de herramientas delimitado |
+| ✅ Implementado | 3 Instructions files + 3 Prompts | Contexto automático por tipo de archivo, tareas predefinidas |
