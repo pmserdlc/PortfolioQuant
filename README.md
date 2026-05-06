@@ -3,7 +3,7 @@
 Sistema cuantitativo de análisis, optimización y recomendación de carteras de inversión para el inversor particular español. Genera un dashboard HTML completamente auto-contenido con todos los datos embebidos, sin necesidad de servidor ni base de datos.
 
 > **Entorno:** Python 3.14 · Windows · `.venv`
-> **Última actualización:** 21 de abril de 2026
+> **Última actualización:** 6 de mayo de 2026
 > **Estado:** ✅ Producción · ✅ Multiperfil · ✅ Dashboard interactivo
 
 ---
@@ -55,7 +55,16 @@ El sistema genera automáticamente las siguientes métricas al ejecutar el pipel
 
 ```
 optimizacion-inversiones/
-├── modelos/                         → pipeline Python (módulos 01-04)
+├── modelos/                         → pipeline Python (módulos 01-08)
+│   ├── 01_descarga_datos.py         → precios, macro, ECB/FRED/CoinGecko, FIGI
+│   ├── 02_analisis_cartera.py       → análisis, plusvalías, DCA
+│   ├── 03_optimizador.py            → Markowitz (5 escenarios)
+│   ├── 03b_optimizador_hrp.py       → HRP (Hierarchical Risk Parity)
+│   ├── 03c_bl_optimizer.py          → Black-Litterman + views automáticas
+│   ├── 04_recomendador.py           → 7 filosofías de inversión
+│   ├── 05_core_satellite.py         → clasificación Core/Satellite por perfil
+│   ├── 06_montecarlo.py             → simulaciones Monte Carlo 10k + Cholesky
+│   └── 08_stop_loss.py              → monitor stop loss con overlay fiscal IRPF
 ├── dashboard/
 │   ├── generar_dashboard.py         → generador HTML (fuente de verdad)
 │   ├── index.html                   → dashboard perfil principal
@@ -63,11 +72,14 @@ optimizacion-inversiones/
 │   └── maa3.html                    → dashboard perfil maa3
 ├── datos/
 │   ├── cartera/                     → posiciones, estrategia DCA, movimientos
-│   ├── historico/                   → precios, retornos, sentiment, noticias
+│   ├── historico/                   → precios, retornos, sentiment, noticias, FIGI cache
 │   ├── perfil/                      → perfil_inversor.json, objetivos_financieros.json
 │   ├── perfiles/                    → datos por perfil alternativo (demo, maa3)
 │   └── productos/                   → universo_productos.json, carteras_referencia.json
-├── resultados/                      → pesos_optimos.csv, hrp_pesos.csv, informes, gráficos
+├── resultados/
+│   ├── principal/                   → JSONs y CSVs del perfil principal
+│   ├── demo/                        → JSONs y CSVs del perfil demo
+│   └── maa3/                        → JSONs y CSVs del perfil maa3
 ├── scripts/                         → utilidades de mantenimiento
 ├── notebooks/                       → análisis interactivo Jupyter
 └── .github/                         → instrucciones y skills para GitHub Copilot
@@ -147,7 +159,11 @@ Posiciones en acciones USA cotizadas en USD.
 ```
 01_descarga_datos.py  →  02_analisis_cartera.py  →  03_optimizador.py
                                                   →  03b_optimizador_hrp.py
+                                                  →  03c_bl_optimizer.py
                                                   →  04_recomendador.py
+                                                  →  05_core_satellite.py
+                                                  →  06_montecarlo.py
+                                                  →  08_stop_loss.py
                                                              ↓
                                          dashboard/generar_dashboard.py
 ```
@@ -165,6 +181,15 @@ Pipeline completo en 10 pasos (~60 segundos):
 | 8 | Google News RSS — buzz score 0-100 por tema (15 topics) | `noticias_sectores.json` |
 | 9 | Cruce precio × noticias → EMERGENTE / CONFIRMADO / AGOTADO | `oportunidades_detectadas.json` |
 | 10 | Alertas accionables con productos concretos y pesos por perfil | `alertas_tendencias.txt` + `.json` |
+
+**Nuevas fuentes de datos integradas (sin coste):**
+
+| Fuente | Función | Output |
+|---|---|---|
+| **BCE (API pública)** | Tipo libre de riesgo real desde Eonia/€STR diario | `rf` dinámico en `parametros_mercado.json` |
+| **FRED (St. Louis Fed)** | Macro USA: CPI, Fed Funds Rate, M2 | `fred_macro` en `parametros_mercado.json` |
+| **CoinGecko (REST)** | Precio BTC/EUR sin API key | `btc_eur` en `parametros_mercado.json` |
+| **Open FIGI (Bloomberg)** | Resolución ISIN → ticker para fondos europeos | `datos/historico/figi_cache.json` |
 
 ```bash
 python modelos/01_descarga_datos.py   # ejecutar 1 vez/semana
@@ -229,6 +254,59 @@ Compara la cartera recomendada contra 7 filosofías: All Weather, Permanent Port
 python modelos/04_recomendador.py   # ~5s
 ```
 
+### `05_core_satellite.py` — Clasificación Core/Satellite
+
+Clasifica automáticamente cada posición en uno de cuatro buckets (CORE, SATELLITE, ESPECIAL, LIQUIDEZ) según `tipo` y `subtipo`. Compara la distribución actual con el objetivo del perfil de riesgo y genera alertas de rebalanceo si la desviación supera ±5pp.
+
+Targets por perfil de riesgo:
+
+| Perfil | CORE | SATELLITE |
+|---|---|---|
+| Conservador | 90% | 10% |
+| Moderado | 75% | 25% |
+| Moderado agresivo | 70% | 30% |
+| Equilibrado | 70% | 30% |
+| Agresivo | 65% | 35% |
+| Muy agresivo | 55% | 45% |
+
+```bash
+python modelos/05_core_satellite.py --perfil principal   # ~2s
+```
+
+Output: `resultados/<perfil>/core_satellite.json`
+
+### `06_montecarlo.py` — Simulación Monte Carlo patrimonial
+
+10.000 trayectorias de capital a 5, 10 y 15 años usando rendimientos lognormales correlacionados (Cholesky de la covarianza Ledoit-Wolf). Genera percentiles P10/P25/P50/P75/P90, probabilidad de batir inflación (2.5%) y 200 trayectorias de muestra para visualización.
+
+```bash
+python modelos/06_montecarlo.py --perfil principal   # ~8s
+python modelos/06_montecarlo.py --perfil principal --n-sim 50000   # alta precisión
+```
+
+Output: `resultados/<perfil>/montecarlo.json`
+
+### `08_stop_loss.py` — Monitor de stop loss con overlay fiscal
+
+Monitor continuo de stop loss y trailing stop para cada posición. Umbrales diferenciados por `riesgo_1_10`. Calcula el coste fiscal IRPF 2026 estimado si el stop se activa con ganancia, y advierte de la regla de los 2 meses en caso de minusvalía.
+
+| Estado | Significado |
+|---|---|
+| `ACTIVADO` | La pérdida ya supera el hard stop |
+| `CRITICO` | Pérdida entre 75% y 100% del umbral hard stop |
+| `ALERTA` | Precio < trailing stop calculado |
+| `EN_GANANCIAS` | Sin riesgo de stop; muestra la plusvalía latente |
+| `OK` | Dentro de márgenes normales |
+| `NO_APLICA` | Roboadvisors, planes de pensiones, efectivo |
+
+Ejecutabilidad: `ACCIONABLE` (ETFs, acciones) vs `INFORMATIVA` (fondos, T+1/T+2).
+
+```bash
+python modelos/08_stop_loss.py --perfil principal   # ~3s
+```
+
+Output: `resultados/<perfil>/stop_loss.json`
+
 ---
 
 ## 4. Dashboard HTML
@@ -239,11 +317,19 @@ El dashboard se genera como un único archivo HTML auto-contenido con todos los 
 
 | Pestaña | Contenido |
 |---|---|
-| **Perfil** | Situación hipoteca, motor de alertas (23 checks), tabla de posiciones |
-| **Optimización** | Pesos Markowitz (3 escenarios), HRP, comparativa y rebalanceo |
+| **Perfil** | Situación hipoteca, motor de alertas (23 checks), tabla de posiciones, Core/Satellite, Stop Loss |
+| **Optimización** | Pesos Markowitz (3 escenarios), HRP, comparativa y rebalanceo, Monte Carlo patrimonial |
 | **Recomendaciones** | Cartera recomendada, 7 filosofías de inversión, proyección de capital |
 | **Mercado** | Sentiment Reddit, noticias por sector, tendencias y oportunidades |
 | **Estrategia** | DCA activos, movimientos MyInvestor, plusvalías USA |
+
+### Nuevos paneles del dashboard
+
+| Panel | Pestaña | Descripción |
+|---|---|---|
+| **Core / Satellite** | Perfil | Gráfico doughnut con distribución actual vs objetivo por perfil; alertas de rebalanceo |
+| **Monte Carlo** | Optimización | Bandas de percentiles P10/P25/P50/P75/P90 a 15 años; probabilidades por horizonte |
+| **Stop Loss Monitor** | Perfil | Tabla de estados por posición con nivel de alerta, ejecutabilidad y nota fiscal IRPF |
 
 ### Generación
 
@@ -327,20 +413,28 @@ python modelos/03_optimizador.py
 python modelos/03b_optimizador_hrp.py
 python modelos/04_recomendador.py
 
-# 4. Regenerar dashboard
+# 4. Nuevos módulos cuantitativos (~15s total)
+python modelos/05_core_satellite.py --perfil principal
+python modelos/06_montecarlo.py     --perfil principal
+python modelos/08_stop_loss.py      --perfil principal
+
+# 5. Regenerar dashboard
 python dashboard/generar_dashboard.py
 
-# — o todo de una vez —
+# — o todo de una vez (incluye todos los módulos y todos los perfiles) —
 actualizar_todo.bat
+
+# — omitir backtester (más rápido, para actualizaciones frecuentes) —
+set SIN_BACKTESTER=1 && actualizar_todo.bat
 ```
 
 ### Cuándo re-ejecutar cada módulo
 
 | Evento | Módulos |
 |---|---|
-| Nuevas posiciones / cambio de valor | `02` + dashboard |
-| Compra o venta de activos | `02` + `03` + `03b` + dashboard |
-| Cambio de perfil de riesgo | `03` (ajustar restricciones) |
+| Nuevas posiciones / cambio de valor | `02` + `05` + `08` + dashboard |
+| Compra o venta de activos | `02` + `03` + `03b` + `05` + `06` + `08` + dashboard |
+| Cambio de perfil de riesgo | `03` + `05` (target Core/Satellite) |
 | Ejecución mensual de DCA | Actualizar `estrategia_activa.csv` + `02` |
 | Cambio de tipo hipoteca / Euribor | Actualizar `perfil_inversor.json` |
 | Actualización semanal de mercado | `01` → todos → dashboard |
@@ -403,12 +497,14 @@ jupyter>=1.0.0        → notebooks interactivos
 | ✅ Implementado | `scripts/backtester.py` — Walk-forward backtester | 6 modelos OOS (MaxSharpe, MinVol, MinCVaR, HRP, 1/N, benchmark); train=126d, test=21d, embargo=3d |
 | ✅ Implementado | Ledoit-Wolf shrinkage | Regularización de la covarianza muestral en `01_descarga_datos.py`; coeficiente guardado en `parametros_mercado.json` |
 | ✅ Implementado | `port_calmar()` + `port_risk_contribution()` | Calmar ratio paramétrico; RC fraccional rc_i = w_i·(Σw)_i / σ_p |
-| 📅 P1 | `05_rebalanceo_bandas.py` | Alertas de rebalanceo con bandas de tolerancia ±X% y priorización fiscal |
+| ✅ Implementado | `05_core_satellite.py` — Clasificación Core/Satellite | Targets por perfil de riesgo (conservador→muy agresivo); alerta rebalanceo ±5pp; multiperfil |
+| ✅ Implementado | `06_montecarlo.py` — Monte Carlo patrimonial | 10k simulaciones, Cholesky/Ledoit-Wolf, horizontes 5/10/15a, percentiles P10-P90, 200 trayectorias |
+| ✅ Implementado | `08_stop_loss.py` — Stop Loss Monitor | Umbrales por riesgo_1_10, overlay IRPF, ejecutabilidad ACCIONABLE/INFORMATIVA, regla 2 meses |
+| ✅ Implementado | APIs gratuitas en `01_descarga_datos.py` | BCE rf dinámico, FRED macro USA, CoinGecko BTC/EUR, Open FIGI resolución ISIN→ticker |
 | 📅 P1 | `07_tax_harvesting.py` | Cosecha fiscal automatizada: pérdidas compensables con ganancia del ejercicio |
-| 📅 P2 | `06_montecarlo.py` | Simulaciones Monte Carlo con percentiles P10/P50/P90 usando Cholesky de la covarianza |
-| 📅 P2 | `04_auditoria_costes.py` | Scanner de solapamientos entre fondos + TER total de la cartera |
-| 📅 P3 | `03e_optimizacion_robusta.py` | Optimización robusta: incertidumbre en μ̂ modelada como elipsoide |
-| 📅 P3 | `08_sentimiento.py` | Radar de sentimiento social ampliado (Reddit, Google Trends, RSI) |
+| 📅 P1 | `04_auditoria_costes.py` | Scanner de solapamientos entre fondos + TER total de la cartera |
+| 📅 P2 | `03e_optimizacion_robusta.py` | Optimización robusta: incertidumbre en μ̂ modelada como elipsoide |
+| 📅 P2 | `08_sentimiento.py` | Radar de sentimiento social ampliado (Reddit, Google Trends, RSI) |
 
 ### Arquitectura IA (GitHub Copilot)
 
