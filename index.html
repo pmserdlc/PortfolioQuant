@@ -518,7 +518,7 @@
     <a href="#demo">Demo</a>
     <a href="#roadmap">Roadmap</a>
   </nav>
-  <div class="nav-badge">v1.2 · Abril 2026</div>
+  <div class="nav-badge">v1.4 · Mayo 2026</div>
 </nav>
 
 <!-- HERO -->
@@ -598,22 +598,22 @@
 
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">7</div>
+      <div class="stat-num">12</div>
       <div class="stat-lbl">Módulos Python</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">14+</div>
+      <div class="stat-num">18+</div>
       <div class="stat-lbl">Gráficos generados</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">5</div>
+      <div class="stat-num">7</div>
       <div class="stat-lbl">Modelos de optimización</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <div class="stat-num">60+</div>
+      <div class="stat-num">62</div>
       <div class="stat-lbl">Tickers descargados</div>
     </div>
     <div class="stat-sep"></div>
@@ -654,7 +654,7 @@
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
-          <div><strong>Universo de productos</strong><br><span style="color:var(--text-sec); font-size:.8rem">40 ETFs/fondos UCITS con TER, Sharpe 5a y disponibilidad por broker</span></div>
+          <div><strong>Universo de productos</strong><br><span style="color:var(--text-sec); font-size:.8rem">62 ETFs/fondos UCITS con TER, Sharpe 5a y disponibilidad por broker</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
@@ -736,7 +736,7 @@
 <!-- MÓDULOS -->
 <section id="modulos" class="fade-in">
   <div class="section-label">Módulos implementados</div>
-  <h2 class="section-title">Siete motores, un ecosistema</h2>
+  <h2 class="section-title">12 módulos, un ecosistema</h2>
   <p class="section-sub">
     Cada módulo resuelve un problema concreto y es ejecutable de forma independiente.
     El resultado de cada uno alimenta al siguiente.
@@ -749,7 +749,7 @@
       <div class="module-num">01_descarga_datos.py</div>
       <div class="module-title">Descarga · Scanner · Alertas</div>
       <div class="module-desc">
-        Motor de 10 pasos: descarga 26 activos y 7 macro vía Yahoo Finance,
+        Motor de 10 pasos: descarga 60+ activos y 7 macro vía Yahoo Finance,
         actualiza métricas del universo de productos, auto-detecta sectores emergentes con EMA baseline,
         escanea 35+ sectores por momentum, descarga noticias RSS de Google News (sin API key),
         cruza precios × noticias y genera alertas accionables con productos concretos del universo.
@@ -806,7 +806,7 @@
       <div class="module-desc">
         Responde: &ldquo;¿qué asignación es más robusta si las correlaciones cambian de régimen?&rdquo;
         Hierarchical Risk Parity sin inversión de covarianza. Ward linkage, cuasi-diagonalización
-        y bisección recursiva. Sharpe 0.457, vol 12.8%, ejecuta en ~1s.
+        y bisección recursiva. Sharpe 0.660, vol 12.8%, ejecuta en ~1s.
         Ideal con score tensión &gt; 70/100.
       </div>
       <div class="module-fns">
@@ -823,8 +823,8 @@
       <div class="module-desc">
         Responde: &ldquo;¿qué comprar exactamente, en qué plataforma y cuánto rendirá?&rdquo;
         Filtra el universo (24 productos UCITS) por tus plataformas y horizonte,
-        aplica HRP sobre los 40 productos UCITS del universo, prioriza fondos traspasables sin tributar (ventaja IRPF)
-        y proyecta el capital objetivo a N años. TER 0.19% · Sharpe 0.526 · proyección 18a: 1.3M€.
+        aplica HRP sobre los 62 productos UCITS del universo, prioriza fondos traspasables sin tributar (ventaja IRPF)
+        y proyecta el capital objetivo a N años. TER 0.205% · Sharpe 0.38 · proyección 18a: 1.6M€.
       </div>
       <div class="module-fns">
         <span class="fn-tag">hrp_cartera()</span>
@@ -890,7 +890,7 @@
       <div class="pipe-num">📡</div>
       <div class="pipe-content">
         <div class="pipe-title">Descargar datos + inteligencia de mercado <span style="background:rgba(16,185,129,.18); color:#6ee7b7; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">AMPLIADO</span></div>
-        <div class="pipe-desc">Descarga 26 activos y 7 indicadores macro con 5 años de histórico. Puntúa momentum de 35+ sectores, descarga noticias RSS y cruza precios con noticias para detectar tendencias emergentes con alertas accionables.</div>
+        <div class="pipe-desc">Descarga 60+ activos y 7 indicadores macro con 5 años de histórico. Puntúa momentum de 35+ sectores, descarga noticias RSS y cruza precios con noticias para detectar tendencias emergentes con alertas accionables.</div>
       </div>
     </div>
     <div class="pipe-arrow">↓</div>
@@ -930,7 +930,7 @@
       <div class="pipe-num">🎯</div>
       <div class="pipe-content">
         <div class="pipe-title">Cartera recomendada personalizada <span style="background:rgba(16,185,129,.18); color:#6ee7b7; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO</span></div>
-        <div class="pipe-desc">Filtra el universo de 40 productos UCITS por tus plataformas, aplica HRP, prioriza fondos traspasables sin tributar y proyecta el capital objetivo a N años comparando con las 7 filosofías de referencia.</div>
+        <div class="pipe-desc">Filtra el universo de 62 productos UCITS por tus plataformas, aplica HRP, prioriza fondos traspasables sin tributar y proyecta el capital objetivo a N años comparando con las 7 filosofías de referencia.</div>
       </div>
     </div>
     <div class="pipe-arrow">↓</div>
@@ -949,7 +949,7 @@
 <!-- RESULTADOS -->
 <section id="resultados" class="fade-in">
   <div class="section-label">Resultados generados</div>
-  <h2 class="section-title">14+ gráficos · 4 informes · alertas accionables · régimen + factores</h2>
+  <h2 class="section-title">18+ gráficos · 4 informes · alertas accionables · régimen + factores</h2>
   <p class="section-sub">Todos los outputs se guardan en <code style="color:var(--accent3)">resultados/</code> y se regeneran íntegramente en cada ejecución.</p>
 
   <div class="outputs-grid">
@@ -1029,7 +1029,7 @@
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Cartera recomendada · 7 modelos</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Pulso macro · VIX · Reddit</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Alertas · Tendencias</span>
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Universo 40+ ETFs</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Universo 62 productos</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Gráficos Markowitz · HRP</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Informes TXT embebidos</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Cómo funciona · pipeline</span>
@@ -1106,8 +1106,8 @@
 <!-- ROADMAP -->
 <section id="roadmap" class="fade-in">
   <div class="section-label">Roadmap</div>
-  <h2 class="section-title">Roadmap — 8 implementados, 5 planificados</h2>
-  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Black-Litterman, MinCVaR, Risk Parity y Walk-forward Backtester implementados en abril 2026. Calmar ratio y RC% por activo integrados en el optimizador.</p>
+  <h2 class="section-title">Roadmap — 11 implementados, 5 planificados</h2>
+  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Black-Litterman, MinCVaR, Risk Parity, Walk-forward Backtester, Montecarlo, Tax-Loss Harvesting y Core/Satellite implementados. Calmar ratio y RC% por activo integrados en el optimizador. Mayo 2026.</p>
 
   <div class="roadmap-blocks">
 
@@ -1176,29 +1176,29 @@
           </div>
         </div>
 
-        <div class="rm-card">
-          <div class="rm-card-accent acc-p2"></div>
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Simulaciones de Montecarlo</div>
-            <div class="rm-priority p2">P2</div>
+            <div class="rm-title">Simulaciones de Montecarlo <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
           <div class="rm-desc">Miles de trayectorias con movimiento browniano geométrico. Calcula percentiles P10/P50/P90 de riqueza terminal y probabilidad de alcanzar objetivos.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★★★</span>
+            <span class="rm-badge badge-util">montecarlo.json</span>
+            <span class="rm-badge badge-via">Módulo: 06_montecarlo.py</span>
           </div>
         </div>
 
-        <div class="rm-card">
-          <div class="rm-card-accent acc-p1"></div>
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Tax-Loss Harvesting Automático</div>
-            <div class="rm-priority p1">P1 · Inmediato</div>
+            <div class="rm-title">Tax-Loss Harvesting Automático <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
           <div class="rm-desc">Escanea pérdidas realizables, calcula el ahorro fiscal neto y ordena las operaciones. Aplica la regla de los 2 meses (IRPF España) para validar cada afloro.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★★</span>
+            <span class="rm-badge badge-util">scripts/tax_loss_harvesting.py</span>
+            <span class="rm-badge badge-via">Módulo: tax_loss_harvesting.py</span>
           </div>
         </div>
 
@@ -1236,16 +1236,16 @@
           </div>
         </div>
 
-        <div class="rm-card">
-          <div class="rm-card-accent acc-p2"></div>
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Core / Satellite + Stop Loss Automático</div>
-            <div class="rm-priority p2">P2</div>
+            <div class="rm-title">Core / Satellite + Stop Loss Automático <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
           <div class="rm-desc">Segregación explícita del presupuesto de riesgo. Umbrales de stop loss y take profit por posición satélite con alertas automáticas configurables.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ★★★★</span>
-            <span class="rm-badge badge-via">Viabilidad ★★★★</span>
+            <span class="rm-badge badge-util">core_satellite.json · stop_loss.json</span>
+            <span class="rm-badge badge-via">Módulos: 05_core_satellite.py + 08_stop_loss.py</span>
           </div>
         </div>
 
@@ -1302,18 +1302,18 @@
             <div class="rm-title">HRP — López de Prado <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.0</div>
           </div>
-          <div class="rm-desc">Hierarchical Risk Parity: Ward linkage, cuasi-diagonalización y bisección recursiva por varianza-inversa. Sharpe HRP acotado: 0.457 (vs 0.676 Markowitz) &middot; menor volatilidad &middot; Bitcoin genera el 25.4% del riesgo con solo el 10% del capital. Ejecuta en ~0.7s.</div>
+          <div class="rm-desc">Hierarchical Risk Parity: Ward linkage, cuasi-diagonalización y bisección recursiva por varianza-inversa. Sharpe HRP acotado: 0.660 (vs 0.870 Markowitz) &middot; menor volatilidad &middot; Bitcoin genera el 25.1% del riesgo con solo el 10% del capital. Ejecuta en ~0.7s.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">Sharpe 0.457</span>
             <span class="rm-badge badge-via">Modulo: 03b_optimizador_hrp.py</span>
           </div>
         </div>
 
-        <div class="rm-card">
-          <div class="rm-card-accent acc-p4"></div>
+        <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
+          <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Black-Litterman</div>
-            <div class="rm-priority p3">P3 · Próximo</div>
+            <div class="rm-title">Black-Litterman <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
           </div>
           <div class="rm-desc">Prior bayesiano CAPM (Π&nbsp;=&nbsp;λΣw<sub>mkt</sub>, λ=2.5, τ=0.05) + views generadas automáticamente desde régimen de mercado, VIX y factor scores. Optimización MaxSharpe sobre la distribución posterior BL con 80 arranques.</div>
           <div class="rm-meta">
@@ -1368,10 +1368,10 @@
       </thead>
       <tbody>
         <tr><td>Rebalanceo por bandas</td>        <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p1">P1</span></td><td class="module-code">07_rebalanceo_bandas.py</td></tr>
-        <tr><td>Tax-Loss Harvesting</td>           <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p1">P1</span></td><td class="module-code">08_tax_harvesting.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Tax-Loss Harvesting</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">scripts/tax_loss_harvesting.py</td></tr>
         <tr><td>Auditoría costes / solapamientos</td><td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">04_auditoria_costes.py</td></tr>
-        <tr><td>Simulaciones Montecarlo</td>       <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">09_montecarlo.py</td></tr>
-        <tr><td>Core / Satellite + Stop Loss</td>  <td><span class="stars">★★★★</span></td><td><span class="stars">★★★★</span></td> <td><span class="rm-priority p2">P2</span></td><td class="module-code">10_core_satellite.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Simulaciones Montecarlo</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">modelos/06_montecarlo.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Core / Satellite + Stop Loss</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">05_core_satellite.py + 08_stop_loss.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>Black-Litterman</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03c_bl_optimizer.py</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>MinCVaR + Risk Parity</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03_optimizador.py (5 esc.)</td></tr>
         <tr style="background:rgba(16,185,129,.04)"><td><strong>Walk-forward Backtester</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">scripts/backtester.py</td></tr>
