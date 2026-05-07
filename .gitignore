@@ -54,3 +54,10 @@ resultados/alertas_tendencias.*
 Thumbs.db
 .vscode/settings.json
 *.swp
+
+# =============================================================================
+# CREDENCIALES — NUNCA AL REPOSITORIO
+# =============================================================================
+.env
+*.env
+secrets.py
