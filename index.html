@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PortfolioQuant ÔÇö Optimizaci├│n de Inversiones</title>
+<title>PortfolioQuant — Optimización de Inversiones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -36,7 +36,7 @@
     overflow-x: hidden;
   }
 
-  /* ÔöÇÔöÇÔöÇ HERO BRAND / LOGO ÔöÇÔöÇÔöÇ */
+  /* ─── HERO BRAND / LOGO ─── */
   .hero-brand {
     display: flex; flex-direction: column; align-items: center; gap: .9rem;
     margin-bottom: 2.2rem; position: relative;
@@ -76,7 +76,7 @@
     margin-top: .1rem;
   }
 
-  /* ÔöÇÔöÇÔöÇ NAV ÔöÇÔöÇÔöÇ */
+  /* ─── NAV ─── */
   nav {
     position: fixed; top:0; left:0; right:0; z-index:100;
     backdrop-filter: blur(16px);
@@ -103,7 +103,7 @@
     font-size: .8rem; font-weight: 600;
   }
 
-  /* ÔöÇÔöÇÔöÇ HERO ÔöÇÔöÇÔöÇ */
+  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -138,7 +138,7 @@
     letter-spacing: .06em; text-transform: uppercase;
     margin-bottom: 1.5rem;
   }
-  .hero-tag::before { content:'ÔùÅ'; font-size:.5rem; animation: pulse 2s infinite; }
+  .hero-tag::before { content:'●'; font-size:.5rem; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
   h1 {
     font-size: clamp(2.4rem, 6vw, 4rem);
@@ -202,7 +202,7 @@
   .stat-lbl { color: var(--text-muted); font-size: .8rem; margin-top: .2rem; letter-spacing:.04em; text-transform:uppercase; }
   .stat-sep { width:1px; background: var(--border); align-self: stretch; }
 
-  /* ÔöÇÔöÇÔöÇ SECTIONS ÔöÇÔöÇÔöÇ */
+  /* ─── SECTIONS ─── */
   section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
   .section-label {
     color: var(--accent); font-size: .8rem; font-weight: 700;
@@ -214,7 +214,7 @@
   }
   .section-sub { color: var(--text-sec); max-width: 560px; line-height: 1.7; }
 
-  /* ÔöÇÔöÇÔöÇ MODULES ÔöÇÔöÇÔöÇ */
+  /* ─── MODULES ─── */
   #modulos { max-width: 1100px; }
   .modules-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -255,7 +255,7 @@
     padding: .2rem .6rem; border-radius: 6px;
   }
 
-  /* ÔöÇÔöÇÔöÇ PIPELINE ÔöÇÔöÇÔöÇ */
+  /* ─── PIPELINE ─── */
   #flujo { background: linear-gradient(180deg, transparent, rgba(17,24,39,.8), transparent); }
   .pipeline {
     display: flex; flex-direction: column; gap: 0;
@@ -290,7 +290,7 @@
   }
   .pipe-arrow { text-align:center; color: var(--text-muted); font-size:1.2rem; margin: -.25rem 0 -.25rem 1.9rem; }
 
-  /* ÔöÇÔöÇÔöÇ OUTPUTS ÔöÇÔöÇÔöÇ */
+  /* ─── OUTPUTS ─── */
   .outputs-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 1rem; margin-top: 3rem;
@@ -306,7 +306,7 @@
   .output-title { font-size: .9rem; font-weight: 600; margin-bottom: .25rem; }
   .output-desc { color: var(--text-sec); font-size: .8rem; line-height: 1.5; }
 
-  /* ÔöÇÔöÇÔöÇ NOTEBOOKS ÔöÇÔöÇÔöÇ */
+  /* ─── NOTEBOOKS ─── */
   .notebooks-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
     gap: 1.5rem; margin-top: 3rem;
@@ -336,7 +336,7 @@
   }
   .nb-section-text { color: var(--text-sec); }
 
-  /* ÔöÇÔöÇÔöÇ STACK T├ëCNICO ÔöÇÔöÇÔöÇ */
+  /* ─── STACK TÉCNICO ─── */
   .stack-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
     gap: 1rem; margin-top: 2.5rem;
@@ -350,7 +350,7 @@
   .stack-name { font-weight: 600; font-size: .9rem; }
   .stack-use { color: var(--text-muted); font-size: .75rem; margin-top: .1rem; }
 
-  /* ÔöÇÔöÇÔöÇ ROADMAP ÔöÇÔöÇÔöÇ */
+  /* ─── ROADMAP ─── */
   #roadmap { max-width: 1100px; }
   .roadmap-blocks {
     display: flex; flex-direction: column; gap: 2.5rem; margin-top: 3rem;
@@ -423,7 +423,7 @@
     font-size: .78rem; color: var(--text-sec);
   }
 
-  /* ÔöÇÔöÇÔöÇ LIMITACIONES ÔöÇÔöÇÔöÇ */
+  /* ─── LIMITACIONES ─── */
   .limits-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
     gap: 1rem; margin-top: 2.5rem;
@@ -441,7 +441,7 @@
     padding: .3rem .7rem; border-radius: 6px; display:inline-block;
   }
 
-  /* ÔöÇÔöÇÔöÇ FOOTER ÔöÇÔöÇÔöÇ */
+  /* ─── FOOTER ─── */
   .footer-copyright {
     background: rgba(239,68,68,.07);
     border-top: 1px solid rgba(239,68,68,.25);
@@ -466,18 +466,18 @@
     font-size: .78rem; line-height: 1.6;
   }
 
-  /* ÔöÇÔöÇÔöÇ SEPARATOR ÔöÇÔöÇÔöÇ */
+  /* ─── SEPARATOR ─── */
   .full-sep {
     width: 100%; height: 1px;
     background: linear-gradient(90deg, transparent, var(--border), transparent);
     margin: 0;
   }
 
-  /* ÔöÇÔöÇÔöÇ SCROLL FADE ÔöÇÔöÇÔöÇ */
+  /* ─── SCROLL FADE ─── */
   .fade-in { opacity:0; transform:translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .fade-in.visible { opacity:1; transform:translateY(0); }
 
-  /* ÔöÇÔöÇÔöÇ RESPONSIVE ÔöÇÔöÇÔöÇ */
+  /* ─── RESPONSIVE ─── */
   @media (max-width: 640px) {
     .nav-links { display:none; }
     .hero-stats { gap: 1.5rem; }
@@ -489,7 +489,7 @@
 
 <!-- DISCLAIMER BAR -->
 <div style="background:rgba(245,158,11,.12); border-bottom:1px solid rgba(245,158,11,.35); padding:.6rem 1.5rem; text-align:center; font-size:.8rem; color:#d97706; line-height:1.5; position:sticky; top:0; z-index:1000; backdrop-filter:blur(8px)">
-  ÔÜá´©Å <strong>Aviso importante:</strong> Este sistema es una herramienta de apoyo cuantitativo. Los rendimientos esperados son estimaciones hist├│ricas de largo plazo y no garantizan rentabilidad futura. Consultar con asesor financiero antes de ejecutar cualquier rebalanceo.
+  ⚠️ <strong>Aviso importante:</strong> Este sistema es una herramienta de apoyo cuantitativo. Los rendimientos esperados son estimaciones históricas de largo plazo y no garantizan rentabilidad futura. Consultar con asesor financiero antes de ejecutar cualquier rebalanceo.
 </div>
 
 <!-- NAV -->
@@ -512,13 +512,13 @@
     Portfolio<span>Quant</span>
   </div>
   <nav class="nav-links">
-    <a href="#modulos">M├│dulos</a>
+    <a href="#modulos">Módulos</a>
     <a href="#flujo">Flujo</a>
     <a href="#resultados">Resultados</a>
     <a href="#demo">Demo</a>
     <a href="#roadmap">Roadmap</a>
   </nav>
-  <div class="nav-badge">v1.4 ┬À Mayo 2026</div>
+  <div class="nav-badge">v1.4 · Mayo 2026</div>
 </nav>
 
 <!-- HERO -->
@@ -560,7 +560,7 @@
         <line x1="14" y1="40" x2="96" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
         <line x1="14" y1="60" x2="96" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
         <line x1="14" y1="80" x2="96" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <!-- ├ürea bajo la curva -->
+        <!-- Área bajo la curva -->
         <path d="M 14 86 Q 28 80 42 70 Q 56 58 70 44 Q 80 34 94 22 L 94 86 Z" fill="url(#areaGrad)"/>
         <!-- Frontera eficiente (curva principal) -->
         <path d="M 14 86 Q 28 80 42 70 Q 56 58 70 44 Q 80 34 94 22" stroke="url(#iconGrad)" stroke-width="3" stroke-linecap="round" fill="none" filter="url(#glow)"/>
@@ -568,48 +568,48 @@
         <circle cx="14" cy="86" r="3.5" fill="#3b82f6" opacity="0.8"/>
         <circle cx="42" cy="70" r="3.5" fill="#5b99f6" opacity="0.85"/>
         <circle cx="70" cy="44" r="4" fill="#0ec47a" opacity="0.9"/>
-        <!-- Punto ├│ptimo iluminado -->
+        <!-- Punto óptimo iluminado -->
         <circle cx="94" cy="22" r="12" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.35)" stroke-width="1.5"/>
         <circle cx="94" cy="22" r="6" fill="rgba(16,185,129,0.3)" stroke="rgba(16,185,129,0.6)" stroke-width="1"/>
         <circle cx="94" cy="22" r="3.5" fill="#10b981" filter="url(#glow)"/>
         <!-- Etiqueta eje X -->
-        <text x="14" y="100" font-size="7" fill="rgba(148,163,184,0.6)" font-family="monospace">RIESGO ÔåÆ</text>
+        <text x="14" y="100" font-size="7" fill="rgba(148,163,184,0.6)" font-family="monospace">RIESGO →</text>
         <!-- Etiqueta eje Y -->
-        <text x="4" y="60" font-size="7" fill="rgba(148,163,184,0.6)" font-family="monospace" transform="rotate(-90,4,60)">REND. ÔåÆ</text>
+        <text x="4" y="60" font-size="7" fill="rgba(148,163,184,0.6)" font-family="monospace" transform="rotate(-90,4,60)">REND. →</text>
       </svg>
     </div>
     <div class="hero-wordmark">Portfolio<em>Quant</em></div>
-    <div class="hero-wordmark-sub">Optimizaci├│n cuantitativa de cartera ┬À Python</div>
+    <div class="hero-wordmark-sub">Optimización cuantitativa de cartera · Python</div>
   </div>
 
-  <div class="hero-tag">Sistema de An├ílisis Cuantitativo</div>
+  <div class="hero-tag">Sistema de Análisis Cuantitativo</div>
 
   <h1>Tu cartera analizada, optimizada<br>y con <em>un plan concreto</em> para actuar</h1>
 
   <p class="hero-sub">
-    Carga tus posiciones en CSV. El sistema descarga datos reales de mercado, detecta el r├®gimen bull/bear
-    con GMM, punt├║a tus activos por momentum, calidad y sentimiento Reddit, optimiza con Markowitz + HRP,
-    y te dice exactamente qu├® comprar, en qu├® plataforma y con qu├® impacto fiscal.
+    Carga tus posiciones en CSV. El sistema descarga datos reales de mercado, detecta el régimen bull/bear
+    con GMM, puntúa tus activos por momentum, calidad y sentimiento Reddit, optimiza con Markowitz + HRP,
+    y te dice exactamente qué comprar, en qué plataforma y con qué impacto fiscal.
   </p>
 
   <div class="hero-cta">
-    <a href="dashboard/demo.html" class="btn-primary" target="_blank" rel="noopener">Abrir dashboard demo ÔåÆ</a>
+    <a href="dashboard/demo.html" class="btn-primary" target="_blank" rel="noopener">Abrir dashboard demo →</a>
   </div>
 
   <div class="hero-stats">
     <div class="stat-item">
       <div class="stat-num">12</div>
-      <div class="stat-lbl">M├│dulos Python</div>
+      <div class="stat-lbl">Módulos Python</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
       <div class="stat-num">18+</div>
-      <div class="stat-lbl">Gr├íficos generados</div>
+      <div class="stat-lbl">Gráficos generados</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
       <div class="stat-num">7</div>
-      <div class="stat-lbl">Modelos de optimizaci├│n</div>
+      <div class="stat-lbl">Modelos de optimización</div>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
@@ -619,17 +619,17 @@
     <div class="stat-sep"></div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
-      <div class="stat-lbl">Open ┬À Local ┬À Privado</div>
+      <div class="stat-lbl">Open · Local · Privado</div>
     </div>
   </div>
 </div>
 
 <div class="full-sep"></div>
 
-<!-- AT A GLANCE: QU├ë ENTRA / QU├ë HACE / QU├ë OBTIENES -->
+<!-- AT A GLANCE: QUÉ ENTRA / QUÉ HACE / QUÉ OBTIENES -->
 <section id="overview" class="fade-in" style="padding-top:3rem; padding-bottom:2rem">
-  <div class="section-label">┬┐Qu├® hace exactamente?</div>
-  <h2 class="section-title">Entradas, an├ílisis y resultados</h2>
+  <div class="section-label">¿Qué hace exactamente?</div>
+  <h2 class="section-title">Entradas, análisis y resultados</h2>
   <p class="section-sub">El ciclo completo en un vistazo: lo que necesita, lo que hace internamente y lo que produce.</p>
 
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem">
@@ -637,28 +637,28 @@
     <!-- ENTRADAS -->
     <div style="background:var(--bg-card); border:1px solid rgba(245,158,11,.3); border-top:3px solid var(--accent3); border-radius:16px; padding:1.75rem">
       <div style="font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent3); margin-bottom:1.25rem; display:flex; align-items:center; gap:.5rem">
-        <span>­ƒôé</span> LO QUE ENTRA
+        <span>📂</span> LO QUE ENTRA
       </div>
       <div style="display:flex; flex-direction:column; gap:.9rem; font-size:.875rem">
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">Ôû©</span>
-          <div><strong>Posiciones actuales</strong><br><span style="color:var(--text-sec); font-size:.8rem">CSV con coste hist├│rico, valor actual y entidad custodio</span></div>
+          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
+          <div><strong>Posiciones actuales</strong><br><span style="color:var(--text-sec); font-size:.8rem">CSV con coste histórico, valor actual y entidad custodio</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">Ôû©</span>
+          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
           <div><strong>Cartera USA</strong><br><span style="color:var(--text-sec); font-size:.8rem">Tickers con P&amp;L en USD por sector</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">Ôû©</span>
-          <div><strong>Perfil inversor</strong><br><span style="color:var(--text-sec); font-size:.8rem">Horizonte, plataformas disponibles, capital objetivo, aversi├│n al drawdown</span></div>
+          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
+          <div><strong>Perfil inversor</strong><br><span style="color:var(--text-sec); font-size:.8rem">Horizonte, plataformas disponibles, capital objetivo, aversión al drawdown</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">Ôû©</span>
+          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
           <div><strong>Universo de productos</strong><br><span style="color:var(--text-sec); font-size:.8rem">62 ETFs/fondos UCITS con TER, Sharpe 5a y disponibilidad por broker</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">Ôû©</span>
-          <div><strong>7 filosof├¡as de referencia</strong><br><span style="color:var(--text-sec); font-size:.8rem">Dalio, Browne, Bogle, Swensen, Buffett, ARK, Cl├ísica Espa├▒a</span></div>
+          <span style="color:var(--accent3); font-size:.75rem; margin-top:.15rem; flex-shrink:0">▸</span>
+          <div><strong>7 filosofías de referencia</strong><br><span style="color:var(--text-sec); font-size:.8rem">Dalio, Browne, Bogle, Swensen, Buffett, ARK, Clásica España</span></div>
         </div>
       </div>
     </div>
@@ -666,36 +666,36 @@
     <!-- PROCESO -->
     <div style="background:var(--bg-card); border:1px solid rgba(59,130,246,.3); border-top:3px solid var(--accent); border-radius:16px; padding:1.75rem">
       <div style="font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:1.25rem; display:flex; align-items:center; gap:.5rem">
-        <span>ÔÜÖ´©Å</span> LO QUE HACE
+        <span>⚙️</span> LO QUE HACE
       </div>
       <div style="display:flex; flex-direction:column; gap:.9rem; font-size:.875rem">
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">01</span>
-          <div>Descarga <strong>60+ activos + 7 macro</strong> v├¡a Yahoo Finance, sentiment Reddit (ApeWisdom), Google News RSS y resoluci├│n de tickers autom├ítica</div>
+          <div>Descarga <strong>60+ activos + 7 macro</strong> vía Yahoo Finance, sentiment Reddit (ApeWisdom), Google News RSS y resolución de tickers automática</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">02</span>
-          <div>Radiograf├¡a de la cartera: distribuci├│n, <strong>plusval├¡as latentes con IRPF</strong>, concentraci├│n custodio, riesgo sectorial USA</div>
+          <div>Radiografía de la cartera: distribución, <strong>plusvalías latentes con IRPF</strong>, concentración custodio, riesgo sectorial USA</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">03</span>
-          <div>Optimiza con <strong>Markowitz + Ledoit-Wolf</strong> (3 escenarios, covarianza shrinkage) y con <strong>HRP</strong> sin invertir la covarianza. Genera cartera blend t├íctica ponderada por r├®gimen</div>
+          <div>Optimiza con <strong>Markowitz + Ledoit-Wolf</strong> (3 escenarios, covarianza shrinkage) y con <strong>HRP</strong> sin invertir la covarianza. Genera cartera blend táctica ponderada por régimen</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">04</span>
-          <div>Construye la <strong>cartera recomendada</strong> filtrada por tus plataformas, optimizada por TER y Sharpe, proyectada a N a├▒os</div>
+          <div>Construye la <strong>cartera recomendada</strong> filtrada por tus plataformas, optimizada por TER y Sharpe, proyectada a N años</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(139,92,246,.15); color:var(--accent4); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">05</span>
-          <div><strong>Detecta el r├®gimen de mercado</strong> (bull/bear) con GaussianMixture y ajusta autom├íticamente la cartera ├│ptima hacia MaxSharpe o MinVol seg├║n la probabilidad inferida</div>
+          <div><strong>Detecta el régimen de mercado</strong> (bull/bear) con GaussianMixture y ajusta automáticamente la cartera óptima hacia MaxSharpe o MinVol según la probabilidad inferida</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(139,92,246,.15); color:var(--accent4); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">06</span>
-          <div>Punt├║a cada clase de activo con <strong>4 factores</strong> (momentum 12-1m, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional para identificar los activos mejor posicionados</div>
+          <div>Puntúa cada clase de activo con <strong>4 factores</strong> (momentum 12-1m, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional para identificar los activos mejor posicionados</div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
           <span style="background:rgba(59,130,246,.15); color:var(--accent); font-size:.65rem; font-weight:700; padding:.15rem .45rem; border-radius:4px; white-space:nowrap; flex-shrink:0">05</span>
-          <div>Escanea <strong>35+ sectores</strong>, cruza precios ├ù noticias RSS, detecta tendencias emergentes y genera alertas con productos del universo</div>
+          <div>Escanea <strong>35+ sectores</strong>, cruza precios × noticias RSS, detecta tendencias emergentes y genera alertas con productos del universo</div>
         </div>
       </div>
     </div>
@@ -703,56 +703,56 @@
     <!-- SALIDAS -->
     <div style="background:var(--bg-card); border:1px solid rgba(16,185,129,.3); border-top:3px solid var(--accent2); border-radius:16px; padding:1.75rem">
       <div style="font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent2); margin-bottom:1.25rem; display:flex; align-items:center; gap:.5rem">
-        <span>­ƒôè</span> LO QUE OBTIENES
+        <span>📊</span> LO QUE OBTIENES
       </div>
       <div style="display:flex; flex-direction:column; gap:.9rem; font-size:.875rem">
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">Ô£ô</span>
-          <div><strong>18+ gr├íficos</strong><br><span style="color:var(--text-sec); font-size:.8rem">Frontera eficiente, clustering HRP, rebalanceo, diversificaci├│n, proyecci├│n...</span></div>
+          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">✓</span>
+          <div><strong>18+ gráficos</strong><br><span style="color:var(--text-sec); font-size:.8rem">Frontera eficiente, clustering HRP, rebalanceo, diversificación, proyección...</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">Ô£ô</span>
-          <div><strong>4 informes de texto</strong><br><span style="color:var(--text-sec); font-size:.8rem">An├ílisis, optimizaci├│n, HRP y recomendaci├│n. Exportables, listos para compartir</span></div>
+          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">✓</span>
+          <div><strong>4 informes de texto</strong><br><span style="color:var(--text-sec); font-size:.8rem">Análisis, optimización, HRP y recomendación. Exportables, listos para compartir</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">Ô£ô</span>
-          <div><strong>Plan de rebalanceo en Ôé¼</strong><br><span style="color:var(--text-sec); font-size:.8rem">Qu├® comprar y vender, con impacto fiscal IRPF por operaci├│n</span></div>
+          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">✓</span>
+          <div><strong>Plan de rebalanceo en €</strong><br><span style="color:var(--text-sec); font-size:.8rem">Qué comprar y vender, con impacto fiscal IRPF por operación</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">Ô£ô</span>
+          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">✓</span>
           <div><strong>Alertas de tendencias</strong><br><span style="color:var(--text-sec); font-size:.8rem">Sectores emergentes + productos concretos + pesos sugeridos por perfil + plataformas</span></div>
         </div>
         <div style="display:flex; gap:.75rem; align-items:flex-start">
-          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">Ô£ô</span>
-          <div><strong>Proyecci├│n de capital</strong><br><span style="color:var(--text-sec); font-size:.8rem">Simulaci├│n a N a├▒os: trayectoria, capital proyectado y comparativa de filosof├¡as</span></div>
+          <span style="color:var(--accent2); font-size:.8rem; flex-shrink:0">✓</span>
+          <div><strong>Proyección de capital</strong><br><span style="color:var(--text-sec); font-size:.8rem">Simulación a N años: trayectoria, capital proyectado y comparativa de filosofías</span></div>
         </div>
       </div>
     </div>
 
   </div>
-  <p style="font-size:.78rem; color:var(--text-muted); margin-top:1.25rem; text-align:center">Todo se ejecuta en local. Ning├║n dato de cartera sale del equipo. Sin APIs de pago ni servicios en la nube.</p>
+  <p style="font-size:.78rem; color:var(--text-muted); margin-top:1.25rem; text-align:center">Todo se ejecuta en local. Ningún dato de cartera sale del equipo. Sin APIs de pago ni servicios en la nube.</p>
 </section>
 
-<!-- M├ôDULOS -->
+<!-- MÓDULOS -->
 <section id="modulos" class="fade-in">
-  <div class="section-label">M├│dulos implementados</div>
-  <h2 class="section-title">12 m├│dulos, un ecosistema</h2>
+  <div class="section-label">Módulos implementados</div>
+  <h2 class="section-title">12 módulos, un ecosistema</h2>
   <p class="section-sub">
-    Cada m├│dulo resuelve un problema concreto y es ejecutable de forma independiente.
+    Cada módulo resuelve un problema concreto y es ejecutable de forma independiente.
     El resultado de cada uno alimenta al siguiente.
   </p>
 
   <div class="modules-grid">
 
     <div class="module-card">
-      <div class="module-icon" style="background:rgba(59,130,246,.12)">­ƒôí</div>
+      <div class="module-icon" style="background:rgba(59,130,246,.12)">📡</div>
       <div class="module-num">01_descarga_datos.py</div>
-      <div class="module-title">Descarga ┬À Scanner ┬À Alertas</div>
+      <div class="module-title">Descarga · Scanner · Alertas</div>
       <div class="module-desc">
-        Motor de 10 pasos: descarga 60+ activos y 7 macro v├¡a Yahoo Finance,
-        actualiza m├®tricas del universo de productos, auto-detecta sectores emergentes con EMA baseline,
+        Motor de 10 pasos: descarga 60+ activos y 7 macro vía Yahoo Finance,
+        actualiza métricas del universo de productos, auto-detecta sectores emergentes con EMA baseline,
         escanea 35+ sectores por momentum, descarga noticias RSS de Google News (sin API key),
-        cruza precios ├ù noticias y genera alertas accionables con productos concretos del universo.
+        cruza precios × noticias y genera alertas accionables con productos concretos del universo.
       </div>
       <div class="module-fns">
         <span class="fn-tag">scanner_tendencias()</span>
@@ -763,14 +763,14 @@
     </div>
 
     <div class="module-card">
-      <div class="module-icon" style="background:rgba(16,185,129,.12)">­ƒö¼</div>
+      <div class="module-icon" style="background:rgba(16,185,129,.12)">🔬</div>
       <div class="module-num">02_analisis_cartera.py</div>
-      <div class="module-title">Radiograf├¡a de Cartera</div>
+      <div class="module-title">Radiografía de Cartera</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐qu├® tengo, d├│nde est├í el riesgo y cu├ínto pagar├® de impuestos?&rdquo;
-        Distribuci├│n por tipo, entidad y nivel de riesgo. Mapa fiscal de plusval├¡as/p├®rdidas
-        con estimaci├│n de IRPF por posici├│n. An├ílisis sectorial de bolsa USA.
-        Proyecci├│n de la estrategia de traspasos activa.
+        Responde: &ldquo;¿qué tengo, dónde está el riesgo y cuánto pagaré de impuestos?&rdquo;
+        Distribución por tipo, entidad y nivel de riesgo. Mapa fiscal de plusvalías/pérdidas
+        con estimación de IRPF por posición. Análisis sectorial de bolsa USA.
+        Proyección de la estrategia de traspasos activa.
       </div>
       <div class="module-fns">
         <span class="fn-tag">distribucion()</span>
@@ -781,18 +781,18 @@
     </div>
 
     <div class="module-card">
-      <div class="module-icon" style="background:rgba(139,92,246,.12)">ÔÜí</div>
+      <div class="module-icon" style="background:rgba(139,92,246,.12)">⚡</div>
       <div class="module-num">03_optimizador.py</div>
       <div class="module-title">Optimizador Markowitz</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐cu├íl es la cartera ├│ptima para mi perfil?&rdquo;
-        Media-Varianza con 10 clases, 3 escenarios (Sharpe ├│ptimo, m├¡nima vol, m├íx rend),
+        Responde: &ldquo;¿cuál es la cartera óptima para mi perfil?&rdquo;
+        Media-Varianza con 10 clases, 3 escenarios (Sharpe óptimo, mínima vol, máx rend),
         50 puntos de arranque SLSQP, Ledoit-Wolf shrinkage para covarianza robusta,
-        Sortino, CVaR 95% y escenarios de estr├®s (COVID, Bear 2022, Tech 30%).
-        Genera cartera blend t├íctica condicionada al r├®gimen detectado.
+        Sortino, CVaR 95% y escenarios de estrés (COVID, Bear 2022, Tech 30%).
+        Genera cartera blend táctica condicionada al régimen detectado.
       </div>
       <div class="module-fns">
-        <span class="fn-tag">SLSQP ┬À scipy</span>
+        <span class="fn-tag">SLSQP · scipy</span>
         <span class="fn-tag">Ledoit-Wolf</span>
         <span class="fn-tag">frontera_eficiente()</span>
         <span class="fn-tag">pesos_optimos.csv</span>
@@ -800,14 +800,14 @@
     </div>
 
     <div class="module-card" style="border-color:rgba(139,92,246,.35)">
-      <div class="module-icon" style="background:rgba(139,92,246,.18)">­ƒö║</div>
+      <div class="module-icon" style="background:rgba(139,92,246,.18)">🔺</div>
       <div class="module-num">03b_optimizador_hrp.py</div>
-      <div class="module-title">HRP ÔÇö L├│pez de Prado</div>
+      <div class="module-title">HRP — López de Prado</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐qu├® asignaci├│n es m├ís robusta si las correlaciones cambian de r├®gimen?&rdquo;
-        Hierarchical Risk Parity sin inversi├│n de covarianza. Ward linkage, cuasi-diagonalizaci├│n
-        y bisecci├│n recursiva. Sharpe 0.660, vol 12.8%, ejecuta en ~1s.
-        Ideal con score tensi├│n &gt; 70/100.
+        Responde: &ldquo;¿qué asignación es más robusta si las correlaciones cambian de régimen?&rdquo;
+        Hierarchical Risk Parity sin inversión de covarianza. Ward linkage, cuasi-diagonalización
+        y bisección recursiva. Sharpe 0.660, vol 12.8%, ejecuta en ~1s.
+        Ideal con score tensión &gt; 70/100.
       </div>
       <div class="module-fns">
         <span class="fn-tag">Ward linkage</span>
@@ -817,32 +817,32 @@
     </div>
 
     <div class="module-card" style="border-color:rgba(16,185,129,.35)">
-      <div class="module-icon" style="background:rgba(16,185,129,.18)">­ƒÄ»</div>
+      <div class="module-icon" style="background:rgba(16,185,129,.18)">🎯</div>
       <div class="module-num">04_recomendador.py</div>
       <div class="module-title">Recomendador Personalizado</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐qu├® comprar exactamente, en qu├® plataforma y cu├ínto rendir├í?&rdquo;
+        Responde: &ldquo;¿qué comprar exactamente, en qué plataforma y cuánto rendirá?&rdquo;
         Filtra el universo (24 productos UCITS) por tus plataformas y horizonte,
         aplica HRP sobre los 62 productos UCITS del universo, prioriza fondos traspasables sin tributar (ventaja IRPF)
-        y proyecta el capital objetivo a N a├▒os. TER 0.205% ┬À Sharpe 0.38 ┬À proyecci├│n 18a: 1.6MÔé¼.
+        y proyecta el capital objetivo a N años. TER 0.205% · Sharpe 0.38 · proyección 18a: 1.6M€.
       </div>
       <div class="module-fns">
         <span class="fn-tag">hrp_cartera()</span>
         <span class="fn-tag">proyeccion_capital()</span>
         <span class="fn-tag">informe_recomendacion.txt</span>
-        <span class="fn-tag">rec_01ÔÇô04.png</span>
+        <span class="fn-tag">rec_01–04.png</span>
       </div>
     </div>
 
     <div class="module-card" style="border-color:rgba(139,92,246,.35)">
-      <div class="module-icon" style="background:rgba(139,92,246,.18)">­ƒîí´©Å</div>
+      <div class="module-icon" style="background:rgba(139,92,246,.18)">🌡️</div>
       <div class="module-num">05_detector_regimen.py</div>
-      <div class="module-title">Detector de R├®gimen de Mercado</div>
+      <div class="module-title">Detector de Régimen de Mercado</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐estamos en bull o bear market ahora mismo?&rdquo;
+        Responde: &ldquo;¿estamos en bull o bear market ahora mismo?&rdquo;
         GaussianMixture (sklearn) con 2 componentes sobre retornos y volatilidad rolling.
-        Selecciona el mejor modelo por BIC m├¡nimo (10 semillas). Genera probabilidad de r├®gimen bull/bear
-        y condiciona la cartera t├íctica: <code>w_blend = p_bull ├ù MaxSharpe + p_bear ├ù MinVol</code>.
+        Selecciona el mejor modelo por BIC mínimo (10 semillas). Genera probabilidad de régimen bull/bear
+        y condiciona la cartera táctica: <code>w_blend = p_bull × MaxSharpe + p_bear × MinVol</code>.
       </div>
       <div class="module-fns">
         <span class="fn-tag">GaussianMixture</span>
@@ -853,14 +853,14 @@
     </div>
 
     <div class="module-card" style="border-color:rgba(245,158,11,.35)">
-      <div class="module-icon" style="background:rgba(245,158,11,.18)">­ƒÅå</div>
+      <div class="module-icon" style="background:rgba(245,158,11,.18)">🏆</div>
       <div class="module-num">06_factor_scoring.py</div>
       <div class="module-title">Factor Scoring Multi-factor</div>
       <div class="module-desc">
-        Responde: &ldquo;┬┐qu├® clases de activo tienen mejores fundamentos ahora?&rdquo;
+        Responde: &ldquo;¿qué clases de activo tienen mejores fundamentos ahora?&rdquo;
         Z-score cross-sectional de 4 factores: momentum 12-1m, calidad (Sharpe/MaxDD),
         tendencia vs media 200d y sentimiento Reddit (ApeWisdom). Pondera y ordena
-        todos los activos del universo para apoyar la decisi├│n de rebalanceo.
+        todos los activos del universo para apoyar la decisión de rebalanceo.
       </div>
       <div class="module-fns">
         <span class="fn-tag">momentum 12-1m</span>
@@ -874,71 +874,71 @@
 </section>
 <section id="flujo" class="fade-in">
   <div class="section-label">Flujo de trabajo</div>
-  <h2 class="section-title">C├│mo funciona ÔÇö 8 pasos</h2>
-  <p class="section-sub">Flujo reproducible. Una vez configurado, se actualiza todo con datos de mercado reales en cada ejecuci├│n.</p>
+  <h2 class="section-title">Cómo funciona — 8 pasos</h2>
+  <p class="section-sub">Flujo reproducible. Una vez configurado, se actualiza todo con datos de mercado reales en cada ejecución.</p>
 
   <div class="pipeline">
     <div class="pipe-step">
-      <div class="pipe-num">­ƒôé</div>
+      <div class="pipe-num">📂</div>
       <div class="pipe-content">
         <div class="pipe-title">Actualizar datos de cartera</div>
-        <div class="pipe-desc">Registrar las posiciones actuales, el perfil inversor, capital objetivo y plataformas disponibles. Un ├║nico punto de entrada por tipo de dato.</div>
+        <div class="pipe-desc">Registrar las posiciones actuales, el perfil inversor, capital objetivo y plataformas disponibles. Un único punto de entrada por tipo de dato.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒôí</div>
+      <div class="pipe-num">📡</div>
       <div class="pipe-content">
         <div class="pipe-title">Descargar datos + inteligencia de mercado <span style="background:rgba(16,185,129,.18); color:#6ee7b7; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">AMPLIADO</span></div>
-        <div class="pipe-desc">Descarga 60+ activos y 7 indicadores macro con 5 a├▒os de hist├│rico. Punt├║a momentum de 35+ sectores, descarga noticias RSS y cruza precios con noticias para detectar tendencias emergentes con alertas accionables.</div>
+        <div class="pipe-desc">Descarga 60+ activos y 7 indicadores macro con 5 años de histórico. Puntúa momentum de 35+ sectores, descarga noticias RSS y cruza precios con noticias para detectar tendencias emergentes con alertas accionables.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒö¼</div>
+      <div class="pipe-num">🔬</div>
       <div class="pipe-content">
-        <div class="pipe-title">An├ílisis de la cartera actual</div>
-        <div class="pipe-desc">Radiograf├¡a completa: distribuci├│n por tipo y entidad, mapa de plusval├¡as y p├®rdidas latentes con estimaci├│n de IRPF por posici├│n, alertas sectoriales y proyecci├│n de la estrategia de traspasos activa.</div>
+        <div class="pipe-title">Análisis de la cartera actual</div>
+        <div class="pipe-desc">Radiografía completa: distribución por tipo y entidad, mapa de plusvalías y pérdidas latentes con estimación de IRPF por posición, alertas sectoriales y proyección de la estrategia de traspasos activa.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">ÔÜí</div>
+      <div class="pipe-num">⚡</div>
       <div class="pipe-content">
-        <div class="pipe-title">Optimizaci├│n ÔÇö Markowitz + Ledoit-Wolf + HRP</div>
-        <div class="pipe-desc">Markowitz calcula 3 escenarios con covarianza Ledoit-Wolf shrinkage. HRP (L├│pez de Prado) ofrece una segunda opini├│n sin invertir la covarianza, m├ís robusto en entornos de alta tensi├│n macro.</div>
+        <div class="pipe-title">Optimización — Markowitz + Ledoit-Wolf + HRP</div>
+        <div class="pipe-desc">Markowitz calcula 3 escenarios con covarianza Ledoit-Wolf shrinkage. HRP (López de Prado) ofrece una segunda opinión sin invertir la covarianza, más robusto en entornos de alta tensión macro.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒîí´©Å</div>
+      <div class="pipe-num">🌡️</div>
       <div class="pipe-content">
-        <div class="pipe-title">Detector de r├®gimen bull/bear <span style="background:rgba(139,92,246,.18); color:#c4b5fd; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO v1.2</span></div>
-        <div class="pipe-desc">GaussianMixture infiere la probabilidad de r├®gimen alcista vs bajista. La cartera blend t├íctica se pondera autom├íticamente: <code>w = p_bull ├ù MaxSharpe + p_bear ├ù MinVol</code>. Resultado: <code>regimen_mercado.json</code>.</div>
+        <div class="pipe-title">Detector de régimen bull/bear <span style="background:rgba(139,92,246,.18); color:#c4b5fd; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO v1.2</span></div>
+        <div class="pipe-desc">GaussianMixture infiere la probabilidad de régimen alcista vs bajista. La cartera blend táctica se pondera automáticamente: <code>w = p_bull × MaxSharpe + p_bear × MinVol</code>. Resultado: <code>regimen_mercado.json</code>.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒÅå</div>
+      <div class="pipe-num">🏆</div>
       <div class="pipe-content">
         <div class="pipe-title">Factor scoring multi-factor <span style="background:rgba(139,92,246,.18); color:#c4b5fd; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO v1.2</span></div>
-        <div class="pipe-desc">Punt├║a cada clase de activo con 4 factores (momentum, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional. Salida: ranking <code>factor_scores.json</code> para apoyar el rebalanceo.</div>
+        <div class="pipe-desc">Puntúa cada clase de activo con 4 factores (momentum, calidad, tendencia 200d, sentimiento Reddit). Z-score cross-sectional. Salida: ranking <code>factor_scores.json</code> para apoyar el rebalanceo.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒÄ»</div>
+      <div class="pipe-num">🎯</div>
       <div class="pipe-content">
         <div class="pipe-title">Cartera recomendada personalizada <span style="background:rgba(16,185,129,.18); color:#6ee7b7; font-size:.7rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:600">NUEVO</span></div>
-        <div class="pipe-desc">Filtra el universo de 62 productos UCITS por tus plataformas, aplica HRP, prioriza fondos traspasables sin tributar y proyecta el capital objetivo a N a├▒os comparando con las 7 filosof├¡as de referencia.</div>
+        <div class="pipe-desc">Filtra el universo de 62 productos UCITS por tus plataformas, aplica HRP, prioriza fondos traspasables sin tributar y proyecta el capital objetivo a N años comparando con las 7 filosofías de referencia.</div>
       </div>
     </div>
-    <div class="pipe-arrow">Ôåô</div>
+    <div class="pipe-arrow">↓</div>
     <div class="pipe-step">
-      <div class="pipe-num">­ƒôè</div>
+      <div class="pipe-num">📊</div>
       <div class="pipe-content">
-        <div class="pipe-title">Exploraci├│n interactiva</div>
-        <div class="pipe-desc">Notebooks con todos los resultados embebidos: gr├íficos inline, tablas comparativas y secci├│n de impacto fiscal del rebalanceo por operaci├│n.</div>
+        <div class="pipe-title">Exploración interactiva</div>
+        <div class="pipe-desc">Notebooks con todos los resultados embebidos: gráficos inline, tablas comparativas y sección de impacto fiscal del rebalanceo por operación.</div>
       </div>
     </div>
   </div>
@@ -949,22 +949,22 @@
 <!-- RESULTADOS -->
 <section id="resultados" class="fade-in">
   <div class="section-label">Resultados generados</div>
-  <h2 class="section-title">18+ gr├íficos ┬À 4 informes ┬À alertas accionables ┬À r├®gimen + factores</h2>
-  <p class="section-sub">Todos los outputs se guardan en <code style="color:var(--accent3)">resultados/</code> y se regeneran ├¡ntegramente en cada ejecuci├│n.</p>
+  <h2 class="section-title">18+ gráficos · 4 informes · alertas accionables · régimen + factores</h2>
+  <p class="section-sub">Todos los outputs se guardan en <code style="color:var(--accent3)">resultados/</code> y se regeneran íntegramente en cada ejecución.</p>
 
   <div class="outputs-grid">
-    <div class="output-card"><div class="output-icon">­ƒºá</div><div><div class="output-title">Alertas de tendencias</div><div class="output-desc">Sectores emergentes auto-detectados con productos concretos: TER, Sharpe, plataforma y peso sugerido por perfil</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒîí´©Å</div><div><div class="output-title">R├®gimen de mercado</div><div class="output-desc">Bull/bear con probabilidad inferida (GMM). Se├▒al DEFENSIVO o NEUTRAL. Entrada: <code style="color:var(--accent3)">regimen_mercado.json</code></div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒÅå</div><div><div class="output-title">Factor scores</div><div class="output-desc">Ranking multi-factor de clases de activo: top performers vs bottom. Entrada: <code style="color:var(--accent3)">factor_scores.json</code></div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒÄ»</div><div><div class="output-title">Cartera recomendada</div><div class="output-desc">Informe personalizado con filosof├¡a de referencia, TER medio ponderado, Sharpe estimado y proyecci├│n a N a├▒os</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒôé</div><div><div class="output-title">CSVs exportables</div><div class="output-desc">pesos_optimos.csv, hrp_pesos.csv, pesos_recomendados.csv ÔÇö importables en Excel</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒÑº</div><div><div class="output-title">Distribuci├│n por tipo</div><div class="output-desc">Donut por clase de activo, entidad y nivel de riesgo con alertas de concentraci├│n</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒôë</div><div><div class="output-title">Mapa fiscal (P&amp;L)</div><div class="output-desc">Plusval├¡as y p├®rdidas latentes con estimaci├│n de IRPF por posici├│n (tramos ahorro 2026)</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒôê</div><div><div class="output-title">Frontera eficiente</div><div class="output-desc">Curva de Markowitz coloreada por ratio Sharpe con 4 carteras clave marcadas y activos individuales</div></div></div>
-    <div class="output-card"><div class="output-icon">ÔÜû´©Å</div><div><div class="output-title">Comparativa de pesos</div><div class="output-desc">Actual vs 3 escenarios Markowitz vs HRP acotado ÔÇö qu├® tiene demasiado y qu├® le falta</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒöä</div><div><div class="output-title">Plan de rebalanceo en Ôé¼</div><div class="output-desc">Barras verde/rojo con importe exacto en EUR a comprar o vender por activo</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒö║</div><div><div class="output-title">HRP ÔÇö 3 gr├íficos</div><div class="output-desc">Dendrograma Ward ┬À comparativa HRP vs Markowitz ┬À contribuci├│n al riesgo por clase (scatter)</div></div></div>
-    <div class="output-card"><div class="output-icon">­ƒôè</div><div><div class="output-title">Proyecci├│n de capital</div><div class="output-desc">Trayectoria a N a├▒os con aportaciones peri├│dicas + comparativa visual de las 7 filosof├¡as de referencia</div></div></div>
+    <div class="output-card"><div class="output-icon">🧠</div><div><div class="output-title">Alertas de tendencias</div><div class="output-desc">Sectores emergentes auto-detectados con productos concretos: TER, Sharpe, plataforma y peso sugerido por perfil</div></div></div>
+    <div class="output-card"><div class="output-icon">🌡️</div><div><div class="output-title">Régimen de mercado</div><div class="output-desc">Bull/bear con probabilidad inferida (GMM). Señal DEFENSIVO o NEUTRAL. Entrada: <code style="color:var(--accent3)">regimen_mercado.json</code></div></div></div>
+    <div class="output-card"><div class="output-icon">🏆</div><div><div class="output-title">Factor scores</div><div class="output-desc">Ranking multi-factor de clases de activo: top performers vs bottom. Entrada: <code style="color:var(--accent3)">factor_scores.json</code></div></div></div>
+    <div class="output-card"><div class="output-icon">🎯</div><div><div class="output-title">Cartera recomendada</div><div class="output-desc">Informe personalizado con filosofía de referencia, TER medio ponderado, Sharpe estimado y proyección a N años</div></div></div>
+    <div class="output-card"><div class="output-icon">📂</div><div><div class="output-title">CSVs exportables</div><div class="output-desc">pesos_optimos.csv, hrp_pesos.csv, pesos_recomendados.csv — importables en Excel</div></div></div>
+    <div class="output-card"><div class="output-icon">🥧</div><div><div class="output-title">Distribución por tipo</div><div class="output-desc">Donut por clase de activo, entidad y nivel de riesgo con alertas de concentración</div></div></div>
+    <div class="output-card"><div class="output-icon">📉</div><div><div class="output-title">Mapa fiscal (P&amp;L)</div><div class="output-desc">Plusvalías y pérdidas latentes con estimación de IRPF por posición (tramos ahorro 2026)</div></div></div>
+    <div class="output-card"><div class="output-icon">📈</div><div><div class="output-title">Frontera eficiente</div><div class="output-desc">Curva de Markowitz coloreada por ratio Sharpe con 4 carteras clave marcadas y activos individuales</div></div></div>
+    <div class="output-card"><div class="output-icon">⚖️</div><div><div class="output-title">Comparativa de pesos</div><div class="output-desc">Actual vs 3 escenarios Markowitz vs HRP acotado — qué tiene demasiado y qué le falta</div></div></div>
+    <div class="output-card"><div class="output-icon">🔄</div><div><div class="output-title">Plan de rebalanceo en €</div><div class="output-desc">Barras verde/rojo con importe exacto en EUR a comprar o vender por activo</div></div></div>
+    <div class="output-card"><div class="output-icon">🔺</div><div><div class="output-title">HRP — 3 gráficos</div><div class="output-desc">Dendrograma Ward · comparativa HRP vs Markowitz · contribución al riesgo por clase (scatter)</div></div></div>
+    <div class="output-card"><div class="output-icon">📊</div><div><div class="output-title">Proyección de capital</div><div class="output-desc">Trayectoria a N años con aportaciones periódicas + comparativa visual de las 7 filosofías de referencia</div></div></div>
   </div>
 </section>
 
@@ -972,28 +972,28 @@
 
 <!-- DEMO TEASER -->
 <section id="demo" class="fade-in">
-  <div class="section-label">Motor de datos ┬À Producci├│n</div>
-  <h2 class="section-title">Ve el sistema en acci├│n</h2>
+  <div class="section-label">Motor de datos · Producción</div>
+  <h2 class="section-title">Ve el sistema en acción</h2>
   <p class="section-sub">
-    Descarga autom├ítica de datos de mercado con motor propio, optimizaci├│n Markowitz y HRP (L├│pez de Prado)
-    con correlaciones emp├¡ricas reales, contexto macro en tiempo real y an├ílisis fiscal completo.
+    Descarga automática de datos de mercado con motor propio, optimización Markowitz y HRP (López de Prado)
+    con correlaciones empíricas reales, contexto macro en tiempo real y análisis fiscal completo.
   </p>
 
   <!-- REAL DATA BADGE -->
   <div style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.3); border-radius:8px; padding:.5rem 1rem; margin-top:1.5rem; margin-bottom:.5rem; font-size:.8rem; color:var(--accent2)">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    urllib ┬À Yahoo Finance v8 API ┬À Google News RSS ┬À ApeWisdom Reddit ┬À ├║ltima descarga 21 abr 2026
+    urllib · Yahoo Finance v8 API · Google News RSS · ApeWisdom Reddit · última descarga 21 abr 2026
   </div>
 
-  <!-- TEASER METRICS ROW ÔÇöÔÇö m├®tricas del motor de descarga -->
+  <!-- TEASER METRICS ROW —— métricas del motor de descarga -->
   <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem; margin-bottom:2.5rem">
     <div style="background:var(--bg-card); border:1px solid rgba(59,130,246,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
       <div style="font-size:1.7rem; font-weight:800; color:var(--accent)">60+</div>
       <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Activos descargados</div>
     </div>
     <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
-      <div style="font-size:1.7rem; font-weight:800; color:var(--text-primary)">5 a├▒os</div>
-      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Hist├│rico de precios</div>
+      <div style="font-size:1.7rem; font-weight:800; color:var(--text-primary)">5 años</div>
+      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Histórico de precios</div>
     </div>
     <div style="background:var(--bg-card); border:1px solid rgba(245,158,11,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
       <div style="font-size:1.7rem; font-weight:800; color:var(--accent3)">35+</div>
@@ -1001,7 +1001,7 @@
     </div>
     <div style="background:var(--bg-card); border:1px solid rgba(16,185,129,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
       <div style="font-size:1.7rem; font-weight:800; color:var(--accent2)">7 macro</div>
-      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">VIX ┬À yields ┬À oro ┬À FX</div>
+      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">VIX · yields · oro · FX</div>
     </div>
     <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
       <div style="font-size:1.7rem; font-weight:800; color:var(--text-primary)">~60s</div>
@@ -1009,30 +1009,30 @@
     </div>
     <div style="background:var(--bg-card); border:1px solid rgba(139,92,246,.4); border-radius:14px; padding:1.1rem 1.6rem; text-align:center; min-width:120px">
       <div style="font-size:1.7rem; font-weight:800; color:var(--accent4)">14+</div>
-      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Gr├íficos generados</div>
+      <div style="font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem">Gráficos generados</div>
     </div>
   </div>
 
-  <!-- ├ÜNICA V├ìA: DASHBOARD UNIFICADO -->
+  <!-- ÚNICA VÍA: DASHBOARD UNIFICADO -->
   <div style="background:var(--bg-card); border:1px solid rgba(59,130,246,.3); border-radius:16px; padding:1.8rem; display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem">
     <div style="display:flex; align-items:center; gap:.75rem">
-      <div style="width:42px; height:42px; background:rgba(59,130,246,.1); border:1px solid rgba(59,130,246,.3); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0">­ƒûÑ</div>
+      <div style="width:42px; height:42px; background:rgba(59,130,246,.1); border:1px solid rgba(59,130,246,.3); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0">🖥</div>
       <div>
-        <div style="font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:.15rem">Dashboard interactivo ┬À 10 pesta├▒as</div>
+        <div style="font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:.15rem">Dashboard interactivo · 10 pestañas</div>
         <div style="font-size:1.1rem; font-weight:700; color:var(--text-primary)">Todo el sistema en un panel autocontenido</div>
       </div>
     </div>
     <p style="font-size:.83rem; color:var(--text-sec); line-height:1.65; margin:0">
-      Panel de seguimiento generado ├¡ntegramente por el pipeline: cartera ├│ptima con selector de 7 modelos de inversi├│n, pulso macro (VIX, Fear &amp; Greed, yields, Reddit), alertas accionables, tendencias emergentes, gr├íficos de Markowitz y HRP, informes de texto del motor y gu├¡a completa del pipeline.
+      Panel de seguimiento generado íntegramente por el pipeline: cartera óptima con selector de 7 modelos de inversión, pulso macro (VIX, Fear &amp; Greed, yields, Reddit), alertas accionables, tendencias emergentes, gráficos de Markowitz y HRP, informes de texto del motor y guía completa del pipeline.
     </p>
     <div style="display:flex; flex-wrap:wrap; gap:.5rem">
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Cartera recomendada ┬À 7 modelos</span>
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Pulso macro ┬À VIX ┬À Reddit</span>
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Alertas ┬À Tendencias</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Cartera recomendada · 7 modelos</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Pulso macro · VIX · Reddit</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Alertas · Tendencias</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Universo 62 productos</span>
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Gr├íficos Markowitz ┬À HRP</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Gráficos Markowitz · HRP</span>
       <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Informes TXT embebidos</span>
-      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">C├│mo funciona ┬À pipeline</span>
+      <span style="font-size:.72rem; background:rgba(59,130,246,.07); border:1px solid rgba(59,130,246,.2); color:#93c5fd; padding:.25rem .6rem; border-radius:5px">Cómo funciona · pipeline</span>
     </div>
     <a href="dashboard/demo.html" target="_blank" rel="noopener"
        style="display:inline-flex; align-items:center; gap:.5rem; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.45); color:#93c5fd; text-decoration:none; padding:.7rem 1.3rem; border-radius:10px; font-size:.88rem; font-weight:600; transition:background .2s; width:fit-content"
@@ -1046,7 +1046,7 @@
   <div style="margin-top:2.5rem">
     <p style="font-size:.78rem; color:var(--text-muted); margin-bottom:.75rem; display:flex; align-items:center; gap:.4rem">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-      Vista previa del dashboard ÔÇö navega por las pesta├▒as dentro del frame
+      Vista previa del dashboard — navega por las pestañas dentro del frame
     </p>
     <div style="position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(59,130,246,.2); box-shadow:0 8px 40px rgba(0,0,0,.5)">
       <div style="background:#1e293b; padding:.5rem 1rem; display:flex; align-items:center; gap:.5rem; border-bottom:1px solid #334155">
@@ -1056,23 +1056,23 @@
           <div style="width:10px;height:10px;border-radius:50%;background:#22c55e"></div>
         </div>
         <div style="flex:1; background:#0f172a; border-radius:5px; padding:.25rem .75rem; font-size:.72rem; color:#64748b; font-family:monospace">
-          dashboard/demo.html ÔÇö generado por pipeline ┬À datos ficticios
+          dashboard/demo.html — generado por pipeline · datos ficticios
         </div>
         <a href="dashboard/demo.html" target="_blank" rel="noopener"
            style="font-size:.7rem; color:var(--accent); text-decoration:none; white-space:nowrap; padding:.2rem .5rem; border:1px solid rgba(59,130,246,.3); border-radius:5px">
-          Ôåù pantalla completa
+          ↗ pantalla completa
         </a>
       </div>
       <iframe
         src="dashboard/demo.html"
         style="width:100%; height:680px; border:none; display:block; background:#0f172a"
         loading="lazy"
-        title="Dashboard demo ÔÇö PortfolioQuant"
+        title="Dashboard demo — PortfolioQuant"
         sandbox="allow-scripts allow-same-origin"
       ></iframe>
     </div>
     <p style="font-size:.75rem; color:var(--text-muted); text-align:center; margin-top:.75rem">
-      ÔÜá Datos ficticios ├║nicamente con fines demostrativos. No constituyen asesoramiento financiero.
+      ⚠ Datos ficticios únicamente con fines demostrativos. No constituyen asesoramiento financiero.
     </p>
   </div>
 
@@ -1085,19 +1085,19 @@
 
 <!-- STACK -->
 <section id="stack" class="fade-in">
-  <div class="section-label">Tecnolog├¡a</div>
-  <h2 class="section-title">Stack t├®cnico</h2>
-  <p class="section-sub">100% Python est├índar. Sin servicios en la nube ni licencias. Ejecuta en local con los datos del inversor.</p>
+  <div class="section-label">Tecnología</div>
+  <h2 class="section-title">Stack técnico</h2>
+  <p class="section-sub">100% Python estándar. Sin servicios en la nube ni licencias. Ejecuta en local con los datos del inversor.</p>
 
   <div class="stack-grid">
-    <div class="stack-item"><div class="stack-icon">­ƒÉì</div><div><div class="stack-name">Python 3.14</div><div class="stack-use">Motor de ejecuci├│n</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒÉ╝</div><div><div class="stack-name">pandas 3.x</div><div class="stack-use">Manipulaci├│n de datos</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒöó</div><div><div class="stack-name">NumPy + SciPy</div><div class="stack-use">├ülgebra lineal ┬À SLSQP</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒºá</div><div><div class="stack-name">scikit-learn 1.8</div><div class="stack-use">Ledoit-Wolf ┬À GMM r├®gimen</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒôë</div><div><div class="stack-name">Matplotlib</div><div class="stack-use">Generaci├│n de gr├íficos</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒôô</div><div><div class="stack-name">Jupyter</div><div class="stack-use">Notebooks interactivos</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒôí</div><div><div class="stack-name">urllib ┬À Yahoo v8</div><div class="stack-use">Descarga de mercados</div></div></div>
-    <div class="stack-item"><div class="stack-icon">­ƒÆ¼</div><div><div class="stack-name">ApeWisdom API</div><div class="stack-use">Sentimiento Reddit</div></div></div>
+    <div class="stack-item"><div class="stack-icon">🐍</div><div><div class="stack-name">Python 3.14</div><div class="stack-use">Motor de ejecución</div></div></div>
+    <div class="stack-item"><div class="stack-icon">🐼</div><div><div class="stack-name">pandas 3.x</div><div class="stack-use">Manipulación de datos</div></div></div>
+    <div class="stack-item"><div class="stack-icon">🔢</div><div><div class="stack-name">NumPy + SciPy</div><div class="stack-use">Álgebra lineal · SLSQP</div></div></div>
+    <div class="stack-item"><div class="stack-icon">🧠</div><div><div class="stack-name">scikit-learn 1.8</div><div class="stack-use">Ledoit-Wolf · GMM régimen</div></div></div>
+    <div class="stack-item"><div class="stack-icon">📉</div><div><div class="stack-name">Matplotlib</div><div class="stack-use">Generación de gráficos</div></div></div>
+    <div class="stack-item"><div class="stack-icon">📓</div><div><div class="stack-name">Jupyter</div><div class="stack-use">Notebooks interactivos</div></div></div>
+    <div class="stack-item"><div class="stack-icon">📡</div><div><div class="stack-name">urllib · Yahoo v8</div><div class="stack-use">Descarga de mercados</div></div></div>
+    <div class="stack-item"><div class="stack-icon">💬</div><div><div class="stack-name">ApeWisdom API</div><div class="stack-use">Sentimiento Reddit</div></div></div>
   </div>
 </section>
 
@@ -1106,26 +1106,26 @@
 <!-- ROADMAP -->
 <section id="roadmap" class="fade-in">
   <div class="section-label">Roadmap</div>
-  <h2 class="section-title">Roadmap ÔÇö 11 implementados, 5 planificados</h2>
-  <p class="section-sub">Evaluaci├│n de viabilidad t├®cnica y utilidad pr├íctica. Black-Litterman, MinCVaR, Risk Parity, Walk-forward Backtester, Montecarlo, Tax-Loss Harvesting y Core/Satellite implementados. Calmar ratio y RC% por activo integrados en el optimizador. Mayo 2026.</p>
+  <h2 class="section-title">Roadmap — 11 implementados, 5 planificados</h2>
+  <p class="section-sub">Evaluación de viabilidad técnica y utilidad práctica. Black-Litterman, MinCVaR, Risk Parity, Walk-forward Backtester, Montecarlo, Tax-Loss Harvesting y Core/Satellite implementados. Calmar ratio y RC% por activo integrados en el optimizador. Mayo 2026.</p>
 
   <div class="roadmap-blocks">
 
     <!-- BLOQUE 1 -->
     <div>
-      <div class="roadmap-block-title">­ƒº« Bloque 1 ÔÇö El N├║cleo de Eficiencia (Base Cl├ísica)</div>
+      <div class="roadmap-block-title">🧮 Bloque 1 — El Núcleo de Eficiencia (Base Clásica)</div>
       <div class="roadmap-items">
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p2"></div>
           <div class="rm-header">
-            <div class="rm-title">Auditor├¡a de Costes y Solapamientos</div>
+            <div class="rm-title">Auditoría de Costes y Solapamientos</div>
             <div class="rm-priority p2">P2</div>
           </div>
-          <div class="rm-desc">Detecta comisiones ocultas (TER) y cuantifica el solapamiento real entre fondos que replican el mismo ├¡ndice desde distintas entidades.</div>
+          <div class="rm-desc">Detecta comisiones ocultas (TER) y cuantifica el solapamiento real entre fondos que replican el mismo índice desde distintas entidades.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿàÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿàÔÿàÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★★★</span>
           </div>
         </div>
 
@@ -1135,23 +1135,23 @@
             <div class="rm-title">Frontera Eficiente con Datos Reales</div>
             <div class="rm-priority p3">P3</div>
           </div>
-          <div class="rm-desc">Recalcula la frontera con hist├│ricos descargados de APIs en lugar de par├ímetros de referencia fijos. Detecta cambios de r├®gimen en correlaciones.</div>
+          <div class="rm-desc">Recalcula la frontera con históricos descargados de APIs en lugar de parámetros de referencia fijos. Detecta cambios de régimen en correlaciones.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿàÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★</span>
           </div>
         </div>
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p4"></div>
           <div class="rm-header">
-            <div class="rm-title">Termostato de Riesgo ÔÇö Perfil Psicol├│gico</div>
+            <div class="rm-title">Termostato de Riesgo — Perfil Psicológico</div>
             <div class="rm-priority p4">P4</div>
           </div>
-          <div class="rm-desc">Cuestionario de tolerancia al riesgo que calibra autom├íticamente el par├ímetro vol_max entre 8% (conservador) y 25% (muy agresivo).</div>
+          <div class="rm-desc">Cuestionario de tolerancia al riesgo que calibra automáticamente el parámetro vol_max entre 8% (conservador) y 25% (muy agresivo).</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿàÔÿàÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★★★</span>
           </div>
         </div>
 
@@ -1160,45 +1160,45 @@
 
     <!-- BLOQUE 2 -->
     <div>
-      <div class="roadmap-block-title">ÔÜÖ´©Å Bloque 2 ÔÇö Automatizaci├│n y Algoritmia (Motor Tecnol├│gico)</div>
+      <div class="roadmap-block-title">⚙️ Bloque 2 — Automatización y Algoritmia (Motor Tecnológico)</div>
       <div class="roadmap-items">
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p1"></div>
           <div class="rm-header">
             <div class="rm-title">Rebalanceo por Bandas de Tolerancia</div>
-            <div class="rm-priority p1">P1 ┬À Inmediato</div>
+            <div class="rm-priority p1">P1 · Inmediato</div>
           </div>
-          <div class="rm-desc">Alertas cuando una posici├│n se desv├¡a de su peso objetivo. Genera la operaci├│n exacta en EUR priorizando la eficiencia fiscal. La funcionalidad m├ís accionable.</div>
+          <div class="rm-desc">Alertas cuando una posición se desvía de su peso objetivo. Genera la operación exacta en EUR priorizando la eficiencia fiscal. La funcionalidad más accionable.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿàÔÿàÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿàÔÿàÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★★★</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Simulaciones de Montecarlo <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Simulaciones de Montecarlo <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
-          <div class="rm-desc">Miles de trayectorias con movimiento browniano geom├®trico. Calcula percentiles P10/P50/P90 de riqueza terminal y probabilidad de alcanzar objetivos.</div>
+          <div class="rm-desc">Miles de trayectorias con movimiento browniano geométrico. Calcula percentiles P10/P50/P90 de riqueza terminal y probabilidad de alcanzar objetivos.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">montecarlo.json</span>
-            <span class="rm-badge badge-via">M├│dulo: 06_montecarlo.py</span>
+            <span class="rm-badge badge-via">Módulo: 06_montecarlo.py</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Tax-Loss Harvesting Autom├ítico <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Tax-Loss Harvesting Automático <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
-          <div class="rm-desc">Escanea p├®rdidas realizables, calcula el ahorro fiscal neto y ordena las operaciones. Aplica la regla de los 2 meses (IRPF Espa├▒a) para validar cada afloro.</div>
+          <div class="rm-desc">Escanea pérdidas realizables, calcula el ahorro fiscal neto y ordena las operaciones. Aplica la regla de los 2 meses (IRPF España) para validar cada afloro.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">scripts/tax_loss_harvesting.py</span>
-            <span class="rm-badge badge-via">M├│dulo: tax_loss_harvesting.py</span>
+            <span class="rm-badge badge-via">Módulo: tax_loss_harvesting.py</span>
           </div>
         </div>
 
@@ -1207,45 +1207,45 @@
 
     <!-- BLOQUE 3 -->
     <div>
-      <div class="roadmap-block-title">­ƒø░´©Å Bloque 3 ÔÇö Exploraci├│n de Sat├®lites y Oportunidades</div>
+      <div class="roadmap-block-title">🛰️ Bloque 3 — Exploración de Satélites y Oportunidades</div>
       <div class="roadmap-items">
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
             <div class="rm-title">Radar de Inteligencia de Mercado</div>
-            <div class="rm-priority" style="background:rgba(16,185,129,.15); color:#6ee7b7">Ô£ô IMPLEMENTADO</div>
+            <div class="rm-priority" style="background:rgba(16,185,129,.15); color:#6ee7b7">✓ IMPLEMENTADO</div>
           </div>
-          <div class="rm-desc">Integraci├│n de ├¡ndice de miedo/codicia (0ÔÇô100), an├ílisis de menciones en comunidades inversoras en tiempo real y contexto geopol├¡tico din├ímico v├¡a scraping de noticias. Incluye se├▒ales anticipadas que detectan transiciones de r├®gimen <em>antes</em> de que el precio lo confirme.</div>
+          <div class="rm-desc">Integración de índice de miedo/codicia (0–100), análisis de menciones en comunidades inversoras en tiempo real y contexto geopolítico dinámico vía scraping de noticias. Incluye señales anticipadas que detectan transiciones de régimen <em>antes</em> de que el precio lo confirme.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿàÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿàÔÿàÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★★★★</span>
           </div>
         </div>
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p5"></div>
           <div class="rm-header">
-            <div class="rm-title">Detector de Anomal├¡as (Short Squeezes)</div>
-            <div class="rm-priority p5">P5 ┬À Diferido</div>
+            <div class="rm-title">Detector de Anomalías (Short Squeezes)</div>
+            <div class="rm-priority p5">P5 · Diferido</div>
           </div>
-          <div class="rm-desc">Rastreo de short interest y volumen inusual de opciones para detectar movimientos institucionales. ├Ütil solo si la parte especulativa tiene peso relevante.</div>
+          <div class="rm-desc">Rastreo de short interest y volumen inusual de opciones para detectar movimientos institucionales. Útil solo si la parte especulativa tiene peso relevante.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">Utilidad ÔÿàÔÿà</span>
-            <span class="rm-badge badge-via">Viabilidad ÔÿàÔÿà</span>
+            <span class="rm-badge badge-util">Utilidad ★★</span>
+            <span class="rm-badge badge-via">Viabilidad ★★</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Core / Satellite + Stop Loss Autom├ítico <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Core / Satellite + Stop Loss Automático <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.4</div>
           </div>
-          <div class="rm-desc">Segregaci├│n expl├¡cita del presupuesto de riesgo. Umbrales de stop loss y take profit por posici├│n sat├®lite con alertas autom├íticas configurables.</div>
+          <div class="rm-desc">Segregación explícita del presupuesto de riesgo. Umbrales de stop loss y take profit por posición satélite con alertas automáticas configurables.</div>
           <div class="rm-meta">
-            <span class="rm-badge badge-util">core_satellite.json ┬À stop_loss.json</span>
-            <span class="rm-badge badge-via">M├│dulos: 05_core_satellite.py + 08_stop_loss.py</span>
+            <span class="rm-badge badge-util">core_satellite.json · stop_loss.json</span>
+            <span class="rm-badge badge-via">Módulos: 05_core_satellite.py + 08_stop_loss.py</span>
           </div>
         </div>
 
@@ -1254,55 +1254,55 @@
 
     <!-- BLOQUE 4 -->
     <div>
-      <div class="roadmap-block-title">­ƒºá Bloque 4 ÔÇö M├ís All├í de los Cl├ísicos (Nuevos Modelos)</div>
+      <div class="roadmap-block-title">🧠 Bloque 4 — Más Allá de los Clásicos (Nuevos Modelos)</div>
       <div class="roadmap-items">
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Ledoit-Wolf Shrinkage <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Ledoit-Wolf Shrinkage <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.1</div>
           </div>
-          <div class="rm-desc">Estimaci├│n robusta de la covarianza mediante shrinkage anal├¡tico. Sustituye la covarianza muestral en Markowitz, reduciendo el error de estimaci├│n con pocos datos. Coeficiente ╬┤ auto-calibrado y guardado en <code>parametros_mercado.json</code>.</div>
+          <div class="rm-desc">Estimación robusta de la covarianza mediante shrinkage analítico. Sustituye la covarianza muestral en Markowitz, reduciendo el error de estimación con pocos datos. Coeficiente δ auto-calibrado y guardado en <code>parametros_mercado.json</code>.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">sklearn.covariance</span>
-            <span class="rm-badge badge-via">M├│dulo: 01_descarga_datos.py + 03_optimizador.py</span>
+            <span class="rm-badge badge-via">Módulo: 01_descarga_datos.py + 03_optimizador.py</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Detector de R├®gimen (GMM) <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Detector de Régimen (GMM) <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.2</div>
           </div>
-          <div class="rm-desc">GaussianMixture (2 componentes, BIC m├¡nimo, 10 semillas) sobre retornos y volatilidad rolling. Infiere la probabilidad p_bull/p_bear y pondera la cartera t├íctica: <code>w_blend = p_bull ├ù MaxSharpe + p_bear ├ù MinVol</code>.</div>
+          <div class="rm-desc">GaussianMixture (2 componentes, BIC mínimo, 10 semillas) sobre retornos y volatilidad rolling. Infiere la probabilidad p_bull/p_bear y pondera la cartera táctica: <code>w_blend = p_bull × MaxSharpe + p_bear × MinVol</code>.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">peso_blend_regimen_pct</span>
-            <span class="rm-badge badge-via">M├│dulo: 05_detector_regimen.py</span>
+            <span class="rm-badge badge-via">Módulo: 05_detector_regimen.py</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Factor Scoring Multi-factor <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Factor Scoring Multi-factor <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.2</div>
           </div>
-          <div class="rm-desc">Score cross-sectional de 4 factores: Momentum 12-1m (ponderaci├│n 1.0), Calidad Sharpe/MaxDD (1.0), Tendencia vs 200d (1.0), Sentimiento Reddit/ApeWisdom (0.5). Z-score saturado a ┬▒2.5¤â.</div>
+          <div class="rm-desc">Score cross-sectional de 4 factores: Momentum 12-1m (ponderación 1.0), Calidad Sharpe/MaxDD (1.0), Tendencia vs 200d (1.0), Sentimiento Reddit/ApeWisdom (0.5). Z-score saturado a ±2.5σ.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">factor_scores.json</span>
-            <span class="rm-badge badge-via">M├│dulo: 06_factor_scoring.py</span>
+            <span class="rm-badge badge-via">Módulo: 06_factor_scoring.py</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">HRP ÔÇö L├│pez de Prado <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">HRP — López de Prado <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.0</div>
           </div>
-          <div class="rm-desc">Hierarchical Risk Parity: Ward linkage, cuasi-diagonalizaci├│n y bisecci├│n recursiva por varianza-inversa. Sharpe HRP acotado: 0.660 (vs 0.870 Markowitz) &middot; menor volatilidad &middot; Bitcoin genera el 25.1% del riesgo con solo el 10% del capital. Ejecuta en ~0.7s.</div>
+          <div class="rm-desc">Hierarchical Risk Parity: Ward linkage, cuasi-diagonalización y bisección recursiva por varianza-inversa. Sharpe HRP acotado: 0.660 (vs 0.870 Markowitz) &middot; menor volatilidad &middot; Bitcoin genera el 25.1% del riesgo con solo el 10% del capital. Ejecuta en ~0.7s.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">Sharpe 0.457</span>
             <span class="rm-badge badge-via">Modulo: 03b_optimizador_hrp.py</span>
@@ -1312,39 +1312,39 @@
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Black-Litterman <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Black-Litterman <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
           </div>
-          <div class="rm-desc">Prior bayesiano CAPM (╬á&nbsp;=&nbsp;╬╗╬úw<sub>mkt</sub>, ╬╗=2.5, ¤ä=0.05) + views generadas autom├íticamente desde r├®gimen de mercado, VIX y factor scores. Optimizaci├│n MaxSharpe sobre la distribuci├│n posterior BL con 80 arranques.</div>
+          <div class="rm-desc">Prior bayesiano CAPM (Π&nbsp;=&nbsp;λΣw<sub>mkt</sub>, λ=2.5, τ=0.05) + views generadas automáticamente desde régimen de mercado, VIX y factor scores. Optimización MaxSharpe sobre la distribución posterior BL con 80 arranques.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">bl_pesos.csv &middot; bl_resultados.json</span>
-            <span class="rm-badge badge-via">M├│dulo: 03c_bl_optimizer.py</span>
+            <span class="rm-badge badge-via">Módulo: 03c_bl_optimizer.py</span>
           </div>
         </div>
 
         <div class="rm-card">
           <div class="rm-card-accent acc-p3"></div>
           <div class="rm-header">
-            <div class="rm-title">Risk Parity / Equal Risk Contribution <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Risk Parity / Equal Risk Contribution <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
           </div>
-          <div class="rm-desc">Escenario <code>escenario_risk_parity_aproximado()</code> en <code>03_optimizador.py</code>: minimiza la dispersi├│n de contribuciones fraccionales al riesgo (rc_i&nbsp;=&nbsp;w_i&middot;(╬úw)_i&nbsp;/&nbsp;¤â_p). Tambi├®n implementado MinCVaR (Expected Shortfall 95%) y Calmar ratio en todos los informes.</div>
+          <div class="rm-desc">Escenario <code>escenario_risk_parity_aproximado()</code> en <code>03_optimizador.py</code>: minimiza la dispersión de contribuciones fraccionales al riesgo (rc_i&nbsp;=&nbsp;w_i&middot;(Σw)_i&nbsp;/&nbsp;σ_p). También implementado MinCVaR (Expected Shortfall 95%) y Calmar ratio en todos los informes.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">rc_sharpe_pct &middot; rc_minvol_pct</span>
-            <span class="rm-badge badge-via">M├│dulo: 03_optimizador.py (5 escenarios)</span>
+            <span class="rm-badge badge-via">Módulo: 03_optimizador.py (5 escenarios)</span>
           </div>
         </div>
 
         <div class="rm-card" style="border-color:rgba(16,185,129,.4); background:rgba(16,185,129,.03)">
           <div class="rm-card-accent" style="background:var(--p1)"></div>
           <div class="rm-header">
-            <div class="rm-title">Walk-forward Backtester <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">Ô£à IMPLEMENTADO</span></div>
+            <div class="rm-title">Walk-forward Backtester <span style="background:rgba(16,185,129,.18); color:var(--p1); font-size:.68rem; padding:.1rem .45rem; border-radius:4px; margin-left:.4rem; font-weight:700">✅ IMPLEMENTADO</span></div>
             <div class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1)">v1.3</div>
           </div>
-          <div class="rm-desc">Compara 6 modelos fuera de muestra (OOS) con ventanas expanding: Markowitz MaxSharpe, MinVol, MinCVaR, HRP, 1/N y benchmark IWDA. Par├ímetros: train=126d, test=21d, embargo=3d. M├®tricas OOS: Sharpe, Sortino, Max DD, hit rate, CAGR.</div>
+          <div class="rm-desc">Compara 6 modelos fuera de muestra (OOS) con ventanas expanding: Markowitz MaxSharpe, MinVol, MinCVaR, HRP, 1/N y benchmark IWDA. Parámetros: train=126d, test=21d, embargo=3d. Métricas OOS: Sharpe, Sortino, Max DD, hit rate, CAGR.</div>
           <div class="rm-meta">
             <span class="rm-badge badge-util">backtest_results.json &middot; backtest_summary.csv</span>
-            <span class="rm-badge badge-via">M├│dulo: scripts/backtester.py</span>
+            <span class="rm-badge badge-via">Módulo: scripts/backtester.py</span>
           </div>
         </div>
 
@@ -1359,7 +1359,7 @@
     <table class="priority-table">
       <thead>
         <tr>
-          <th>M├│dulo</th>
+          <th>Módulo</th>
           <th>Utilidad</th>
           <th>Viabilidad</th>
           <th>Prioridad</th>
@@ -1367,20 +1367,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Rebalanceo por bandas</td>        <td><span class="stars">ÔÿàÔÿàÔÿàÔÿàÔÿà</span></td><td><span class="stars">ÔÿàÔÿàÔÿàÔÿàÔÿà</span></td><td><span class="rm-priority p1">P1</span></td><td class="module-code">07_rebalanceo_bandas.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Tax-Loss Harvesting</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">scripts/tax_loss_harvesting.py</td></tr>
-        <tr><td>Auditor├¡a costes / solapamientos</td><td><span class="stars">ÔÿàÔÿàÔÿàÔÿà</span></td><td><span class="stars">ÔÿàÔÿàÔÿàÔÿàÔÿà</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">04_auditoria_costes.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Simulaciones Montecarlo</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">modelos/06_montecarlo.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Core / Satellite + Stop Loss</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">05_core_satellite.py + 08_stop_loss.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Black-Litterman</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03c_bl_optimizer.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>MinCVaR + Risk Parity</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03_optimizador.py (5 esc.)</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Walk-forward Backtester</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">scripts/backtester.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>HRP ÔÇö L├│pez de Prado</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">03b_optimizador_hrp.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Ledoit-Wolf Shrinkage</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">01_descarga_datos.py + 03_optimizador.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Detector R├®gimen GMM</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">05_detector_regimen.py</td></tr>
-        <tr style="background:rgba(16,185,129,.04)"><td><strong>Factor Scoring Multi-factor</strong></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span style="color:var(--p1)">Ô£à</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">06_factor_scoring.py</td></tr>
-        <tr><td>Termostato de riesgo</td>           <td><span class="stars">ÔÿàÔÿàÔÿà</span></td> <td><span class="stars">ÔÿàÔÿàÔÿàÔÿàÔÿà</span></td><td><span class="rm-priority p4">P4</span></td><td class="module-code">cuestionario_riesgo.json</td></tr>
-        <tr><td>Detector anomal├¡as / opciones</td>  <td><span class="stars">ÔÿàÔÿà</span></td>  <td><span class="stars">ÔÿàÔÿà</span></td>   <td><span class="rm-priority p5">P5</span></td><td class="module-code">ÔÇö</td></tr>
+        <tr><td>Rebalanceo por bandas</td>        <td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p1">P1</span></td><td class="module-code">07_rebalanceo_bandas.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Tax-Loss Harvesting</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">scripts/tax_loss_harvesting.py</td></tr>
+        <tr><td>Auditoría costes / solapamientos</td><td><span class="stars">★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="rm-priority p2">P2</span></td><td class="module-code">04_auditoria_costes.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Simulaciones Montecarlo</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">modelos/06_montecarlo.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Core / Satellite + Stop Loss</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.4</span></td><td class="module-code">05_core_satellite.py + 08_stop_loss.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Black-Litterman</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03c_bl_optimizer.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>MinCVaR + Risk Parity</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">03_optimizador.py (5 esc.)</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Walk-forward Backtester</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL. v1.3</span></td><td class="module-code">scripts/backtester.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>HRP — López de Prado</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">03b_optimizador_hrp.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Ledoit-Wolf Shrinkage</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">01_descarga_datos.py + 03_optimizador.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Detector Régimen GMM</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">05_detector_regimen.py</td></tr>
+        <tr style="background:rgba(16,185,129,.04)"><td><strong>Factor Scoring Multi-factor</strong></td><td><span style="color:var(--p1)">✅</span></td><td><span style="color:var(--p1)">✅</span></td><td><span class="rm-priority" style="background:rgba(16,185,129,.18); color:var(--p1); border:1px solid var(--p1); font-size:.72rem">IMPL.</span></td><td class="module-code">06_factor_scoring.py</td></tr>
+        <tr><td>Termostato de riesgo</td>           <td><span class="stars">★★★</span></td> <td><span class="stars">★★★★★</span></td><td><span class="rm-priority p4">P4</span></td><td class="module-code">cuestionario_riesgo.json</td></tr>
+        <tr><td>Detector anomalías / opciones</td>  <td><span class="stars">★★</span></td>  <td><span class="stars">★★</span></td>   <td><span class="rm-priority p5">P5</span></td><td class="module-code">—</td></tr>
       </tbody>
     </table>
   </div>
@@ -1392,18 +1392,18 @@
 <section id="limitaciones" class="fade-in">
   <div class="section-label">Estado actual</div>
   <h2 class="section-title">Limitaciones conocidas y soluciones</h2>
-  <p class="section-sub">El sistema es funcional y produce resultados v├ílidos. Las limitaciones est├ín documentadas y tienen workaround activo.</p>
+  <p class="section-sub">El sistema es funcional y produce resultados válidos. Las limitaciones están documentadas y tienen workaround activo.</p>
 
   <div class="limits-grid">
     <div class="limit-card">
-      <div class="limit-title">Tickers delisted sin cotizaci├│n</div>
-      <div class="limit-cause">Posiciones OTC o suspendidas de negociaci├│n</div>
-      <div class="limit-fix">Ô£ô Registrar con valor_mercado = 0</div>
+      <div class="limit-title">Tickers delisted sin cotización</div>
+      <div class="limit-cause">Posiciones OTC o suspendidas de negociación</div>
+      <div class="limit-fix">✓ Registrar con valor_mercado = 0</div>
     </div>
     <div class="limit-card">
-      <div class="limit-title">TC EUR/USD est├ítico</div>
+      <div class="limit-title">TC EUR/USD estático</div>
       <div class="limit-cause">Sin API de divisas activa</div>
-      <div class="limit-fix">Ô£ô Actualizar manualmente la constante TC</div>
+      <div class="limit-fix">✓ Actualizar manualmente la constante TC</div>
     </div>
   </div>
 </section>
@@ -1414,12 +1414,12 @@
   <strong>&#169; 2026 PortfolioQuant &middot; Todos los derechos reservados.</strong>
   Proyecto registrado. Queda expresamente prohibida su reproducci&#243;n, distribuci&#243;n o uso
   sin autorizaci&#243;n escrita del autor. No se permite la copia total ni parcial del c&#243;digo,
-  documentaci├│n o metodolog├¡a contenidos en este sistema.
+  documentación o metodología contenidos en este sistema.
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <strong>PortfolioQuant</strong> ┬À Sistema de optimizaci├│n de cartera ┬À Python 3.14
+  <strong>PortfolioQuant</strong> · Sistema de optimización de cartera · Python 3.14
 
   <!-- LINKEDIN CARD -->
   <div style="margin:2rem auto 0; max-width:400px; background:linear-gradient(135deg,#0a1628,#0e1f3a); border:1px solid rgba(10,102,194,.45); border-radius:16px; padding:1.4rem 1.6rem; display:flex; align-items:center; gap:1.2rem; box-shadow:0 4px 32px rgba(10,102,194,.18); text-align:left; text-decoration:none; transition:border-color .2s, box-shadow .2s; cursor:pointer"
@@ -1446,7 +1446,7 @@
 
   <div class="footer-disclaimer" style="margin-top:1.5rem">
     Este sistema es una herramienta de apoyo cuantitativo. Los rendimientos esperados son
-    estimaciones hist├│ricas de largo plazo y no garantizan rentabilidad futura.
+    estimaciones históricas de largo plazo y no garantizan rentabilidad futura.
     Consultar con asesor financiero antes de ejecutar cualquier rebalanceo.
   </div>
 </footer>
