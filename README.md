@@ -31,7 +31,7 @@ El sistema genera automáticamente las siguientes métricas al ejecutar el pipel
 | Bear 2022 — tipos al alza (año completo) | ~-17% a -19% según escenario |
 | Corrección Tech 30% (hipotético) | ~-13% a -15% según escenario |
 
-> Los datos del perfil demo son ficticios y sirven únicamente como referencia de las capacidades del sistema. Cada usuario trabaja con sus propios datos en `datos/cartera/`.
+> Los datos del perfil demo son ficticios y sirven únicamente como referencia de las capacidades del sistema. Cada usuario trabaja con sus propios datos en `datos/perfiles/<perfil>/cartera/`.
 
 ---
 
@@ -147,8 +147,8 @@ Posiciones en acciones USA cotizadas en USD.
 
 | Archivo | Contenido clave |
 |---|---|
-| `datos/perfil/perfil_inversor.json` | Horizonte, perfil riesgo, hipoteca, plataformas disponibles |
-| `datos/perfil/objetivos_financieros.json` | Capital objetivo, aportación mensual, horizonte en años |
+| `datos/perfiles/<perfil>/perfil/perfil_inversor.json` | Horizonte, perfil riesgo, hipoteca, plataformas disponibles |
+| `datos/perfiles/<perfil>/perfil/objetivos_financieros.json` | Capital objetivo, aportación mensual, horizonte en años |
 | `datos/productos/universo_productos.json` | 24 ETFs/fondos UCITS con TER, Sharpe 5a y plataformas |
 | `datos/productos/carteras_referencia.json` | 7 filosofías: Dalio, Browne, Bogle, Swensen, Buffett, ARK, España |
 
@@ -402,7 +402,7 @@ El proyecto incluye una arquitectura completa de skills y agentes para GitHub Co
 
 ```bash
 # 1. Actualizar datos de cartera si hubo operaciones
-#    editar: datos/cartera/posiciones_actuales.csv
+#    editar: datos/perfiles/principal/cartera/posiciones_actuales.csv
 
 # 2. Descargar datos de mercado (~60s)
 python modelos/01_descarga_datos.py
